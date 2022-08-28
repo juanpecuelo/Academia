@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8dp"
+    android:layout_marginStart="8dp"
+    android:id="@+id/pdf_cardView"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:padding="8dp"
+        >
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/felicidad1"
+            android:layout_marginLeft="5dp">
+        </ImageButton>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/pdf_textName"
+            android:text="Nombre"
+            android:textSize="15sp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="6dp"
+            android:height="50dp"
+            android:textColor="@color/black">
+
+        </TextView>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
