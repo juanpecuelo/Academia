@@ -26,7 +26,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
-        holder.txtName.setText(pdfFiles.get(position).getName());
+        holder.txtName.setText(pdfFiles.get(position).getName().split("\\\\")[11]);
         holder.txtName.setSelected(true);
     }
 

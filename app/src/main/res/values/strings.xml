@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Academia</string>
     <string name="campos_vacíos">Los campos no pueden estar vacíos</string>
-    <string name = "email_contra_incorrectos">Email o contraseña incorrectos</string>
-    <string name = "ya_registrado">Ya estás registrado</string>
+    <string name="email_contra_incorrectos">Email o contraseña incorrectos</string>
+    <string name="ya_registrado">Ya estás registrado</string>
     <string name="error">Se ha producido un error. Inténtalo más tarde</string>
-    <string name ="clave_no_coincide">Las contraseñas no coinciden</string>
-    <string name ="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis nulla lacinia nisl tempor maximus. Mauris ut molestie dui, eu tempus diam. Etiam mollis diam eu consequat dignissim. Pellentesque nulla massa, condimentum egestas odio accumsan, accumsan volutpat lacus. Donec lacinia ex et orci interdum, aliquam ornare nisi iaculis. Nullam ac faucibus enim. Quisque aliquam vitae nisi vel tincidunt. Duis magna eros, faucibus et maximus nec, imperdiet non massa. Suspendisse euismod elit ipsum. Vestibulum lobortis enim non augue facilisis, vitae laoreet metus volutpat. Aenean sapien urna, tristique ut neque non, vehicula convallis quam. Quisque sodales enim elit, venenatis viverra odio semper ac. Aenean ipsum diam, facilisis eu venenatis eu, vulputate nec est.\n\n
+    <string name="clave_no_coincide">Las contraseñas no coinciden</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis nulla lacinia nisl tempor maximus. Mauris ut molestie dui, eu tempus diam. Etiam mollis diam eu consequat dignissim. Pellentesque nulla massa, condimentum egestas odio accumsan, accumsan volutpat lacus. Donec lacinia ex et orci interdum, aliquam ornare nisi iaculis. Nullam ac faucibus enim. Quisque aliquam vitae nisi vel tincidunt. Duis magna eros, faucibus et maximus nec, imperdiet non massa. Suspendisse euismod elit ipsum. Vestibulum lobortis enim non augue facilisis, vitae laoreet metus volutpat. Aenean sapien urna, tristique ut neque non, vehicula convallis quam. Quisque sodales enim elit, venenatis viverra odio semper ac. Aenean ipsum diam, facilisis eu venenatis eu, vulputate nec est.\n\n
 
 Praesent bibendum elit augue. Morbi ultrices felis orci, non porttitor eros blandit id. Aliquam fringilla gravida ex. Nunc sed lorem eu dolor dignissim congue. Fusce suscipit nibh ut dolor fermentum elementum. Ut cursus lobortis lorem, ac blandit tortor iaculis vitae. Mauris vel dolor vel sapien lobortis scelerisque. Nulla eros ipsum, tempus at gravida ac, interdum quis sem. Nam blandit consectetur orci in hendrerit. Curabitur ac ligula sed massa ornare pulvinar quis ac risus. Donec sit amet leo eget lorem auctor elementum. Nunc aliquam bibendum ligula. Duis interdum turpis nec risus congue tempus. Proin posuere rutrum sapien, eu porta arcu vulputate nec.\n\n
 

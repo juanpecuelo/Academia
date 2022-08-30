@@ -23,13 +23,7 @@
             android:text="@string/lorem_ipsum"></me.biubiubiu.justifytext.library.JustifyTextView>
     </ScrollView>
 
-        <Button
-            android:id="@+id/btnEntendido"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/theme_color"
-            android:layout_gravity="bottom"
-            android:text="Entendido"></Button>
+
 
 
 </LinearLayout>

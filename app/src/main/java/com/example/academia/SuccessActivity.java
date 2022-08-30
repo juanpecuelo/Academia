@@ -9,6 +9,6 @@ public class SuccessActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.success_activity);
+        setContentView(R.layout.activity_success);
     }
 }

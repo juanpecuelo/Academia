@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_activity);
+        setContentView(R.layout.activity_register);
         etMail = findViewById(R.id.etRegistrarUsuario);
         etContrasena = findViewById(R.id.etRegistrarContrasena);
         etContrasena2 = findViewById(R.id.etRegistrarContrasena2);

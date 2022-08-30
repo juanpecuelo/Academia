@@ -4,22 +4,30 @@ import android.graphics.pdf.PdfDocument;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class PdfClase{
     private ImageButton imagen;
     private String título;
     private String introducción;
-    private PdfDocument pdf;
+    private final ArrayList<File> listaPdf;
     private Button yaLeido;
 
-    public PdfClase(PdfDocument pdf, ImageButton imagen, String título, String introducción) {
-        this.pdf = pdf;
+    public PdfClase(ArrayList<File> listaPdf, String titulo) {
+        this.listaPdf = listaPdf;
+        this.título=titulo;
+    }
+
+    public PdfClase(ArrayList<File> listaPdf, ImageButton imagen, String título, String introducción) {
+        this.listaPdf = listaPdf;
         this.imagen = imagen;
         this.título = título;
         this.introducción = introducción;
     }
 
-    public void setPdf(PdfDocument pdf) {
-        this.pdf = pdf;
+    public ArrayList<File> getListaPdf() {
+        return new ArrayList<>(listaPdf);
     }
 
     public ImageButton getImagen() {
