@@ -10,14 +10,15 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_logo_toast">
+        android:src="@drawable/logo_toast">
     </ImageView>
+
     <TextView
+        android:id="@+id/txtMensajeToastOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtMensajeToastOk"
+        android:paddingStart="10dp"
         android:text="Has iniciado sesión satisfactoriamente"
-        android:paddingStart="18dp"
         android:textColor="@color/white"
 
         ></TextView>

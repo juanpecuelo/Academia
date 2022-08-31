@@ -8,12 +8,12 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_marginBottom="20dp"
         android:src="@drawable/logo_layout"></ImageView>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Introduce tu email"
+        app:hintTextColor="@color/black"
         app:startIconDrawable="@drawable/ic_person"
         app:endIconMode="clear_text">
         <!--TODO cambiar el color al seleccionar las cajas -->
@@ -38,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Introduce tu contraseña"
+        app:hintTextColor="@color/black"
         app:passwordToggleEnabled="true"
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
         app:startIconDrawable="@drawable/ic_lock">
@@ -58,6 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:text="Recuérdame"
+        android:buttonTint="@color/blue_solid"
         android:textColor="@color/white">
 
     </CheckBox>

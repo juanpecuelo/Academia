@@ -14,6 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="center"
+        android:layout_marginBottom="20dp"
         android:src="@drawable/logo_layout"></ImageView>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -22,8 +23,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/textInputLayoutEmailRegistro"
         app:startIconDrawable="@drawable/ic_email"
+        android:hint="Email"
+        app:hintTextColor="@color/black"
         app:endIconMode="clear_text"
-        android:hint="Email">
+        >
         <!-- TODO
                 custom icon de checked
                 icono de error
@@ -47,8 +50,10 @@
         app:passwordToggleEnabled="true"
         app:helperText="Letras y carácteres alfanuméricos"
         app:helperTextTextColor="@color/black"
+        android:hint="Contraseña"
+        app:hintTextColor="@color/black"
         app:startIconDrawable="@drawable/ic_lock"
-        android:hint="Contraseña">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etRegistrarContrasena"
@@ -63,8 +68,10 @@
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Repite la contraseña"
+        app:hintTextColor="@color/black"
         app:passwordToggleEnabled="true"
-        android:hint="Repite la contraseña">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etRegistrarContrasena2"

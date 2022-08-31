@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +25,11 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
 
     //TODO
-    // no funciona el registro
+    // no funciona el boton de siguiente en el teclado
 
     private EditText etEmail, etContrasena;
     private String email, contrasena;
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         etEmail = findViewById(R.id.etEmail);
         etContrasena = findViewById(R.id.etContrasena);
         TextView tvHacerRegistro = findViewById(R.id.tvRegistrateAqui);
@@ -124,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         System.out.println(response);
                         if (response.equals("success")) {
-                            Intent intent = new Intent(MainActivity.this, SuccessActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, SuccessActivity.class);
                             if (recuerdame.isChecked()) {
                                 guardarRecuerdame();
                             } else {

@@ -26,6 +26,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    //TODO
+    //  no funciona el botón de siguiente en el teclado
+
     private EditText etMail, etContrasena, etContrasena2;
     private Button btnRegistro;
     private static final String URL = "http://10.0.2.2/login/register.php";
@@ -122,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
     public void login(View view){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }

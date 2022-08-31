@@ -10,14 +10,16 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_logo_toast">
+        android:src="@drawable/logo_toast"
+
+        >
     </ImageView>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtMensajeToastError"
         android:text="Ha habido un error"
-        android:paddingStart="18dp"
+        android:paddingStart="10dp"
         android:textColor="@color/black"
         ></TextView>
 
