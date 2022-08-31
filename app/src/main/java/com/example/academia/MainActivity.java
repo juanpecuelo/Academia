@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -36,29 +39,31 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox recuerdame;
     private SharedPreferences.Editor editor;
 
-    private void guardarRecuerdame(){
+    private void guardarRecuerdame() {
         SharedPreferences sp = getSharedPreferences("datos", 0);
         editor = sp.edit();
         String email = etEmail.getText().toString();
         String contrasena = etContrasena.getText().toString();
         boolean isChecked = recuerdame.isChecked();
-        editor.putString("email",email);
-        editor.putString("contrasena",contrasena);
+        editor.putString("email", email);
+        editor.putString("contrasena", contrasena);
         editor.putBoolean("checked", isChecked);
         editor.commit();
     }
-    private void borrarRecuerdame(){
-        SharedPreferences sp = getSharedPreferences("datos",0);
+
+    private void borrarRecuerdame() {
+        SharedPreferences sp = getSharedPreferences("datos", 0);
         editor = sp.edit();
-        editor.putString("email","");
-        editor.putString("contrasena","");
+        editor.putString("email", "");
+        editor.putString("contrasena", "");
         editor.putBoolean("checked", false);
         editor.commit();
     }
-    private void cargarRecuerdame(){
-        SharedPreferences sp = getSharedPreferences("datos",0);
-        etEmail.setText(sp.getString("email",""));
-        etContrasena.setText(sp.getString("contrasena",""));
+
+    private void cargarRecuerdame() {
+        SharedPreferences sp = getSharedPreferences("datos", 0);
+        etEmail.setText(sp.getString("email", ""));
+        etContrasena.setText(sp.getString("contrasena", ""));
         recuerdame.setChecked(sp.getBoolean("checked", false));
     }
 
@@ -88,54 +93,95 @@ public class MainActivity extends AppCompatActivity {
         cargarRecuerdame();
 
     }
-    public void login(View view){
+    private boolean comprobarDatos(){
+        String s;
+        try{
+            s = email.split("@")[1];
+            if(!s.contains(".com")&&!(s.contains(".es"))){
+                toastError(getResources().getString(R.string.email_no_valido));
+                return false;
+            }
+            if(email.equals("") || contrasena.equals("")){
+                toastError(getResources().getString(R.string.campos_vacios));
+                return false;
+            }
+        }catch(java.lang.ArrayIndexOutOfBoundsException e){
+            toastError(getResources().getString(R.string.email_no_valido));
+            return false;
+        }catch (Exception e){
+            toastError(getResources().getString(R.string.error));
+            return false;
+        }
+        return true;
+    }
+
+    public void login(View view) {
         email = etEmail.getText().toString().trim();
         contrasena = etContrasena.getText().toString().trim();
-        if(!email.equals("") && !contrasena.equals("")){
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    if (response.equals("success")) {
-                        Intent intent = new Intent(MainActivity.this, SuccessActivity.class);
-                        System.out.println("Se ha registrado");
-                        if(recuerdame.isChecked()){
-                            guardarRecuerdame();
-                        }else{
-                            borrarRecuerdame();
-                        }
-                        startActivity(intent);
-                    } else if (response.equals("failure")) {
-                        Toast.makeText(MainActivity.this, getResources().getString(R.string.email_contra_incorrectos), Toast.LENGTH_SHORT).show();
-                        System.out.println(getResources().getString(R.string.email_contra_incorrectos));
-                    }else{
+            if (comprobarDatos()) {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
                         System.out.println(response);
+                        if (response.equals("success")) {
+                            Intent intent = new Intent(MainActivity.this, SuccessActivity.class);
+                            if (recuerdame.isChecked()) {
+                                guardarRecuerdame();
+                            } else {
+                                borrarRecuerdame();
+                            }
+                            startActivity(intent);
+                            //finish();
+                        } else if (response.equals("failure")) {
+                            toastError(getResources().getString(R.string.email_contra_incorrectos));
+                        } else {
+                            System.out.println(response);
+                        }
                     }
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(MainActivity.this, error.toString().trim(), Toast.LENGTH_SHORT).show();
-                    System.out.println(error.toString().trim());
-                }
-            }){
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map <String, String> data = new HashMap<>();
-                    data.put("email",email);
-                    data.put("password",contrasena);
-                    return data;
-                }
-            };
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-            requestQueue.add(stringRequest);
-        }else{
-            Toast.makeText(this, getResources().getString(R.string.campos_vacíos), Toast.LENGTH_LONG).show();
-            System.out.println(getResources().getString(R.string.campos_vacíos));
-        }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        toastError(error.toString().trim());
+                        System.out.println(error.toString().trim());
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> data = new HashMap<>();
+                        data.put("email", email);
+                        data.put("password", contrasena);
+                        return data;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(stringRequest);
+            }
     }
-    public void register (View view){
+
+    public void register(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
-        //finish();
+        finish();
+    }
+    private void toastCorrecto(String msg){
+        LayoutInflater inflater = getLayoutInflater();
+        View view =inflater.inflate(R.layout.toast_ok, (ViewGroup) findViewById(R.id.ll_custom_toast_ok));
+        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
+        txtMensaje.setText(msg);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(view);
+        toast.show();
+    }
+    private void toastError(String msg){
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.toast_error, (ViewGroup) findViewById(R.id.ll_custom_toast_error));
+        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
+        txtMensaje.setText(msg);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(view);
+        toast.show();
     }
 }   
