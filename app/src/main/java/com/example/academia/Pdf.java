@@ -6,13 +6,23 @@ public class Pdf {
     private final String title;
     private final String introduction;
     private final String pdfPath;
+    private int unlocked;
 
-    public Pdf(int id, String image, String title, String introduction, String pdfPath) {
+    public Pdf(int id, String image, String title, String introduction, String pdfPath, int unlocked) {
         this.id = id;
         this.image = image;
         this.title = title;
         this.introduction = introduction;
         this.pdfPath = pdfPath;
+        this.unlocked = unlocked;
+    }
+
+    public int getUnlocked() {
+        return unlocked;
+    }
+
+    public void setUnlocked(int unlocked) {
+        this.unlocked = unlocked;
     }
 
     public int getId() {

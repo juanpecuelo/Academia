@@ -13,6 +13,8 @@ import androidx.cardview.widget.CardView;
 // cambiar el icon de qué me pasa (se ve borroso)
 // quitar o modificar el UI para que se vea el logo de la app (o eliminarlo completamente)
 // probar con distintos colores para los distintos cardviews??
+// cuando se clica el boton de entendido del pdf, se puede llevar a una activity o animación que le diga que
+// se ha desbloqueado un nuevo pdf o módulo o ejercicio
 
 public class PrincipalActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
