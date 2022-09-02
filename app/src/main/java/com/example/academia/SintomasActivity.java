@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -49,12 +51,38 @@ public class SintomasActivity extends AppCompatActivity {
             StringBuffer bf = new StringBuffer("Seleccionado:\n");
             for (int i = 0; i < listView.getCount(); i++) {
                 if(listView.isItemChecked(i)){
-                    bf.append(listView.getItemAtPosition(i)+"\n");
+                    bf.append(listView.getItemAtPosition(i));
+                    if(i < listView.getCount()-1){
+                        bf.append("\n");
+                    }
                 }
             }
-            Toast.makeText(this,bf.toString(), Toast.LENGTH_SHORT).show();
+            toastCorrecto(bf.toString());
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private void toastCorrecto(String msg){
+        LayoutInflater inflater = getLayoutInflater();
+        View view =inflater.inflate(R.layout.toast_ok, (ViewGroup) findViewById(R.id.ll_custom_toast_ok));
+        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
+        txtMensaje.setText(msg);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(view);
+        toast.show();
+    }
+    private void toastError(String msg){
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.toast_error, (ViewGroup) findViewById(R.id.ll_custom_toast_error));
+        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
+        txtMensaje.setText(msg);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(view);
+        toast.show();
     }
 }

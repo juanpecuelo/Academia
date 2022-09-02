@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="padding_toast">10dp</dimen>
+    <dimen name="cardview_icons_size">65dp</dimen>
+    <dimen name="cardview_margin_text">5dp</dimen>
 
 </resources>

@@ -1,54 +1,53 @@
 package com.example.academia;
 
-import android.content.res.AssetManager;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import com.bumptech.glide.Glide;
 
 public class PreviewPdfActivity extends AppCompatActivity {
+
     //TODO
-    // el pdfList tendría que ir dentro de la clase PdfClase
-    // la idea es hacer un arraylist con todos los pdfs de este tema en concreto
-    // sería interesante intentar hacer una clase previewpdf para cualquier tema
+    //  cambiar la el tamaño del texto si la longitud supera X carácteres
 
-    private MainAdapter adapter;
-    private RecyclerView recyclerView;
-
-    private PdfClase pdfFelicidad;
 
     @Override
-
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preview);
-        ArrayList<File> pdfList = new ArrayList<>();
-        for (int i = 1; i <= 9; i++) {
-            File f = new File("C:\\Users\\Estudio\\AndroidStudioProjects\\Academia\\app\\src\\main\\assets\\pdf\\felicidad\\LaFelicidad(" + i + ").pdf");
-            pdfList.add(f);
-        }
-        //TODO
-        // un poco redundante todo esto
-        pdfFelicidad = new PdfClase(pdfList, "La Felicidad");
-        displayPdf(pdfList);
+        setContentView(R.layout.activity_preview_pdf);
+        ImageButton image = findViewById(R.id.image);
+        TextView title = findViewById(R.id.title);
+        TextView introduction = findViewById(R.id.introduction);
+        Button boton = findViewById(R.id.btnEntendido);
+        Bundle extras = getIntent().getExtras();
+        Glide.with(this).load(extras.get("image")).into(image);
+        title.setText(extras.getString("title"));
+        introduction.setText(extras.getString("introduction"));
+
+        String path = extras.getString("pdf");
+
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(path));
+                intent.putExtra("path", path);
+                startActivity(intent);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                boton.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
-
-
-    public void displayPdf(ArrayList<File> pdfList) {
-        recyclerView = findViewById(R.id.rvPreview);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-        AssetManager am = getAssets();
-        adapter = new MainAdapter(this, pdfList);
-        recyclerView.setAdapter(adapter);
-    }
 }

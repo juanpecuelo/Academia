@@ -3,15 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".SintomasActivity">
+    tools:context=".SintomasActivity"
+    android:background="@color/theme_color">
 
     <ListView
         android:id="@+id/lvSintomas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:choiceMode="multipleChoice">
-
-
     </ListView>
 
     <TextView
@@ -24,6 +23,7 @@
         android:clickable="true"
         android:textSize="15sp"
         android:textColor="@color/black"
+        android:background="@drawable/text_style"
         android:text="¿Ya sabes qué te pasa? Haz click aquí">
     </TextView>
 

@@ -6,4 +6,10 @@
     <string name="clave_no_coincide">Las contraseñas no coinciden</string>
     <string name="email_no_valido">El email no es válido</string>
     <string name="campos_vacios">Hay campos vacíos</string>
+    <string name="mis_modulos">Mis módulos</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="reportar_error">Reportar\nerrores</string>
+    <string name="que_me_pasa">¿Qué me \npasa?</string>
+    <string name="informacion">Sobre\nnosotros</string>
+    <string name="widgets">Widgets</string>
 </resources>

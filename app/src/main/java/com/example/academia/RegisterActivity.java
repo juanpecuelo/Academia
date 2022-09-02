@@ -32,8 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText etMail, etContrasena, etContrasena2;
     private Button btnRegistro;
-    private static final String URL = "http://10.0.2.2/login/register.php";
-    //private static final String URL = "http://192.168.1.18/login/register.php";
+    //private static final String URL = "http://10.0.2.2/login/register.php";
+    private static final String URL = "http://192.168.1.18/login/register.php";
     private String email, contrasena, contrasena2;
     private TextInputLayout textInputLayout;
 

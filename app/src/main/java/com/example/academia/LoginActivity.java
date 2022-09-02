@@ -33,8 +33,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText etEmail, etContrasena;
     private String email, contrasena;
-    private static final String URL = "http://10.0.2.2/login/login.php";
-    //private static final String URL = "http://192.168.1.18/login/login.php";
+    //private static final String URL = "http://10.0.2.2/login/login.php";
+    private static final String URL = "http://192.168.1.18/login/login.php";
     private CheckBox recuerdame;
     private SharedPreferences.Editor editor;
 
@@ -123,12 +123,12 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         System.out.println(response);
                         if (response.equals("success")) {
-                            Intent intent = new Intent(LoginActivity.this, SuccessActivity.class);
                             if (recuerdame.isChecked()) {
                                 guardarRecuerdame();
                             } else {
                                 borrarRecuerdame();
                             }
+                            Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
                             startActivity(intent);
                             //finish();
                         } else if (response.equals("failure")) {
