@@ -1,33 +1,51 @@
 package com.example.academia;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 
 public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
     private Context context;
-    private List<File> pdfFiles;
+    private List<Pdf> pdfFiles;
 
     public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new MainViewHolder(LayoutInflater.from(context).inflate(R.layout.rv_item_pdfs,parent,false));
     }
 
-    public MainAdapter(Context context, List<File> pdfFiles) {
+    public MainAdapter(Context context, List<Pdf> pdfFiles) {
         this.context = context;
         this.pdfFiles = pdfFiles;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
-        holder.txtName.setText(pdfFiles.get(position).getName().split("\\\\")[11]);
+        final Pdf pdf = pdfFiles.get(position);
+        holder.txtName.setText(pdfFiles.get(position).getTitle());
         holder.txtName.setSelected(true);
+        Glide.with(context).load(pdf.getImage()).into(holder.imageButton);
+        holder.imageButton.setBackground(holder.imageButton.getDrawable());
+
+        holder.imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PreviewPdfActivity.class);
+                intent.putExtra("image", pdf.getImage());
+                intent.putExtra("title", pdf.getTitle());
+                intent.putExtra("introduction", pdf.getIntroduction());
+                intent.putExtra("pdf", pdf.getPdfPath());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

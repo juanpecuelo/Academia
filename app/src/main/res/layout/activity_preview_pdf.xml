@@ -3,43 +3,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/blue_light">
+    android:background="@color/theme_color">
 
     <ImageButton
-        android:id="@+id/imageButtonPdf"
+        android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/felicidad1">
+        android:scaleType="fitCenter"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/felicidad1">
     </ImageButton>
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Título"
+            android:background="@drawable/text_style"
             android:layout_marginTop="10dp"
             android:textColor="@color/black"
             android:textStyle="italic"
             android:layout_gravity="center"
-            android:textSize="30sp"></TextView>
+            android:textSize="22sp"></TextView>
     <TextView
+        android:id="@+id/introduction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pequeña introducción sobre el pdf"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:background="@drawable/text_style"
+        android:textSize="18sp"
+        android:layout_margin="20dp"
         android:layout_marginTop="30dp"
-        android:layout_gravity="center">
+        >
     </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:background="@drawable/text_style"
+        android:layout_marginStart="10dp"
+
+        android:text="Presiona sobre la imagen para acceder al módulo de hoy"
+        android:textColor="@color/blue_solid"
+        ></TextView>
     <Button
         android:id="@+id/btnEntendido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="entendido"
+        android:text="ya lo he leído"
+        android:backgroundTint="@color/black"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center"
+        android:layout_gravity="center|bottom"
+        android:visibility="invisible"
 
         ></Button>
 

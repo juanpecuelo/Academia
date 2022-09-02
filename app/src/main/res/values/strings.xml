@@ -4,6 +4,6 @@
     <string name="ya_registrado">Ya estás registrado</string>
     <string name="error">Se ha producido un error. Inténtalo más tarde</string>
     <string name="clave_no_coincide">Las contraseñas no coinciden</string>
-    <string name = "email_no_valido">El email no es válido</string>
-    <string name = "campos_vacios">Hay campos vacíos</string>
+    <string name="email_no_valido">El email no es válido</string>
+    <string name="campos_vacios">Hay campos vacíos</string>
 </resources>

@@ -18,20 +18,26 @@
         android:theme="@style/Theme.Academia"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
-            android:exported="true" >
+            android:name=".PdfView"
+            android:exported="false" />
+        <activity
+            android:name=".SelectorPdfActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".LoginActivity"
+            android:exported="true"></activity>
+        <activity
             android:name=".PreviewPdfActivity"
-            android:exported="true">
-        </activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".EnfermedadesActivity"></activity>
-        <activity android:name=".SuccessActivity"></activity>
+            android:exported="true"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".EnfermedadesActivity" />
+        <activity android:name=".SuccessActivity" />
     </application>
 
 </manifest>
