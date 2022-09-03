@@ -8,24 +8,36 @@
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_info.xml" value="0.2085" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_settings.xml" value="0.2085" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_widgets.xml" value="0.2085" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-v24/background_2.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-v24/background_red.xml" value="0.1" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable/background_1.xml" value="0.113" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable/background_2.xml" value="0.1" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable/background_3.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable/background_blue.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable/banner_academia.xml" value="0.2085" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable/gradient_list.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable/text_style.xml" value="0.1485" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_ajustes.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_enfermedades.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_login.xml" value="0.2028985507246377" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_info.xml" value="0.253125" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_informacion.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_menu_principal.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_pdf.xml" value="0.264" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_pdf_view.xml" value="0.12537993920972645" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_preview.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_preview_pdf.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_principal.xml" value="0.264" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_reportar_bugs.xml" value="0.2078804347826087" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_selector_pdf.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_sintomas.xml" value="0.11944444444444445" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_sintomas.xml" value="0.2" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_success.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_texto.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/done_layout.xml" value="0.12487335359675786" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/list_item_reusable.xml" value="0.11296296296296296" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/list_view_reusable.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/pdf_activity.xml" value="0.264" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/pdf_view.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/pdf_viewer.xml" value="0.21965579710144928" />
@@ -33,6 +45,7 @@
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/register_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/rv_item_pdfs.xml" value="0.264" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/sintomas_activity.xml" value="0.264" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/splash_screen.xml" value="0.17980072463768115" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/success_activity.xml" value="0.2" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/texto_activity.xml" value="0.264" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/toast_error.xml" value="0.2" />

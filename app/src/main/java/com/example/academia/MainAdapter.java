@@ -39,10 +39,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PreviewPdfActivity.class);
+                intent.putExtra("id",pdf.getId());
                 intent.putExtra("image", pdf.getImage());
                 intent.putExtra("title", pdf.getTitle());
                 intent.putExtra("introduction", pdf.getIntroduction());
                 intent.putExtra("pdf", pdf.getPdfPath());
+                intent.putExtra("unlocked", pdf.getUnlocked());
                 context.startActivity(intent);
             }
         });

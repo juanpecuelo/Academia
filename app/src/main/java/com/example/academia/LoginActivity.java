@@ -30,7 +30,8 @@ public class LoginActivity extends AppCompatActivity {
 
     //TODO
     // no funciona el boton de siguiente en el teclado
-
+    public static final String PREFS_NAME ="already_login";
+    public static final String HAS_LOGGED_IN ="has_logged_in";
     private EditText etEmail, etContrasena;
     private String email, contrasena;
     //private static final String URL = "http://10.0.2.2/login/login.php";
@@ -128,9 +129,13 @@ public class LoginActivity extends AppCompatActivity {
                             } else {
                                 borrarRecuerdame();
                             }
-                            Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
+                            SharedPreferences sp = getSharedPreferences(PREFS_NAME, 0);
+                            SharedPreferences.Editor edit = sp.edit();
+                            edit.putBoolean(HAS_LOGGED_IN, true);
+                            edit.commit();
+                            Intent intent = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
                             startActivity(intent);
-                            //finish();
+                            finish();
                         } else if (response.equals("failure")) {
                             toastError(getResources().getString(R.string.email_contra_incorrectos));
                         } else {

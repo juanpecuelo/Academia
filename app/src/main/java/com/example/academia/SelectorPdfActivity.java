@@ -74,9 +74,9 @@ public class SelectorPdfActivity extends AppCompatActivity {
                                 String pdf = object.getString("pdf");
                                 int unlocked = object.getInt("unlocked");
                                 Pdf texto = new Pdf(id, image, title, introduction, pdf,unlocked);
-                                if(texto.getUnlocked()==1){
+                                //if(texto.getUnlocked()==1){
+                                //}
                                     listaTextos.add(texto);
-                                }
                             }
 
                         } catch (Exception e) {

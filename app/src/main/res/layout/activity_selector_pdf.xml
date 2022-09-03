@@ -2,7 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/theme_color">
+    android:background="@color/theme_color"
+    android:orientation="vertical">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tbLayoutPrincipal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/theme_color">
+
+            <ImageView
+                android:layout_width="@dimen/app_bar_image"
+                android:layout_height="@dimen/app_bar_image"
+                android:layout_marginTop="@dimen/app_bar_margin"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/logo_layout"
+
+                ></ImageView>
+        </RelativeLayout>
+    </com.google.android.material.appbar.AppBarLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPreview"
         android:layout_width="match_parent"

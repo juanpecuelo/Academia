@@ -9,8 +9,8 @@ android {
         applicationId "com.example.academia"
         minSdk 21
         targetSdk 32
-        versionCode 5
-        versionName "0.71"
+        versionCode 6
+        versionName "0.8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -50,4 +50,5 @@ dependencies {
 
     //Cargar pdf
     implementation 'com.github.kk121:File-Loader:1.2'
+
 }
