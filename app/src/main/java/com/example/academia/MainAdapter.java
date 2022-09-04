@@ -15,9 +15,10 @@ import java.util.List;
 
 
 public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
-    private Context context;
+    private final Context context;
     private List<Pdf> pdfFiles;
 
+    @NonNull
     public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new MainViewHolder(LayoutInflater.from(context).inflate(R.layout.rv_item_pdfs,parent,false));
     }
@@ -45,6 +46,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
                 intent.putExtra("introduction", pdf.getIntroduction());
                 intent.putExtra("pdf", pdf.getPdfPath());
                 intent.putExtra("unlocked", pdf.getUnlocked());
+                intent.putExtra("userId", pdf.getUserId());
                 context.startActivity(intent);
             }
         });

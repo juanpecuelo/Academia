@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -132,7 +131,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private void toastCorrecto(String msg){
         LayoutInflater inflater = getLayoutInflater();
-        View view =inflater.inflate(R.layout.toast_ok, (ViewGroup) findViewById(R.id.ll_custom_toast_ok));
+        View view =inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
         txtMensaje.setText(msg);
 
@@ -143,7 +142,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private void toastError(String msg){
         LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_error, (ViewGroup) findViewById(R.id.ll_custom_toast_error));
+        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
         txtMensaje.setText(msg);
 

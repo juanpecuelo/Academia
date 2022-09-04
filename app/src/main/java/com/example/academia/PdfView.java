@@ -2,12 +2,7 @@ package com.example.academia;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.github.barteksc.pdfviewer.PDFView;
@@ -16,14 +11,7 @@ import com.krishna.fileloader.listener.FileRequestListener;
 import com.krishna.fileloader.pojo.FileResponse;
 import com.krishna.fileloader.request.FileLoadRequest;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
 
 public class PdfView extends AppCompatActivity {
     private PDFView pdfView;

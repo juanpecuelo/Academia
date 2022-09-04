@@ -1,9 +1,9 @@
 package com.example.academia;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -22,7 +23,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SelectorPdfActivity extends AppCompatActivity {
     //TODO
@@ -47,7 +50,7 @@ public class SelectorPdfActivity extends AppCompatActivity {
 
     private void toastError(String msg) {
         LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_error, (ViewGroup) findViewById(R.id.ll_custom_toast_error));
+        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
         txtMensaje.setText(msg);
         Toast toast = new Toast(getApplicationContext());
@@ -58,10 +61,11 @@ public class SelectorPdfActivity extends AppCompatActivity {
 
     private void getPdfs() {
         recyclerView.setHasFixedSize(true);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, BASE_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, BASE_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        SharedPreferences sp = getSharedPreferences("user_id", 0);
                         try {
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
@@ -73,9 +77,8 @@ public class SelectorPdfActivity extends AppCompatActivity {
                                 String introduction = object.getString("introduction");
                                 String pdf = object.getString("pdf");
                                 int unlocked = object.getInt("unlocked");
-                                Pdf texto = new Pdf(id, image, title, introduction, pdf,unlocked);
-                                //if(texto.getUnlocked()==1){
-                                //}
+                                int userId = sp.getInt("user_id",-1);
+                                Pdf texto = new Pdf(id, image, title, introduction, pdf,unlocked, userId);
                                     listaTextos.add(texto);
                             }
 
@@ -91,7 +94,15 @@ public class SelectorPdfActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 toastError(error.toString().trim());
             }
-        });
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
+                params.put("id", sp.getInt("user_id", -1)+"");
+                return params;
+            }
+        };
         Volley.newRequestQueue(SelectorPdfActivity.this).add(stringRequest);
     }
 }

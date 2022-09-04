@@ -1,6 +1,5 @@
 package com.example.academia;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,16 +24,13 @@ import com.bumptech.glide.Glide;
 import java.util.HashMap;
 import java.util.Map;
 
-import okhttp3.OkHttpClient;
 
 public class PreviewPdfActivity extends AppCompatActivity {
 
     //TODO
     //  cambiar la el tamaño del texto si la longitud supera X carácteres
-    // actualizar la base de datos para que tenga clave foránea del usuario al que pertenece
     private static final String URL = "http://192.168.1.18/login/update.php";
     private int id;
-    private int unlocked;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +42,6 @@ public class PreviewPdfActivity extends AppCompatActivity {
         boton.setVisibility(View.VISIBLE);
         Bundle extras = getIntent().getExtras();
         id = extras.getInt("id");
-        unlocked = extras.getInt("unlocked");
-        unlocked = extras.getInt("unlocked");
         Glide.with(this).load(extras.get("image")).into(image);
         title.setText(extras.getString("title"));
         introduction.setText(extras.getString("introduction"));
@@ -93,10 +87,9 @@ public class PreviewPdfActivity extends AppCompatActivity {
                 Toast.makeText(PreviewPdfActivity.this, getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
             }
         }){
-            @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("id", (id)+"");
                 params.put("unlocked",1+"");
                 return params;

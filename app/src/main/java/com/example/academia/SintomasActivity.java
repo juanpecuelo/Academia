@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,15 +17,16 @@ import android.widget.Toast;
 public class SintomasActivity extends AppCompatActivity {
 
     private ListView listView;
-    private ArrayAdapter<String> adapter;
-    private static final String[] arraySintomas = {"Tristeza","Cansancio constante","Mal humor","Pena","Soledad","Dificultad para concentrarse","Apatía","Nerviosismo","Estrés"};
+    private static final String[] arraySintomas = {"Tristeza", "Cansancio constante", "Mal humor", "Pena", "Soledad", "Dificultad para concentrarse", "Apatía", "Nerviosismo", "Estrés"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sintomas);
+        ArrayAdapter<String> adapter;
         listView = findViewById(R.id.lvSintomas);
         TextView textView = findViewById(R.id.tvIrAEnfermedades);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, arraySintomas);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, arraySintomas);
         listView.setAdapter(adapter);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,12 +47,12 @@ public class SintomasActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.item_done){
+        if (id == R.id.item_done) {
             StringBuffer bf = new StringBuffer("Seleccionado:\n");
             for (int i = 0; i < listView.getCount(); i++) {
-                if(listView.isItemChecked(i)){
+                if (listView.isItemChecked(i)) {
                     bf.append(listView.getItemAtPosition(i));
-                    if(i < listView.getCount()-1){
+                    if (i < listView.getCount() - 1) {
                         bf.append("\n");
                     }
                 }
@@ -63,9 +63,10 @@ public class SintomasActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    private void toastCorrecto(String msg){
+
+    private void toastCorrecto(String msg) {
         LayoutInflater inflater = getLayoutInflater();
-        View view =inflater.inflate(R.layout.toast_ok, (ViewGroup) findViewById(R.id.ll_custom_toast_ok));
+        View view = inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
         txtMensaje.setText(msg);
 
@@ -74,9 +75,10 @@ public class SintomasActivity extends AppCompatActivity {
         toast.setView(view);
         toast.show();
     }
-    private void toastError(String msg){
+
+    private void toastError(String msg) {
         LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_error, (ViewGroup) findViewById(R.id.ll_custom_toast_error));
+        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
         txtMensaje.setText(msg);
 

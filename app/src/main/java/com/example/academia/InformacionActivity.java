@@ -15,7 +15,7 @@ public class InformacionActivity extends AppCompatActivity {
     //TODO
     //  session manager para cerrar la sesión
     // por qué el toast no es blanco y con el logo de la app como en otras activities?
-    private static final String informacion[] = {"Quiénes somos","Versión "+BuildConfig.VERSION_NAME};
+    private static final String[] informacion = {"Quiénes somos","Versión "+BuildConfig.VERSION_NAME};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +23,7 @@ public class InformacionActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.reusableTextView);
         textView.setText(getResources().getString(R.string.informacion));
         ListView listView = findViewById(R.id.listViewReusable);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_reusable, informacion);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item_reusable, informacion);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

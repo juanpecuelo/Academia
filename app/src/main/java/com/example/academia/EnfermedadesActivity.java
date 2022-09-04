@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,15 +17,15 @@ import androidx.appcompat.app.AppCompatActivity;
 public class EnfermedadesActivity extends AppCompatActivity {
 
     private ListView listView;
-    private ArrayAdapter<String> adapter;
     private static final String[] arrayEnfermedades = {"Depresión","Fobia social","Déficit de atención","Ansiedad"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enfermedades);
+        ArrayAdapter<String> adapter;
         listView = findViewById(R.id.lvEnfermedades);
         TextView textView = findViewById(R.id.tvIrASintomas);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, arrayEnfermedades);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, arrayEnfermedades);
         listView.setAdapter(adapter);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +64,7 @@ public class EnfermedadesActivity extends AppCompatActivity {
     }
     private void toastCorrecto(String msg){
         LayoutInflater inflater = getLayoutInflater();
-        View view =inflater.inflate(R.layout.toast_ok, (ViewGroup) findViewById(R.id.ll_custom_toast_ok));
+        View view =inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
         txtMensaje.setText(msg);
 
@@ -76,7 +75,7 @@ public class EnfermedadesActivity extends AppCompatActivity {
     }
     private void toastError(String msg){
         LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_error, (ViewGroup) findViewById(R.id.ll_custom_toast_error));
+        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
         txtMensaje.setText(msg);
 

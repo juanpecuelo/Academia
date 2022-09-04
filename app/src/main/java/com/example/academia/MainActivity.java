@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-import java.util.Timer;
 
 public class MainActivity extends AppCompatActivity {
     private static final int TIME_OUT=1000;

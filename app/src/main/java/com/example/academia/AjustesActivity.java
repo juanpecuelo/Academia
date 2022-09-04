@@ -15,7 +15,7 @@ public class AjustesActivity extends AppCompatActivity {
 
     //TODO
     //  session manager para cerrar la sesión
-    private static final String ajustes[] = {"Mi cuenta", "Modo oscuro","Cerrar sesión"};
+    private static final String[] ajustes = {"Mi cuenta", "Modo oscuro","Cerrar sesión"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +23,7 @@ public class AjustesActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.reusableTextView);
         textView.setText(getResources().getString(R.string.ajustes));
         ListView listView = findViewById(R.id.listViewReusable);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_reusable, ajustes);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item_reusable, ajustes);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
