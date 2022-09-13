@@ -38,8 +38,9 @@ public class LoginActivity extends AppCompatActivity {
     public static final String PREFS_USER = "user";
     private EditText etEmail, etContrasena;
     private String email, contrasena;
-    //private static final String URL = "http://10.0.2.2/login/login.php";
-    private static final String URL = "http://192.168.1.18/login/login.php";
+    private static final String URL_NEW_ACCOUNT = "http://" + Constantes.IP + "/login/isNewAccount.php";
+    private static final String URL = "http://" + Constantes.IP + "/login/login.php";
+    private static final String URL_ID = "http://" + Constantes.IP + "/login/getId.php";
     private CheckBox recuerdame;
     private SharedPreferences.Editor editor;
 
@@ -139,7 +140,16 @@ public class LoginActivity extends AppCompatActivity {
                         edit.putBoolean(HAS_LOGGED_IN, true);
                         edit.commit();
                         establecerId();
-                        Intent intent = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
+                        isNewAccount();
+                        sp = getSharedPreferences(PREFS_USER, 0);
+                        int newAccount = sp.getInt("is_new_account", -1);
+                        System.out.println(newAccount+" arriba");
+                        Intent intent;
+                        if (newAccount == 1) {
+                            intent = new Intent(LoginActivity.this, SintomasActivity.class);
+                        } else {
+                            intent = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
+                        }
                         startActivity(intent);
                         finish();
                     } else if (response.equals("failure")) {
@@ -167,8 +177,49 @@ public class LoginActivity extends AppCompatActivity {
             requestQueue.add(stringRequest);
         }
     }
+    public void isNewAccount() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_NEW_ACCOUNT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray array = new JSONArray(response);
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject object = array.getJSONObject(i);
+                                SharedPreferences sp = getSharedPreferences(PREFS_USER, 0);
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.remove("is_new_account");
+                                editor.commit();
+                                editor.putInt("is_new_account",object.getInt("is_new_account"));
+                                editor.commit();
+                                System.out.println(sp.getInt("is_new_account",-1)+" abajo");
+
+                            }
+                        } catch (Exception e) {
+                            System.out.println(e.toString());
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(LoginActivity.this, "Ha habido un error. Inténtalo más tarde", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
+                params.put("id_usuario", sp.getInt("user_id", -1) + "");
+                return params;
+            }
+        };
+        Volley.newRequestQueue(LoginActivity.this).add(stringRequest);
+
+    }
+
     public void establecerId() {
-        final String urlId = "http://192.168.1.18/login/getId.php";
+        final String urlId = URL_ID;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlId,
                 new Response.Listener<String>() {
                     @Override
@@ -176,7 +227,7 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
-                                Log.i("tagconvertstr","["+response+"]");
+                                Log.i("tagconvertstr", "[" + response + "]");
                                 JSONObject object = array.getJSONObject(i);
                                 int id = object.getInt("id");
                                 System.out.println(id);
@@ -184,6 +235,7 @@ public class LoginActivity extends AppCompatActivity {
                                 SharedPreferences.Editor edit = sp.edit();
                                 edit.putInt("user_id", id);
                                 edit.commit();
+                                System.out.println(sp.getInt("user_id", -1));
                             }
 
                         } catch (Exception e) {

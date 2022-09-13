@@ -52,5 +52,16 @@
         android:background="@drawable/text_style"
         android:text="¿No sabes qué te pasa? Haz click aquí">
     </TextView>
+    <Button
+        android:id="@+id/buttonEnfermedades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ACEPTAR"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/tvIrASintomas"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        ></Button>
 
 </RelativeLayout>

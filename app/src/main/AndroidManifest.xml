@@ -48,6 +48,7 @@
             android:name=".LoginActivity"
             android:exported="true" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".SelectorCategoriaActivity" />
         <activity android:name=".SelectorPdfActivity" />
         <activity android:name=".SintomasActivity" />
         <activity android:name=".EnfermedadesActivity" />

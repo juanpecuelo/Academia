@@ -1,12 +1,14 @@
 package com.example.academia;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,8 +16,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class EnfermedadesActivity extends AppCompatActivity {
 
+    private static final String URL = "http://"+Constantes.IP+"/login/updateNewAccount.php";;
     private ListView listView;
     private static final String[] arrayEnfermedades = {"Depresión","Fobia social","Déficit de atención","Ansiedad"};
     @Override
@@ -26,6 +40,15 @@ public class EnfermedadesActivity extends AppCompatActivity {
         listView = findViewById(R.id.lvEnfermedades);
         TextView textView = findViewById(R.id.tvIrASintomas);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, arrayEnfermedades);
+        Button button = findViewById(R.id.buttonEnfermedades);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setNewAccount(view);
+                Intent intent = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
+                startActivity(intent);
+            }
+        });
         listView.setAdapter(adapter);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,13 +59,30 @@ public class EnfermedadesActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.done_menu, menu);
-        return true;
+    public void setNewAccount(View view){
+        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Toast.makeText(PreviewPdfActivity.this, response, Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                toastError(getResources().getString(R.string.error));
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
+                params.put("id_usuario",sp.getInt("user_id", -1)+"");
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(EnfermedadesActivity.this);
+        requestQueue.add(request);
     }
-
+    /*
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -61,7 +101,7 @@ public class EnfermedadesActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
     private void toastCorrecto(String msg){
         LayoutInflater inflater = getLayoutInflater();
         View view =inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));

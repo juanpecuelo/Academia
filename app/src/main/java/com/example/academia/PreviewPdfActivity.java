@@ -1,6 +1,7 @@
 package com.example.academia;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -29,8 +30,8 @@ public class PreviewPdfActivity extends AppCompatActivity {
 
     //TODO
     //  cambiar la el tamaño del texto si la longitud supera X carácteres
-    private static final String URL = "http://192.168.1.18/login/update.php";
-    private int id;
+    private static final String URL = "http://"+Constantes.IP+"/login/update.php";
+    private int id_categoria;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class PreviewPdfActivity extends AppCompatActivity {
         Button boton = findViewById(R.id.btnEntendido);
         boton.setVisibility(View.VISIBLE);
         Bundle extras = getIntent().getExtras();
-        id = extras.getInt("id");
+        id_categoria = extras.getInt("id_categoria");
         Glide.with(this).load(extras.get("image")).into(image);
         title.setText(extras.getString("title"));
         introduction.setText(extras.getString("introduction"));
@@ -90,8 +91,9 @@ public class PreviewPdfActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("id", (id)+"");
-                params.put("unlocked",1+"");
+                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
+                params.put("id_categoria", (id_categoria)+"");
+                params.put("id_usuario",sp.getInt("user_id",-1)+"");
                 return params;
             }
         };

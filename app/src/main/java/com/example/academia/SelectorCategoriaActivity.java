@@ -27,29 +27,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SelectorPdfActivity extends AppCompatActivity {
-    //TODO
-    // hacer un selector de categoría, que se pueda ver una barra de progreso según se va completando
-    // eliminar el botón del último pdf
+public class SelectorCategoriaActivity extends AppCompatActivity {
 
-    private AdapterPdf adapter;
+    private AdapterCategoria adapter;
     private RecyclerView recyclerView;
 
-    private List<Pdf> listaTextos;
-    private int idCategoria;
+    private List<Categoria> listaCategorias;
 
-    private static final String BASE_URL = "http://"+Constantes.IP+"/login/getPdfs.php";
+    private static final String BASE_URL = "http://"+Constantes.IP+"/login/getCategorias.php";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selector_pdf);
         recyclerView = findViewById(R.id.rvPreview);
-        Bundle extras = getIntent().getExtras();
-        idCategoria = extras.getInt("id_categoria");
-        recyclerView.setLayoutManager(new GridLayoutManager(SelectorPdfActivity.this, 3));
-        listaTextos = new ArrayList<>();
-        getPdfs();
+        recyclerView.setLayoutManager(new GridLayoutManager(SelectorCategoriaActivity.this, 1));
+        listaCategorias = new ArrayList<>();
+        getCategorias();
     }
 
     private void toastError(String msg) {
@@ -63,7 +57,7 @@ public class SelectorPdfActivity extends AppCompatActivity {
         toast.show();
     }
 
-    private void getPdfs() {
+    private void getCategorias() {
         recyclerView.setHasFixedSize(true);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, BASE_URL,
                 new Response.Listener<String>() {
@@ -77,17 +71,17 @@ public class SelectorPdfActivity extends AppCompatActivity {
                                 JSONObject object = array.getJSONObject(i);
                                 int id = Integer.parseInt(object.getString("id"));
                                 String image = object.getString("image");
-                                String title = object.getString("title");
-                                String introduction = object.getString("introduction");
-                                String pdf = object.getString("pdf");
-                                Pdf texto = new Pdf(id, image, title, introduction, pdf, 0, idCategoria);
-                                    listaTextos.add(texto);
+                                String nombre = object.getString("nombre");
+                                String descripcion = object.getString("descripcion");
+                                int unlocked = object.getInt("unlocked");
+                                Categoria categoria = new Categoria(id,image,nombre,descripcion,unlocked);
+                                    listaCategorias.add(categoria);
                             }
 
                         } catch (Exception e) {
                             System.out.println(e.toString());
                         }
-                        adapter = new AdapterPdf(SelectorPdfActivity.this, listaTextos);
+                        adapter = new AdapterCategoria(SelectorCategoriaActivity.this, listaCategorias);
                         recyclerView.setAdapter(adapter);
 
                     }
@@ -101,13 +95,10 @@ public class SelectorPdfActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
-                Bundle extras = getIntent().getExtras();
-                int id = extras.getInt("id_categoria");
-                params.put("id_categoria",id+"");
-                params.put("id_usuario", sp.getInt("user_id", -1)+"");
+                params.put("id", sp.getInt("user_id", -1)+"");
                 return params;
             }
         };
-        Volley.newRequestQueue(SelectorPdfActivity.this).add(stringRequest);
+        Volley.newRequestQueue(SelectorCategoriaActivity.this).add(stringRequest);
     }
 }

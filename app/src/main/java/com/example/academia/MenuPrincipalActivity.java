@@ -23,7 +23,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         Intent intent = null;
         switch (view.getId()){
             case R.id.cvModulos:
-                intent = new Intent(MenuPrincipalActivity.this, SelectorPdfActivity.class);
+                intent = new Intent(MenuPrincipalActivity.this, SelectorCategoriaActivity.class);
                 break;
             case R.id.cvQueMePasa:
                 intent = new Intent(MenuPrincipalActivity.this, SintomasActivity.class);

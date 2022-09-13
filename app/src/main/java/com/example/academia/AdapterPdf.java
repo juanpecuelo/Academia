@@ -14,22 +14,22 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 
-public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
+public class AdapterPdf extends RecyclerView.Adapter<ViewHolderPdf> {
     private final Context context;
     private List<Pdf> pdfFiles;
 
     @NonNull
-    public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MainViewHolder(LayoutInflater.from(context).inflate(R.layout.rv_item_pdfs,parent,false));
+    public ViewHolderPdf onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ViewHolderPdf(LayoutInflater.from(context).inflate(R.layout.rv_item_pdfs,parent,false));
     }
 
-    public MainAdapter(Context context, List<Pdf> pdfFiles) {
+    public AdapterPdf(Context context, List<Pdf> pdfFiles) {
         this.context = context;
         this.pdfFiles = pdfFiles;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderPdf holder, int position) {
         final Pdf pdf = pdfFiles.get(position);
         holder.txtName.setText(pdfFiles.get(position).getTitle());
         holder.txtName.setSelected(true);
@@ -45,8 +45,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
                 intent.putExtra("title", pdf.getTitle());
                 intent.putExtra("introduction", pdf.getIntroduction());
                 intent.putExtra("pdf", pdf.getPdfPath());
-                intent.putExtra("unlocked", pdf.getUnlocked());
-                intent.putExtra("userId", pdf.getUserId());
+                intent.putExtra("id_categoria", pdf.getCategoriaId());
                 context.startActivity(intent);
             }
         });

@@ -6,7 +6,7 @@ public class Pdf {
     private final String title;
     private final String introduction;
     private final String pdfPath;
-    private final int userId;
+    private final int categoriaId;
     private int unlocked;
 
     public Pdf(int id, String image, String title, String introduction, String pdfPath, int unlocked, int userId) {
@@ -16,11 +16,11 @@ public class Pdf {
         this.introduction = introduction;
         this.pdfPath = pdfPath;
         this.unlocked = unlocked;
-        this.userId = userId;
+        this.categoriaId = userId;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getCategoriaId() {
+        return categoriaId;
     }
 
     public int getUnlocked() {

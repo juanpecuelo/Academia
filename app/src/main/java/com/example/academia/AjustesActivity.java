@@ -2,6 +2,7 @@ package com.example.academia;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -28,16 +29,19 @@ public class AjustesActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String s ="";
                 switch (i){
                     case 2:
                         SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_NAME,0);
                         SharedPreferences.Editor edit = sp.edit();
                         edit.remove(LoginActivity.HAS_LOGGED_IN);
                         edit.commit();
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        Toast.makeText(AjustesActivity.this, "Se ha cerrado sesión con éxito", Toast.LENGTH_SHORT).show();
                         break;
                 }
-                Toast.makeText(AjustesActivity.this, ajustes[i], Toast.LENGTH_SHORT).show();
-
             }
         });
     }
