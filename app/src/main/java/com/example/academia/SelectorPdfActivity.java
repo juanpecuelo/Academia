@@ -1,5 +1,6 @@
 package com.example.academia;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -38,7 +39,7 @@ public class SelectorPdfActivity extends AppCompatActivity {
     private List<Pdf> listaTextos;
     private int idCategoria;
 
-    private static final String BASE_URL = "http://"+Constantes.IP+"/login/getPdfs.php";
+    private static final String BASE_URL = Constantes.IP+"/login/getPdfs.php";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +49,13 @@ public class SelectorPdfActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         idCategoria = extras.getInt("id_categoria");
         recyclerView.setLayoutManager(new GridLayoutManager(SelectorPdfActivity.this, 3));
+        listaTextos = new ArrayList<>();
+        getPdfs();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
         listaTextos = new ArrayList<>();
         getPdfs();
     }

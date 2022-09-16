@@ -1,14 +1,11 @@
 package com.example.academia;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,8 +25,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SintomasActivity extends AppCompatActivity {
-    private static final String URL = "http://"+Constantes.IP+"/login/updateNewAccount.php";;
-    private static final String[] arraySintomas = {"Tristeza", "Cansancio constante", "Mal humor", "Pena", "Soledad", "Dificultad para concentrarse", "Apatía", "Nerviosismo", "Estrés"};
+    private static final String URL_ACCOUNT = Constantes.IP + "/login/updateNewAccount.php";
+    private static final String URL_INSERT = Constantes.IP + "/login/insertUser.php";
+    private static final String[] arraySintomas = {"Tristeza", "Cansancio constante", "Mal humor", "Pena", "Soledad", "Dificultad para concentrarse", "Apatía", "Nerviosismo", "Estrés", "Culpa", "Me encuentro bien, pero quiero estar mejor"};
 
     private ListView listView;
 
@@ -54,15 +52,49 @@ public class SintomasActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setNewAccount(view);
-                Intent intent = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
-                startActivity(intent);
+                vincularUsuarioCategoria(view, Constantes.CATEGORIA_FELICIDAD);
+                if (listView.getCheckedItemCount() != 0) {
+                    for (int i = 0; i < listView.getCount(); i++) {
+                        if (listView.isItemChecked(i)) {
+                            switch (i) {
+                                case 0:
+                            }
+                            if (i == 0 || i == 1 || i == 4 || i == 6) {
+                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_DEPRESION);
+                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_AUTOESTIMA);
+                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_SESIONES);
+                            } else if (i == 5 || i == 7) {
+                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_CONCENTRACION);
+                            } else if (i == 9) {
+                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_CULPABILIDAD);
+                            } else if (i == 2 || i == 7) {
+                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_LECCIONES);
+                            } else if (i == 3) {
+                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_DEPRESION);
+                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_CULPABILIDAD);
+                            }
+                        }
+                    }
+                    toastCorrecto("Tienes nuevos módulos para leer");
+                    setNewAccount(view);
+                    Intent intent = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                    if (!sp.getBoolean(LoginActivity.HAS_LOGGED_IN, false)) {
+                        SharedPreferences.Editor edit = sp.edit();
+                        edit.putBoolean(LoginActivity.HAS_LOGGED_IN, true);
+                        edit.commit();
+                    }
+                    finish();
+                    startActivity(intent);
+                }
 
             }
         });
     }
-    public void setNewAccount(View view){
-        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+
+    public void setNewAccount(View view) {
+        StringRequest request = new StringRequest(Request.Method.POST, URL_ACCOUNT, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 //Toast.makeText(PreviewPdfActivity.this, response, Toast.LENGTH_SHORT).show();
@@ -72,45 +104,45 @@ public class SintomasActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 toastError(getResources().getString(R.string.error));
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
-                params.put("id_usuario",sp.getInt("user_id", -1)+"");
+                params.put("id_usuario", sp.getInt("user_id", -1) + "");
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(SintomasActivity.this);
         requestQueue.add(request);
     }
-/*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.done_menu, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.item_done) {
-            StringBuffer bf = new StringBuffer("Seleccionado:\n");
-            for (int i = 0; i < listView.getCount(); i++) {
-                if (listView.isItemChecked(i)) {
-                    bf.append(listView.getItemAtPosition(i));
-                    if (i < listView.getCount() - 1) {
-                        bf.append("\n");
-                    }
-                }
+    public void vincularUsuarioCategoria(View view, int id_categoria) {
+
+        StringRequest request = new StringRequest(Request.Method.POST, URL_INSERT, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Toast.makeText(PreviewPdfActivity.this, response, Toast.LENGTH_SHORT).show();
             }
-            toastCorrecto(bf.toString());
-            finish();
-        }
-
-        return super.onOptionsItemSelected(item);
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                toastError(getResources().getString(R.string.error));
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
+                params.put("id_categoria", (id_categoria) + "");
+                params.put("id_usuario", sp.getInt("user_id", -1) + "");
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(request);
     }
-*/
+
     private void toastCorrecto(String msg) {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));

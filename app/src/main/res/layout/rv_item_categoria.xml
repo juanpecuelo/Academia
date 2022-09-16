@@ -18,19 +18,18 @@
         android:orientation="vertical"
         android:padding="5dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/app_bar_margin">
+
 
             <ImageButton
                 android:id="@+id/imageButtonCategoria"
-                android:layout_width="250dp"
-                android:layout_height="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/felicidad1"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
                 android:scaleType="centerInside"></ImageButton>
 
             <TextView
@@ -42,6 +41,7 @@
                 android:height="50dp"
                 android:singleLine="true"
                 android:text="Nombre"
+                android:layout_gravity="center"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="italic"></TextView>
@@ -53,10 +53,11 @@
                 android:layout_below="@id/categoria_textName"
                 android:layout_toRightOf="@id/imageButtonCategoria"
                 android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
                 android:text="Nombre"
                 android:textColor="@color/black"
                 android:textSize="15sp"></TextView>
-        </RelativeLayout>
+
 
         <ProgressBar
             android:id="@+id/progressBarCategorias"

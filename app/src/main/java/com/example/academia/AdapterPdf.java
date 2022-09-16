@@ -35,7 +35,6 @@ public class AdapterPdf extends RecyclerView.Adapter<ViewHolderPdf> {
         holder.txtName.setSelected(true);
         Glide.with(context).load(pdf.getImage()).into(holder.imageButton);
         holder.imageButton.setBackground(holder.imageButton.getDrawable());
-
         holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

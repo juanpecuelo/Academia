@@ -38,9 +38,9 @@ public class LoginActivity extends AppCompatActivity {
     public static final String PREFS_USER = "user";
     private EditText etEmail, etContrasena;
     private String email, contrasena;
-    private static final String URL_NEW_ACCOUNT = "http://" + Constantes.IP + "/login/isNewAccount.php";
-    private static final String URL = "http://" + Constantes.IP + "/login/login.php";
-    private static final String URL_ID = "http://" + Constantes.IP + "/login/getId.php";
+    private static final String URL_NEW_ACCOUNT = Constantes.IP + "/login/isNewAccount.php";
+    private static final String URL = Constantes.IP + "/login/login.php";
+    private static final String URL_ID = Constantes.IP + "/login/getId.php";
     private CheckBox recuerdame;
     private SharedPreferences.Editor editor;
 
@@ -55,8 +55,8 @@ public class LoginActivity extends AppCompatActivity {
         editor.putBoolean("checked", isChecked);
         editor.commit();
     }
-
-    private void borrarRecuerdame() {
+    //TODO hay que meter todos estos métodos en la clase SessionManager
+    public void borrarRecuerdame() {
         SharedPreferences sp = getSharedPreferences("datos", 0);
         editor = sp.edit();
         editor.putString("email", "");
@@ -121,7 +121,6 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-
     public void login(View view) {
         email = etEmail.getText().toString().trim();
         contrasena = etContrasena.getText().toString().trim();
@@ -129,21 +128,26 @@ public class LoginActivity extends AppCompatActivity {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    if (response.equals("success")) {
+                    int newAccount=0;
+                    String[] respuesta = response.split("@");
+                    System.out.println(response + "<--- respuesta login");
+                    if (respuesta[0].equals("success")) {
                         if (recuerdame.isChecked()) {
                             guardarRecuerdame();
                         } else {
                             borrarRecuerdame();
                         }
-                        SharedPreferences sp = getSharedPreferences(PREFS_NAME, 0);
-                        SharedPreferences.Editor edit = sp.edit();
-                        edit.putBoolean(HAS_LOGGED_IN, true);
-                        edit.commit();
+                        try {
+                            JSONArray array = new JSONArray(respuesta[1]);
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject object = array.getJSONObject(i);
+                                newAccount= object.getInt("is_new_account");
+                                System.out.println(newAccount + " arriba");
+                            }
+                        } catch (Exception e) {
+                            System.out.println(e.toString());
+                        }
                         establecerId();
-                        isNewAccount();
-                        sp = getSharedPreferences(PREFS_USER, 0);
-                        int newAccount = sp.getInt("is_new_account", -1);
-                        System.out.println(newAccount+" arriba");
                         Intent intent;
                         if (newAccount == 1) {
                             intent = new Intent(LoginActivity.this, SintomasActivity.class);
@@ -152,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         startActivity(intent);
                         finish();
-                    } else if (response.equals("failure")) {
+                    } else if (respuesta[0].equals("failure")) {
                         toastError(getResources().getString(R.string.email_contra_incorrectos));
                     } else {
                         System.out.println(response);
@@ -177,53 +181,14 @@ public class LoginActivity extends AppCompatActivity {
             requestQueue.add(stringRequest);
         }
     }
-    public void isNewAccount() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_NEW_ACCOUNT,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray array = new JSONArray(response);
-                            for (int i = 0; i < array.length(); i++) {
-                                JSONObject object = array.getJSONObject(i);
-                                SharedPreferences sp = getSharedPreferences(PREFS_USER, 0);
-                                SharedPreferences.Editor editor = sp.edit();
-                                editor.remove("is_new_account");
-                                editor.commit();
-                                editor.putInt("is_new_account",object.getInt("is_new_account"));
-                                editor.commit();
-                                System.out.println(sp.getInt("is_new_account",-1)+" abajo");
 
-                            }
-                        } catch (Exception e) {
-                            System.out.println(e.toString());
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(LoginActivity.this, "Ha habido un error. Inténtalo más tarde", Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
-                params.put("id_usuario", sp.getInt("user_id", -1) + "");
-                return params;
-            }
-        };
-        Volley.newRequestQueue(LoginActivity.this).add(stringRequest);
-
-    }
 
     public void establecerId() {
-        final String urlId = URL_ID;
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlId,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ID,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        System.out.println(response + "<--- respuesta id");
                         try {
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
@@ -239,7 +204,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                         } catch (Exception e) {
-                            System.out.println(e.toString());
+                            System.out.println(e.toString() + " excepción");
                         }
 
                     }
@@ -262,6 +227,7 @@ public class LoginActivity extends AppCompatActivity {
     public void register(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void toastCorrecto(String msg) {

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/theme_color"
-    android:orientation="vertical">
-
+    tools:context=".MiCuentaActivity">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,15 +14,13 @@
             android:layout_height="wrap_content"
             android:background="@color/theme_color">
             <TextView
-                android:id="@+id/reusableTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_margin="@dimen/app_bar_margin"
-                android:text="Ajustes"
+                android:text="@string/mi_cuenta"
                 android:textColor="@color/black"
                 android:textSize="@dimen/app_bar_textsize"></TextView>
-
             <ImageView
                 android:layout_width="@dimen/app_bar_image"
                 android:layout_height="@dimen/app_bar_image"
@@ -34,9 +31,11 @@
         </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
     <ListView
-        android:id="@+id/listViewReusable"
+        android:id="@+id/lvMiCuenta"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/text_style"
-        android:layout_height="wrap_content"></ListView>
+        android:choiceMode="multipleChoice">
+    </ListView>
 
 </LinearLayout>

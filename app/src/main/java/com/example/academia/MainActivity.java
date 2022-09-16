@@ -1,12 +1,16 @@
 package com.example.academia;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -25,7 +29,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private static final int TIME_OUT = 1000;
-    private static final String URL = "http://" + Constantes.IP + "/login/isNewAccount.php";
+    private static final String URL = Constantes.IP + "/login/isNewAccount.php";
+    // TODO pedir al usuario si quiere desactivar el wifi una vez visualizado el pdf
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
-                boolean hasLoggedIn = sp.getBoolean("has_logged_in", false);
+                boolean hasLoggedIn = sp.getBoolean(LoginActivity.HAS_LOGGED_IN, false);
                 Intent intent;
                 if (hasLoggedIn) {
                     intent = new Intent(MainActivity.this, MenuPrincipalActivity.class);
@@ -46,4 +51,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }, TIME_OUT);
     }
+
 }

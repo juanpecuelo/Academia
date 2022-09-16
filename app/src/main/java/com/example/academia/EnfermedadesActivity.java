@@ -29,9 +29,11 @@ import java.util.Map;
 
 public class EnfermedadesActivity extends AppCompatActivity {
 
-    private static final String URL = "http://"+Constantes.IP+"/login/updateNewAccount.php";;
+    private static final String URL = Constantes.IP + "/login/updateNewAccount.php";
+    private static final String URL_INSERT = Constantes.IP + "/login/insertUser.php";
     private ListView listView;
-    private static final String[] arrayEnfermedades = {"Depresión","Fobia social","Déficit de atención","Ansiedad"};
+    private static final String[] arrayEnfermedades = {"Depresión", "Fobia social", "Déficit de atención", "Ansiedad"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +46,42 @@ public class EnfermedadesActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setNewAccount(view);
-                Intent intent = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
-                startActivity(intent);
+                vincularUsuarioCategoria(view, Constantes.CATEGORIA_FELICIDAD);
+                if (listView.getCheckedItemCount() != 0) {
+                    for (int i = 0; i < listView.getCount(); i++) {
+                        if (listView.isItemChecked(i)) {
+                            switch (i) {
+                                case 0:
+                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_DEPRESION);
+                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_AUTOESTIMA);
+                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_SESIONES);
+                                    break;
+                                case 1:
+                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_AUTOESTIMA);
+                                    break;
+                                case 2:
+                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_CONCENTRACION);
+                                    break;
+                                case 3:
+                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_CONCENTRACION);
+                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_LECCIONES);
+                                    break;
+                            }
+                        }
+                    }
+                    toastCorrecto("Tienes nuevos módulos para leer");
+                    setNewAccount(view);
+                    Intent intent = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                    if (!sp.getBoolean(LoginActivity.HAS_LOGGED_IN, false)) {
+                        SharedPreferences.Editor edit = sp.edit();
+                        edit.putBoolean(LoginActivity.HAS_LOGGED_IN, true);
+                        edit.commit();
+                    }
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
         listView.setAdapter(adapter);
@@ -59,7 +94,8 @@ public class EnfermedadesActivity extends AppCompatActivity {
             }
         });
     }
-    public void setNewAccount(View view){
+
+    public void setNewAccount(View view) {
         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -70,41 +106,48 @@ public class EnfermedadesActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 toastError(getResources().getString(R.string.error));
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
-                params.put("id_usuario",sp.getInt("user_id", -1)+"");
+                params.put("id_usuario", sp.getInt("user_id", -1) + "");
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(EnfermedadesActivity.this);
         requestQueue.add(request);
     }
-    /*
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if(id == R.id.item_done){
-            StringBuffer bf = new StringBuffer("Seleccionado:\n");
-            for (int i = 0; i < listView.getCount(); i++) {
-                if(listView.isItemChecked(i)){
-                    bf.append(listView.getItemAtPosition(i));
-                    if(i < listView.getCount()-1){
-                        bf.append("\n");
-                    }
-                }
-            }
-            toastCorrecto(bf.toString());
-            finish();
-        }
 
-        return super.onOptionsItemSelected(item);
-    }*/
-    private void toastCorrecto(String msg){
+    public void vincularUsuarioCategoria(View view, int id_categoria) {
+
+        StringRequest request = new StringRequest(Request.Method.POST, URL_INSERT, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Toast.makeText(PreviewPdfActivity.this, response, Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                toastError(getResources().getString(R.string.error));
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
+                params.put("id_categoria", (id_categoria) + "");
+                params.put("id_usuario", sp.getInt("user_id", -1) + "");
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(request);
+    }
+
+    private void toastCorrecto(String msg) {
         LayoutInflater inflater = getLayoutInflater();
-        View view =inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
+        View view = inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
         txtMensaje.setText(msg);
 
@@ -113,7 +156,8 @@ public class EnfermedadesActivity extends AppCompatActivity {
         toast.setView(view);
         toast.show();
     }
-    private void toastError(String msg){
+
+    private void toastError(String msg) {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);

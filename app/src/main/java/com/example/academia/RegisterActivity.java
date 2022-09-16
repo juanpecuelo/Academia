@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText etMail, etContrasena, etContrasena2;
     private Button btnRegistro;
-    private static final String URL = "http://"+Constantes.IP+"/login/register.php";
+    private static final String URL = Constantes.IP+"/login/register.php";
     private String email, contrasena, contrasena2;
     private TextInputLayout textInputLayout;
 
@@ -97,7 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onResponse(String response) {
                     if (response.equals("success")) {
                         toastCorrecto(getResources().getString(R.string.ya_registrado));
-                        btnRegistro.setClickable(false);
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
                     } else if (response.equals("failure")) {
                         toastError(getResources().getString(R.string.error));
                         System.out.println(response);

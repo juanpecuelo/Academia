@@ -2,8 +2,10 @@ package com.example.academia;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -30,12 +32,14 @@ public class PreviewPdfActivity extends AppCompatActivity {
 
     //TODO
     //  cambiar la el tamaño del texto si la longitud supera X carácteres
-    private static final String URL = "http://"+Constantes.IP+"/login/update.php";
-    private int id_categoria;
+    private static final String URL = Constantes.IP+"/login/update.php";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview_pdf);
+        int id_categoria;
+        int id_pdf;
+
         ImageButton image = findViewById(R.id.image);
         TextView title = findViewById(R.id.title);
         TextView introduction = findViewById(R.id.introduction);
@@ -43,40 +47,39 @@ public class PreviewPdfActivity extends AppCompatActivity {
         boton.setVisibility(View.VISIBLE);
         Bundle extras = getIntent().getExtras();
         id_categoria = extras.getInt("id_categoria");
+        id_pdf = extras.getInt("id");
         Glide.with(this).load(extras.get("image")).into(image);
+        //holder.imageButton.setBackground(holder.imageButton.getDrawable());;
         title.setText(extras.getString("title"));
         introduction.setText(extras.getString("introduction"));
-
-
         String path = extras.getString("pdf");
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                unlockNextPdf(view);
-                //TODO por que el toast se hace con el metodo?
-                // ¿cambiar el toast a blanco?
-                Toast.makeText(PreviewPdfActivity.this, "¡Se ha desbloqueado un nuevo artículo!", Toast.LENGTH_SHORT).show();
+                unlockNextPdf(view, id_categoria, id_pdf);
+                //TODO se presiona el botón, se envía un boolean extra al activity de SelectorPdfActivity,
+                // en el onRestart, si el extra es positivo, se cierra esa activity. Mientras tanto, al
+                // haber presionado el botón, se envía a SelectorPdfActivity donde se enseña el nuevo pdf.
+
+                toastCorrecto("¡Se ha desbloqueado un nuevo artículo!");
+                Intent intent = new Intent(PreviewPdfActivity.this, SelectorPdfActivity.class);
+
             }
         });
 
 
 
         image.setOnClickListener(new View.OnClickListener() {
-            // TODO esto es lo que hay que cambiar para que se vea el PDF sin descargarlo
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(path));
+                Intent intent = new Intent(getApplicationContext(),PdfView.class);
                 intent.putExtra("path", path);
-                //startActivity(intent);
-                    //Thread.sleep(2000);
-
-                //boton.setVisibility(View.VISIBLE);
+                startActivity(intent);
             }
         });
     }
-    public void unlockNextPdf(View view){
-
+    public void unlockNextPdf(View view, int id_categoria, int id_pdf){
         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -85,7 +88,7 @@ public class PreviewPdfActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(PreviewPdfActivity.this, getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
+                toastError(getResources().getString(R.string.error));
             }
         }){
             @Override
@@ -93,12 +96,36 @@ public class PreviewPdfActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
                 params.put("id_categoria", (id_categoria)+"");
+                params.put("id_pdf", id_pdf+"" +
+                        "");
                 params.put("id_usuario",sp.getInt("user_id",-1)+"");
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(PreviewPdfActivity.this);
         requestQueue.add(request);
+    }
+    private void toastCorrecto(String msg){
+        LayoutInflater inflater = getLayoutInflater();
+        View view =inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
+        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
+        txtMensaje.setText(msg);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(view);
+        toast.show();
+    }
+    private void toastError(String msg){
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
+        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
+        txtMensaje.setText(msg);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(view);
+        toast.show();
     }
 
 }

@@ -34,7 +34,7 @@ public class SelectorCategoriaActivity extends AppCompatActivity {
 
     private List<Categoria> listaCategorias;
 
-    private static final String BASE_URL = "http://"+Constantes.IP+"/login/getCategorias.php";
+    private static final String BASE_URL = Constantes.IP+"/login/getCategorias.php";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +55,13 @@ public class SelectorCategoriaActivity extends AppCompatActivity {
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(view);
         toast.show();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        listaCategorias = new ArrayList<>();
+        getCategorias();
     }
 
     private void getCategorias() {

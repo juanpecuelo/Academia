@@ -32,13 +32,18 @@ public class AdapterCategoria extends RecyclerView.Adapter<ViewHolderCategoria> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderCategoria holder, int position) {
         final Categoria categoria = listaCategoria.get(position);
+        int porcentaje = listaCategoria.get(position).getProgressBarPorcentaje();
         holder.txtName.setText(listaCategoria.get(position).getNombre());
         holder.txtDescripcion.setText(listaCategoria.get(position).getDescripcion());
-        //holder.txtPorcentaje.setText(listaCategoria.get(position).getProgressBarPorcentaje());
+        holder.txtPorcentaje.setText(porcentaje+" módulos desbloqueados");
         holder.txtName.setSelected(true);
+        //holder.progressBar.setProgress(porcentaje);
         Glide.with(context).load(categoria.getImage()).into(holder.imageButton);
-        holder.imageButton.setBackground(holder.imageButton.getDrawable());
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        //TODO al borrar la línea de abajo, se consigue que no se repita el background
+        //  pero hay mucho margen
+
+        //holder.imageButton.setBackground(holder.imageButton.getDrawable());
+        holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, SelectorPdfActivity.class);
