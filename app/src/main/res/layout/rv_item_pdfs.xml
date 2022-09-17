@@ -10,10 +10,10 @@
     android:layout_marginStart="8dp"
     android:id="@+id/pdf_cardView">
     <LinearLayout
+        android:id="@+id/pdf_layout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="vertical"
-        android:padding="8dp"
         android:background="@color/blue_solid"
         >
         <ImageButton

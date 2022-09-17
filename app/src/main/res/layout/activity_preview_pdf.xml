@@ -11,6 +11,7 @@
         android:layout_height="300dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
+        android:background="@color/theme_color"
         android:layout_marginTop="20dp">
     </ImageButton>
 

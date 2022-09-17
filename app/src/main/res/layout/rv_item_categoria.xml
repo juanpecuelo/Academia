@@ -4,7 +4,6 @@
     android:id="@+id/categoria_cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
     android:clickable="true"
     android:layout_marginBottom="8dp"
@@ -17,15 +16,13 @@
         android:background="@color/blue_solid"
         android:orientation="vertical"
         android:padding="5dp">
-
-
-
             <ImageButton
                 android:id="@+id/imageButtonCategoria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_gravity="center"
+                android:background="@color/blue_solid"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"

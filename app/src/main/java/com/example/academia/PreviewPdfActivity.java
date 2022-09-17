@@ -63,6 +63,12 @@ public class PreviewPdfActivity extends AppCompatActivity {
                 // haber presionado el botón, se envía a SelectorPdfActivity donde se enseña el nuevo pdf.
 
                 toastCorrecto("¡Se ha desbloqueado un nuevo artículo!");
+                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putInt(MainActivity.PREFS_ULTIMA_CATEGORIA, id_categoria);
+                editor.commit();
+
+
                 Intent intent = new Intent(PreviewPdfActivity.this, SelectorPdfActivity.class);
 
             }

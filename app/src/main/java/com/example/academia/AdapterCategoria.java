@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -35,7 +36,7 @@ public class AdapterCategoria extends RecyclerView.Adapter<ViewHolderCategoria> 
         int porcentaje = listaCategoria.get(position).getProgressBarPorcentaje();
         holder.txtName.setText(listaCategoria.get(position).getNombre());
         holder.txtDescripcion.setText(listaCategoria.get(position).getDescripcion());
-        holder.txtPorcentaje.setText(porcentaje+" módulos desbloqueados");
+        holder.txtPorcentaje.setText(porcentaje+" módulo"+(porcentaje!=1?"s":"")+" desbloqueado"+(porcentaje!=1?"s":""));
         holder.txtName.setSelected(true);
         //holder.progressBar.setProgress(porcentaje);
         Glide.with(context).load(categoria.getImage()).into(holder.imageButton);

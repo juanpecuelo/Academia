@@ -13,4 +13,5 @@
     <color name = "red">#ff0000</color>
     <color name="blue_solid">#1e7dae</color>
     <color name = "yellow">#FFFB00</color>
+    <color name = "yellow_dark">#EAE739</color>
 </resources>

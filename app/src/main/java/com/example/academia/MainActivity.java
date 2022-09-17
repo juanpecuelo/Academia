@@ -30,6 +30,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     private static final int TIME_OUT = 1000;
     private static final String URL = Constantes.IP + "/login/isNewAccount.php";
+    public static final String PREFS_ULTIMA_CATEGORIA = "id_ultima_categoria";
     // TODO pedir al usuario si quiere desactivar el wifi una vez visualizado el pdf
     @Override
     protected void onCreate(Bundle savedInstanceState) {

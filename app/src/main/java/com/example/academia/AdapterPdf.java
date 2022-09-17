@@ -2,11 +2,14 @@ package com.example.academia;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -34,6 +37,9 @@ public class AdapterPdf extends RecyclerView.Adapter<ViewHolderPdf> {
         holder.txtName.setText(pdfFiles.get(position).getTitle());
         holder.txtName.setSelected(true);
         Glide.with(context).load(pdf.getImage()).into(holder.imageButton);
+        if(position == getItemCount()-1){
+            holder.rowLayout.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow_dark));
+        }
         holder.imageButton.setBackground(holder.imageButton.getDrawable());
         holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override

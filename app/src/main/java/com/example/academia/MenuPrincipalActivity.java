@@ -3,12 +3,17 @@ package com.example.academia;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 //TODO
 //  Hacer que el banner de Bienvenido cambie con frases aleatorias
@@ -29,7 +34,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
                 intent = new Intent(MenuPrincipalActivity.this, SintomasActivity.class);
                 break;
             case R.id.cvWidgets:
-                //intent = new Intent(PrincipalActivity.this, WidgetsActivity.class);
+                //intent = new Intent(MenuPrincipalActivity.this, WidgetsActivity.class);
                 break;
             case R.id.cvReportarBug:
                 intent = new Intent(MenuPrincipalActivity.this, ReportarBugActivity.class);
@@ -62,6 +67,22 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         CardView bugs = findViewById(R.id.cvReportarBug);
         CardView ajustes = findViewById(R.id.cvAjustes);
         CardView info = findViewById(R.id.cvInfo);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setSelectedItemId(R.id.bmnMenuPrincipal);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.bmnSeguirLeyendo) {
+                    Intent intent = new Intent(getApplicationContext(), SeguirLeyendoActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
 
 
         misModulos.setOnClickListener(this);
