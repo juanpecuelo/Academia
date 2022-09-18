@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,18 +16,21 @@ import androidx.cardview.widget.CardView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.Random;
+
 //TODO
-//  Hacer que el banner de Bienvenido cambie con frases aleatorias
-// cambiar el icon de qué me pasa (se ve borroso)
-// probar con distintos colores para los distintos cardviews??
+//  cambiar el tamaño de las frases si son muy grandes
 // cuando se clica el boton de entendido del pdf, se puede llevar a una activity o animación que le diga que
 // se ha desbloqueado un nuevo pdf o módulo o ejercicio
 
+
 public class MenuPrincipalActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String[] FRASES = {"Bienvenido", "¿Qué tal?"};
+
     @Override
     public void onClick(View view) {
         Intent intent = null;
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.cvModulos:
                 intent = new Intent(MenuPrincipalActivity.this, SelectorCategoriaActivity.class);
                 break;
@@ -36,8 +40,8 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
             case R.id.cvWidgets:
                 //intent = new Intent(MenuPrincipalActivity.this, WidgetsActivity.class);
                 break;
-            case R.id.cvReportarBug:
-                intent = new Intent(MenuPrincipalActivity.this, ReportarBugActivity.class);
+            case R.id.cvMyStoic:
+                //intent = new Intent(MenuPrincipalActivity.this, MyStoicActivity.class);
                 break;
             case R.id.cvAjustes:
                 intent = new Intent(MenuPrincipalActivity.this, AjustesActivity.class);
@@ -46,7 +50,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
                 intent = new Intent(MenuPrincipalActivity.this, InformacionActivity.class);
                 break;
         }
-        if(intent!=null){
+        if (intent != null) {
             startActivity(intent);
         }
     }
@@ -60,16 +64,19 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         animationDrawable.setEnterFadeDuration(2500);
         animationDrawable.setExitFadeDuration(5000);
         animationDrawable.start();
+        TextView frase = findViewById(R.id.txtBienvenido);
+        frase.setText(FRASES[new Random().nextInt(FRASES.length)]);
 
         CardView misModulos = findViewById(R.id.cvModulos);
         CardView queMePasa = findViewById(R.id.cvQueMePasa);
         CardView widgets = findViewById(R.id.cvWidgets);
-        CardView bugs = findViewById(R.id.cvReportarBug);
+        CardView myStoic = findViewById(R.id.cvMyStoic);
         CardView ajustes = findViewById(R.id.cvAjustes);
         CardView info = findViewById(R.id.cvInfo);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.bmnMenuPrincipal);
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -79,6 +86,8 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
                     overridePendingTransition(0, 0);
                     finish();
                     return true;
+                }else if(item.getItemId() == R.id.bmnMenuPrincipal){
+
                 }
                 return false;
             }
@@ -88,7 +97,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         misModulos.setOnClickListener(this);
         queMePasa.setOnClickListener(this);
         widgets.setOnClickListener(this);
-        bugs.setOnClickListener(this);
+        myStoic.setOnClickListener(this);
         ajustes.setOnClickListener(this);
         info.setOnClickListener(this);
     }

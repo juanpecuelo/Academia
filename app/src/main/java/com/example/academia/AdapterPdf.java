@@ -31,6 +31,7 @@ public class AdapterPdf extends RecyclerView.Adapter<ViewHolderPdf> {
         this.pdfFiles = pdfFiles;
     }
 
+    private boolean botonActivado = false;
     @Override
     public void onBindViewHolder(@NonNull ViewHolderPdf holder, int position) {
         final Pdf pdf = pdfFiles.get(position);
@@ -51,6 +52,9 @@ public class AdapterPdf extends RecyclerView.Adapter<ViewHolderPdf> {
                 intent.putExtra("introduction", pdf.getIntroduction());
                 intent.putExtra("pdf", pdf.getPdfPath());
                 intent.putExtra("id_categoria", pdf.getCategoriaId());
+                if(position == getItemCount()-1){
+                    intent.putExtra("boton_activado", true);
+                }
                 context.startActivity(intent);
             }
         });

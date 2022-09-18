@@ -6,31 +6,49 @@
     android:background="@color/theme_color"
     android:orientation="vertical">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/tbLayoutPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/theme_color">
+
+            <ImageView
+                android:layout_width="@dimen/app_bar_image"
+                android:layout_height="@dimen/app_bar_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/app_bar_margin"
+                android:background="@drawable/logo_layout"></ImageView>
+        </RelativeLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/seguirLeyendo_cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/theme_color"
         android:clickable="true"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/blue_solid"
             android:orientation="vertical"
-            android:padding="5dp"
-            >
+            android:padding="5dp">
             <!-- TODO arreglar visualmente las imágenes pequeñas-->
             <ImageButton
                 android:id="@+id/seguirLeyendoimageButtonCategoria"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:layout_alignParentLeft="true"
                 android:layout_gravity="center"
                 android:layout_marginStart="5dp"
@@ -72,7 +90,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/app_bar_margin"
-                android:textDirection="rtl"
                 android:background="@color/yellow_dark"
                 android:ellipsize="marquee"
                 android:marqueeRepeatLimit="marquee_forever"
@@ -81,6 +98,7 @@
                 android:singleLine="true"
                 android:text="                                                   Seguir leyendo"
                 android:textColor="@color/black"
+                android:textDirection="rtl"
                 android:textSize="20sp"
                 android:textStyle="bold"></TextView>
 
@@ -104,6 +122,8 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:background="@color/blue_solid"
+        app:itemTextColor="@color/blue_dark_theme"
+        app:itemIconTint="@color/blue_dark_theme"
         app:menu="@menu/bottom_menu_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </RelativeLayout>

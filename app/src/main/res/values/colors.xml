@@ -14,4 +14,11 @@
     <color name="blue_solid">#1e7dae</color>
     <color name = "yellow">#FFFB00</color>
     <color name = "yellow_dark">#EAE739</color>
+    <color name = "orange_theme">#fae2b1</color>
+    <color name = "magenta_theme">#fabeb1</color>
+    <color name="purple_theme">#cab1fa</color>
+    <color name="green_theme">#b1fae1</color>
+    <color name="green_darker_theme">#1eae4e</color>
+    <color name="blue_dark_theme">#361eae</color>
+
 </resources>

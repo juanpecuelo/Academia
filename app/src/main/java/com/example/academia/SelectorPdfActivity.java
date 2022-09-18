@@ -81,7 +81,6 @@ public class SelectorPdfActivity extends AppCompatActivity {
                         try {
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
-                                //Log.i("tagconvertstr","["+response+"]");
                                 JSONObject object = array.getJSONObject(i);
                                 int id = Integer.parseInt(object.getString("id"));
                                 String image = object.getString("image");

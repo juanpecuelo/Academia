@@ -44,10 +44,13 @@ public class PreviewPdfActivity extends AppCompatActivity {
         TextView title = findViewById(R.id.title);
         TextView introduction = findViewById(R.id.introduction);
         Button boton = findViewById(R.id.btnEntendido);
-        boton.setVisibility(View.VISIBLE);
+        //boton.setVisibility(View.VISIBLE);
         Bundle extras = getIntent().getExtras();
         id_categoria = extras.getInt("id_categoria");
         id_pdf = extras.getInt("id");
+        if(extras.getBoolean("boton_activado")){
+            boton.setVisibility(View.VISIBLE);
+        }
         Glide.with(this).load(extras.get("image")).into(image);
         //holder.imageButton.setBackground(holder.imageButton.getDrawable());;
         title.setText(extras.getString("title"));
@@ -67,10 +70,8 @@ public class PreviewPdfActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sp.edit();
                 editor.putInt(MainActivity.PREFS_ULTIMA_CATEGORIA, id_categoria);
                 editor.commit();
-
-
                 Intent intent = new Intent(PreviewPdfActivity.this, SelectorPdfActivity.class);
-
+                boton.setClickable(false);
             }
         });
 

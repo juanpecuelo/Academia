@@ -1,0 +1,15 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/cardview_icons_size"
+    android:height="@dimen/cardview_icons_size"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="#1E7DAE"
+    android:alpha="0.8">
+  <group android:scaleX="0.046875"
+      android:scaleY="0.046875"
+      android:translateY="-1">
+    <path
+        android:pathData="M208,80v25h-13v126h18v-71c0,-5.5 1.4,-10.5 4.3,-14.4 3,-3.9 7.8,-6.5 12.7,-6.5 5,0 9.7,2.7 12.7,6.6 2.9,3.9 4.3,8.8 4.3,14.3v71h18v-71c0,-5.5 1.4,-10.5 4.3,-14.4 2.9,-3.9 7.7,-6.6 12.7,-6.6 5,0 9.8,2.7 12.7,6.6 2.9,3.9 4.3,8.9 4.3,14.4v71h18L317,105h-13L304,80h-18v25h-21L265,80h-18v25h-21L226,80h-18zM16,112v32h9v71h78v-65.9h9L112,112L94,112v25L73,137v-25L55,112v25L34,137v-25L16,112zM400,112v32h9v71h78v-71h9v-32h-18v25h-21v-25h-18v25h-21v-25h-18zM135,144v25h-14v64h-16v254h110v-81.6c0,-17.5 4.4,-31.5 11.8,-41.4 7.4,-9.9 18.2,-15.6 29.2,-15.6s21.8,5.7 29.2,15.6c7.4,9.9 11.8,23.9 11.8,41.4L297,487h110L407,233h-16v-64h-14v-25h-18v25h-24v80L177,249v-80h-24v-25h-18zM41,233v254h46L87,233L41,233zM425,233v254h46L471,233h-46zM135,240h18v48h-18v-48zM359,240h18v48h-18v-48zM135,359h50v50h-50v-50zM327,359h50v50h-50v-50zM256,366.4c-5,0 -10.2,2.3 -14.8,8.4 -4.6,6.1 -8.2,16.1 -8.2,30.6L233,432h46v-26.6c0,-14.5 -3.6,-24.5 -8.2,-30.6 -4.6,-6.1 -9.8,-8.4 -14.8,-8.4zM153,377v14h14v-14h-14zM345,377v14h14v-14h-14z"
+        android:fillColor="#000"/>
+  </group>
+</vector>
