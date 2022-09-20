@@ -6,10 +6,10 @@
         <item>@color/orange_theme</item>
         <item>@color/green_theme</item>
         <item>@color/purple_theme</item>
-        <item>@color/blue_dark_theme</item>
         <item>@color/yellow_green_theme</item>
         <item>@color/pink_theme</item>
     </array>
+
 
 
 </resources>
