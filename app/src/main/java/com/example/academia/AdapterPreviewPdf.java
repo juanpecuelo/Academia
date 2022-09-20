@@ -83,7 +83,8 @@ public class AdapterPreviewPdf extends PagerAdapter {
         txtName.setSelected(true);
         descripcion.setText(pdf.getIntroduction());
         Glide.with(context).load(pdf.getImage()).into(imageButton);
-        imageButton.setBackground(imageButton.getDrawable());
+        //de esta forma el fondo de la imagen, que no escala con esta, se ve como el layout
+        imageButton.setBackgroundColor(layout.getSolidColor());
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override

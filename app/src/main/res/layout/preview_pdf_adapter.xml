@@ -19,7 +19,7 @@
             android:layout_height="300dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:background="@color/theme_color"
+            android:background="@color/blue_solid"
             android:scaleType="fitCenter"></ImageButton>
 
         <TextView
