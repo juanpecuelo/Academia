@@ -60,6 +60,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
         RelativeLayout relativeLayout = findViewById(R.id.layoutMenuPrincipal);
+        //TODO si se pone la animacion en un thread aparte, no se reseteará al cambiar de activity?
         AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
         animationDrawable.setEnterFadeDuration(2500);
         animationDrawable.setExitFadeDuration(5000);
@@ -86,8 +87,6 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
                     overridePendingTransition(0, 0);
                     finish();
                     return true;
-                }else if(item.getItemId() == R.id.bmnMenuPrincipal){
-
                 }
                 return false;
             }

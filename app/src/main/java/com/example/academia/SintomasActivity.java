@@ -52,26 +52,32 @@ public class SintomasActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vincularUsuarioCategoria(view, Constantes.CATEGORIA_FELICIDAD);
+                vincularUsuarioCategoria(Constantes.CATEGORIA_FELICIDAD);
                 if (listView.getCheckedItemCount() != 0) {
                     for (int i = 0; i < listView.getCount(); i++) {
                         if (listView.isItemChecked(i)) {
-                            switch (i) {
-                                case 0:
-                            }
+                           //TODO arreglar todo esto
                             if (i == 0 || i == 1 || i == 4 || i == 6) {
-                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_DEPRESION);
-                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_AUTOESTIMA);
-                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_SESIONES);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_DEPRESION);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_AUTOESTIMA);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_SESIONES);
                             } else if (i == 5 || i == 7) {
-                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_CONCENTRACION);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_CONCENTRACION);
                             } else if (i == 9) {
-                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_CULPABILIDAD);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
                             } else if (i == 2 || i == 7) {
-                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_LECCIONES);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_LECCIONES);
                             } else if (i == 3) {
-                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_DEPRESION);
-                                vincularUsuarioCategoria(view, Constantes.CATEGORIA_CULPABILIDAD);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_DEPRESION);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
+                            }
+                            else if(i == 10){
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_DEPRESION);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_AUTOESTIMA);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_SESIONES);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_LECCIONES);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_CONCENTRACION);
+                                vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
                             }
                         }
                     }
@@ -117,7 +123,7 @@ public class SintomasActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    public void vincularUsuarioCategoria(View view, int id_categoria) {
+    public void vincularUsuarioCategoria(int id_categoria) {
 
         StringRequest request = new StringRequest(Request.Method.POST, URL_INSERT, new Response.Listener<String>() {
             @Override

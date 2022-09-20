@@ -1,5 +1,10 @@
 package com.example.academia;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 public class Pdf {
     private final int id;
     private final String image;
@@ -18,6 +23,18 @@ public class Pdf {
         this.unlocked = unlocked;
         this.categoriaId = userId;
     }
+
+    protected Pdf(Parcel in) {
+        id = in.readInt();
+        image = in.readString();
+        title = in.readString();
+        introduction = in.readString();
+        pdfPath = in.readString();
+        categoriaId = in.readInt();
+        unlocked = in.readInt();
+    }
+
+
 
     public int getCategoriaId() {
         return categoriaId;
@@ -50,4 +67,20 @@ public class Pdf {
     public String getPdfPath() {
         return pdfPath;
     }
+
+    @Override
+    public String toString() {
+        return "-----------------" +
+                "Pdf{" +
+                "id=" + id +
+                ", image='" + image + '\'' +
+                ", title='" + title + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", pdfPath='" + pdfPath + '\'' +
+                ", categoriaId=" + categoriaId +
+                ", unlocked=" + unlocked +
+                '}';
+    }
+
+
 }

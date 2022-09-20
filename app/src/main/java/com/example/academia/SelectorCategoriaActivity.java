@@ -1,6 +1,7 @@
 package com.example.academia;
 
 import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,8 +71,9 @@ public class SelectorCategoriaActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        SharedPreferences sp = getSharedPreferences("user_id", 0);
                         try {
+                            TypedArray colors = getResources().obtainTypedArray(R.array.colors);
+                            int color;
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
                                 //Log.i("tagconvertstr","["+response+"]");
@@ -81,12 +83,13 @@ public class SelectorCategoriaActivity extends AppCompatActivity {
                                 String nombre = object.getString("nombre");
                                 String descripcion = object.getString("descripcion");
                                 int unlocked = object.getInt("unlocked");
-                                Categoria categoria = new Categoria(id,image,nombre,descripcion,unlocked);
+                                color = colors.getColor(i, getResources().getColor(R.color.blue_solid));
+                                Categoria categoria = new Categoria(id,image,nombre,descripcion,unlocked, color);
                                     listaCategorias.add(categoria);
                             }
 
                         } catch (Exception e) {
-                            System.out.println(e.toString());
+                            System.out.println(e);
                         }
                         adapter = new AdapterCategoria(SelectorCategoriaActivity.this, listaCategorias);
                         recyclerView.setAdapter(adapter);

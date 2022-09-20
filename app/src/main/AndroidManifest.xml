@@ -37,7 +37,7 @@
             android:name=".ReportarBugActivity"
             android:exported="false" />
         <activity
-            android:name=".PdfView"
+            android:name=".PdfViewActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -52,7 +52,7 @@
             android:name=".MenuPrincipalActivity"
             android:exported="true" />
         <activity
-            android:name=".PreviewPdfActivity"
+            android:name=".ViewPagerItemFragment"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"

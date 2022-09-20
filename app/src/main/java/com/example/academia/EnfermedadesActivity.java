@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -32,7 +29,7 @@ public class EnfermedadesActivity extends AppCompatActivity {
     private static final String URL = Constantes.IP + "/login/updateNewAccount.php";
     private static final String URL_INSERT = Constantes.IP + "/login/insertUser.php";
     private ListView listView;
-    private static final String[] arrayEnfermedades = {"Depresión", "Fobia social", "Déficit de atención", "Ansiedad"};
+    private static final String[] arrayEnfermedades = {"Depresión", "Fobia social", "Déficit de atención", "Ansiedad","Me encuentro bien, pero quiero estar mejor"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,26 +43,34 @@ public class EnfermedadesActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                vincularUsuarioCategoria(view, Constantes.CATEGORIA_FELICIDAD);
+                vincularUsuarioCategoria(Constantes.CATEGORIA_FELICIDAD);
                 if (listView.getCheckedItemCount() != 0) {
                     for (int i = 0; i < listView.getCount(); i++) {
                         if (listView.isItemChecked(i)) {
                             switch (i) {
                                 case 0:
-                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_DEPRESION);
-                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_AUTOESTIMA);
-                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_SESIONES);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_DEPRESION);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_AUTOESTIMA);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_SESIONES);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
                                     break;
                                 case 1:
-                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_AUTOESTIMA);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_AUTOESTIMA);
                                     break;
                                 case 2:
-                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_CONCENTRACION);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_CONCENTRACION);
                                     break;
                                 case 3:
-                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_CONCENTRACION);
-                                    vincularUsuarioCategoria(view, Constantes.CATEGORIA_LECCIONES);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_CONCENTRACION);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_LECCIONES);
                                     break;
+                                case 4:
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_DEPRESION);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_AUTOESTIMA);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_SESIONES);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_LECCIONES);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_CONCENTRACION);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
                             }
                         }
                     }
@@ -119,7 +124,7 @@ public class EnfermedadesActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    public void vincularUsuarioCategoria(View view, int id_categoria) {
+    public void vincularUsuarioCategoria(int id_categoria) {
 
         StringRequest request = new StringRequest(Request.Method.POST, URL_INSERT, new Response.Listener<String>() {
             @Override

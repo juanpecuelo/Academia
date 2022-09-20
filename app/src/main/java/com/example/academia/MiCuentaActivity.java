@@ -35,10 +35,6 @@ public class MiCuentaActivity extends AppCompatActivity {
     private static final String URL_PDFS_DESBLOQUEADOS = Constantes.IP + "/login/getPdfsDesbloqueados.php";
 
 
-    private ListView listView;
-    private ArrayAdapter<String> adapter;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +42,8 @@ public class MiCuentaActivity extends AppCompatActivity {
         String[] opciones = {"Módulos desbloqueados: ", "Email: ", "Cambiar email", "Cambiar contraseña", "Borrar usuario"};
         getPdfsDesbloqueados(opciones);
 
-        adapter = new ArrayAdapter<String>(this, R.layout.list_item_reusable, opciones);
-        listView = findViewById(R.id.listViewReusable);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item_reusable, opciones);
+        ListView listView = findViewById(R.id.listViewReusable);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -73,9 +69,9 @@ public class MiCuentaActivity extends AppCompatActivity {
         dialog.show();
 
         TextView titulo = view.findViewById(R.id.dialogTxtTitulo);
-        titulo.setText("¿Estás seguro?");
+        titulo.setText(getResources().getString(R.string.estas_seguro));
         TextView apoyo = view.findViewById(R.id.dialogTxtApoyo);
-        apoyo.setText("Si borras tu cuenta, perderás todo tu progreso");
+        apoyo.setText(getResources().getString(R.string.pierdes_progreso));
         Button aceptar = view.findViewById(R.id.dialogBtnAceptar);
         aceptar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,7 +1,6 @@
 package com.example.academia;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
     //  no funciona el botón de siguiente en el teclado
 
     private EditText etMail, etContrasena, etContrasena2;
-    private Button btnRegistro;
     private static final String URL = Constantes.IP+"/login/register.php";
     private String email, contrasena, contrasena2;
     private TextInputLayout textInputLayout;
@@ -43,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         etMail = findViewById(R.id.etRegistrarUsuario);
         etContrasena = findViewById(R.id.etRegistrarContrasena);
         etContrasena2 = findViewById(R.id.etRegistrarContrasena2);
-        btnRegistro = findViewById(R.id.btRegistrar);
+        Button btnRegistro = findViewById(R.id.btRegistrar);
         textInputLayout = findViewById(R.id.textInputLayoutEmailRegistro);
         TextView tvHacerLogin = findViewById(R.id.tvLoginAqui);
         email = contrasena = contrasena2 = "";
@@ -60,37 +58,10 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-    private boolean comprobarDatos(){
-        String s;
-        try{
-            s = email.split("@")[1];
-            if(!s.contains(".com")&&!(s.contains(".es"))){
-                toastError(getResources().getString(R.string.email_no_valido));
-                return false;
-            }
-            if(email.equals("") || contrasena.equals("")){
-                toastError(getResources().getString(R.string.campos_vacios));
-                return false;
-            }
-            if(!contrasena.equals(contrasena2)) {
-                toastError(getResources().getString(R.string.clave_no_coincide));
-                return false;
-            }
-        }catch(java.lang.ArrayIndexOutOfBoundsException e){
-            toastError(getResources().getString(R.string.email_no_valido));
-            return false;
-        }catch (Exception e){
-            toastError(getResources().getString(R.string.error));
-            return false;
-        }
-
-        return true;
-    }
     public void registrar(View view){
         email=etMail.getText().toString().trim();
         contrasena=etContrasena.getText().toString().trim();
         contrasena2=etContrasena2.getText().toString().trim();
-        if(comprobarDatos()){
             textInputLayout.setErrorEnabled(false);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                 @Override
@@ -104,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                         toastError(getResources().getString(R.string.error));
                         System.out.println(response);
                     }else{
+                        toastError(response);
                         System.out.println(response);
                     }
                 }
@@ -118,13 +90,13 @@ public class RegisterActivity extends AppCompatActivity {
                     Map <String, String> data = new HashMap<>();
                     data.put("email",email);
                     data.put("password",contrasena);
+                    data.put("contrasena2", contrasena2);
                     return data;
                 }
             };
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
             requestQueue.add(stringRequest);
         }
-    }
     public void login(View view){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

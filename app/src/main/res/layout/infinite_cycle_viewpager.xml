@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/viewPagerBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabLeftViewpager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_left"
+            android:visibility="invisible"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/blue_solid">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        <TextView
+            android:id="@+id/nombreCategoriaViewPager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/text_style"
+            android:text="Nombre de la categoría"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="italic"></TextView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fabRightViewpager"
+            android:src="@drawable/ic_right"
+            android:layout_marginLeft="10dp"
+            android:visibility="invisible"
+            android:backgroundTint="@color/blue_solid"
+            >
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+    </LinearLayout>
+
+    <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:icvp_center_page_scale_offset="30dp"
+        app:icvp_interpolator="@android:anim/accelerate_decelerate_interpolator"
+        app:icvp_max_page_scale="0.8"
+        app:icvp_min_page_scale="0.5"
+        app:icvp_min_page_scale_offset="5dp"
+        app:icvp_scroll_duration="250">
+
+
+    </com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager>
+
+</LinearLayout>

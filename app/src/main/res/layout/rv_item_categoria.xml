@@ -11,6 +11,7 @@
     app:cardElevation="8dp">
 
     <LinearLayout
+        android:id="@+id/linearLayoutCategoria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue_solid"
@@ -19,7 +20,7 @@
             <ImageButton
                 android:id="@+id/imageButtonCategoria"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:layout_alignParentLeft="true"
                 android:layout_gravity="center"
                 android:background="@color/blue_solid"

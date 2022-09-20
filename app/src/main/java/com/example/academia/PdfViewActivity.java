@@ -2,26 +2,19 @@ package com.example.academia;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.github.barteksc.pdfviewer.PDFView;
-import com.krishna.fileloader.FileLoader;
-import com.krishna.fileloader.listener.FileRequestListener;
-import com.krishna.fileloader.pojo.FileResponse;
-import com.krishna.fileloader.request.FileLoadRequest;
 
 import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class PdfView extends AppCompatActivity {
+public class PdfViewActivity extends AppCompatActivity {
     private PDFView pdfView;
     //TODO
     // hacer que se visualice el pdf sin descargarlo

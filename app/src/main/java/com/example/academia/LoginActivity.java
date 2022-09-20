@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
     public static final String PREFS_USER = "user";
     private EditText etEmail, etContrasena;
     private String email, contrasena;
-    private static final String URL_NEW_ACCOUNT = Constantes.IP + "/login/isNewAccount.php";
     private static final String URL = Constantes.IP + "/login/login.php";
     private static final String URL_ID = Constantes.IP + "/login/getId.php";
     private CheckBox recuerdame;
@@ -98,33 +97,10 @@ public class LoginActivity extends AppCompatActivity {
         cargarRecuerdame();
 
     }
-
-    private boolean comprobarDatos() {
-        String s;
-        try {
-            s = email.split("@")[1];
-            if (!s.contains(".com") && !(s.contains(".es"))) {
-                toastError(getResources().getString(R.string.email_no_valido));
-                return false;
-            }
-            if (email.equals("") || contrasena.equals("")) {
-                toastError(getResources().getString(R.string.campos_vacios));
-                return false;
-            }
-        } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-            toastError(getResources().getString(R.string.email_no_valido));
-            return false;
-        } catch (Exception e) {
-            toastError(getResources().getString(R.string.error));
-            return false;
-        }
-        return true;
-    }
-
     public void login(View view) {
         email = etEmail.getText().toString().trim();
         contrasena = etContrasena.getText().toString().trim();
-        if (comprobarDatos()) {
+
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -145,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                                 System.out.println(newAccount + " arriba");
                             }
                         } catch (Exception e) {
-                            System.out.println(e.toString());
+                            System.out.println(e);
                         }
                         establecerId();
                         Intent intent;
@@ -159,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                     } else if (respuesta[0].equals("failure")) {
                         toastError(getResources().getString(R.string.email_contra_incorrectos));
                     } else {
-                        System.out.println(response);
+                        toastError(getResources().getString(R.string.campos_vacios));
                     }
                 }
             }, new Response.ErrorListener() {
@@ -180,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
             requestQueue.add(stringRequest);
         }
-    }
+
 
 
     public void establecerId() {
@@ -204,7 +180,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                         } catch (Exception e) {
-                            System.out.println(e.toString() + " excepción");
+                            System.out.println(e + " excepción");
                         }
 
                     }

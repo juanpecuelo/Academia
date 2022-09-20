@@ -6,13 +6,18 @@ public class Categoria {
     private final String nombre;
     private final String descripcion;
     private int progressBarPorcentaje;
-
-    public Categoria(int id, String image, String nombre, String descripcion, int progressBarPorcentaje) {
+    private final int color;
+    public Categoria(int id, String image, String nombre, String descripcion, int progressBarPorcentaje, int color) {
         this.id = id;
         this.image = image;
         this.nombre = nombre;
         this.progressBarPorcentaje = progressBarPorcentaje;
         this.descripcion = descripcion;
+        this.color = color;
+    }
+
+    public int getColor() {
+        return color;
     }
 
     public String getDescripcion() {

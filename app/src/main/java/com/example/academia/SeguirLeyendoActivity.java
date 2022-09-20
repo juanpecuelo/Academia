@@ -2,14 +2,11 @@ package com.example.academia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,9 +27,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class SeguirLeyendoActivity extends AppCompatActivity {
@@ -60,6 +55,7 @@ public class SeguirLeyendoActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.bmnSeguirLeyendo);
 
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -78,7 +74,6 @@ public class SeguirLeyendoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SelectorPdfActivity.class);
-                System.out.println("idcat----> " + idCategoria);
                 intent.putExtra("id_categoria", idCategoria);
                 startActivity(intent);
             }
@@ -100,17 +95,17 @@ public class SeguirLeyendoActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONArray array = new JSONArray(response);
-                            //Log.i("tagconvertstr","["+response+"]");
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject object = array.getJSONObject(i);
                                 idCategoria = Integer.parseInt(object.getString("id"));
                                 Glide.with(getApplicationContext()).load(object.getString("image")).into(image);
                                 name.setText(object.getString("nombre"));
                                 descripcion.setText(object.getString("descripcion"));
-                                porcentaje.setText(object.getInt("unlocked") + "");
+                                int num = object.getInt("unlocked");
+                                porcentaje.setText(num+" módulo"+(num!=1?"s":"")+" desbloqueado"+(num!=1?"s":""));
                             }
                         } catch (Exception e) {
-                            System.out.println(e.toString());
+                            System.out.println(e);
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -123,7 +118,6 @@ public class SeguirLeyendoActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
-                Bundle extras = getIntent().getExtras();
                 params.put("id_usuario", sp.getInt("user_id", -1) + "");
                 params.put("id_ultima_categoria", sp.getInt(MainActivity.PREFS_ULTIMA_CATEGORIA, -1) + "");
                 return params;

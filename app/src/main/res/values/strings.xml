@@ -15,4 +15,7 @@
     <string name="widgets">Widgets</string>
     <string name="reportar_error_tv">Por favor, explícanos cómo era el error y dónde lo has encontrado. ¡Gracias!</string>
     <string name="mi_cuenta">Mi cuenta</string>
+    <string name="estas_seguro">¿Estás seguro?</string>
+    <string name="pierdes_progreso">Si borras tu cuenta, perderás todo tu progreso</string>
+    <string name="nuevo_módulo">¡Se ha desbloqueado un nuevo módulo!</string>
 </resources>
