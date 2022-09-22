@@ -30,6 +30,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import clases.Constantes;
+
 public class SeguirLeyendoActivity extends AppCompatActivity {
 
     private static final String BASE_URL = Constantes.IP + "/login/getUltimaCategoria.php";
@@ -48,7 +50,7 @@ public class SeguirLeyendoActivity extends AppCompatActivity {
         descripcion = findViewById(R.id.seguirLeyendo_textDescripcion);
         porcentaje = findViewById(R.id.txtPorcentajeSeguirLeyendo);
 
-        TextView seguirLeyendo = findViewById(R.id.seguirLeyendoTxt);
+        TextView seguirLeyendo = findViewById(R.id.marqueeSeguirLeyendo);
         seguirLeyendo.setEllipsize(TextUtils.TruncateAt.MARQUEE);
         seguirLeyendo.setSelected(true);
 
@@ -60,7 +62,7 @@ public class SeguirLeyendoActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.bmnMenuPrincipal) {
-                    Intent intent = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
+                    Intent intent = new Intent(SeguirLeyendoActivity.this, MenuPrincipalActivity.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();

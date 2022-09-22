@@ -24,6 +24,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.HashMap;
 import java.util.Map;
 
+import clases.Constantes;
+
 public class RegisterActivity extends AppCompatActivity {
 
     //TODO

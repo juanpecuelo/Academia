@@ -1,4 +1,4 @@
-package com.example.academia;
+package viewholders;
 
 import android.view.View;
 import android.widget.ImageButton;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.academia.R;
 
 public class ViewHolderCategoria extends RecyclerView.ViewHolder {
     public TextView txtName;

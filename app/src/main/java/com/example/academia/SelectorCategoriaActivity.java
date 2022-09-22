@@ -28,6 +28,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import adapters.AdapterCategoria;
+import clases.Categoria;
+import clases.Constantes;
+
 public class SelectorCategoriaActivity extends AppCompatActivity {
 
     private AdapterCategoria adapter;

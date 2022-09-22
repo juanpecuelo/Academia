@@ -26,6 +26,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import adapters.AdapterPreviewPdf;
+import clases.Constantes;
+import clases.Pdf;
+
 public class SelectorPdfActivity extends AppCompatActivity {
     //TODO
     // hacer un selector de pdf tipo instagram que gire hacia la derecha

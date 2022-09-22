@@ -16,6 +16,7 @@ import androidx.cardview.widget.CardView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.Calendar;
 import java.util.Random;
 
 //TODO
@@ -60,11 +61,25 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
         RelativeLayout relativeLayout = findViewById(R.id.layoutMenuPrincipal);
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+        if(timeOfDay>=5 && timeOfDay<12){
+        relativeLayout.setBackground(getDrawable(R.drawable.morning_gradient_list));
+        }else if(timeOfDay>=12 && timeOfDay<18){
+            relativeLayout.setBackground(getDrawable(R.drawable.blue_gradient_list));
+        }else if(timeOfDay>=18 && timeOfDay<22){
+            relativeLayout.setBackground(getDrawable(R.drawable.evening_gradient_list));
+        }else{
+            relativeLayout.setBackground(getDrawable(R.drawable.night_gradient_list));
+        }
         //TODO si se pone la animacion en un thread aparte, no se reseteará al cambiar de activity?
+
         AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
+
         animationDrawable.setEnterFadeDuration(2500);
         animationDrawable.setExitFadeDuration(5000);
         animationDrawable.start();
+
         TextView frase = findViewById(R.id.txtBienvenido);
         frase.setText(FRASES[new Random().nextInt(FRASES.length)]);
 

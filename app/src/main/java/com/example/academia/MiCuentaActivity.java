@@ -30,6 +30,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import clases.Constantes;
+
 public class MiCuentaActivity extends AppCompatActivity {
     private static final String URL_BORRAR_USUARIO = Constantes.IP + "/login/borrarUsuario.php";
     private static final String URL_PDFS_DESBLOQUEADOS = Constantes.IP + "/login/getPdfsDesbloqueados.php";

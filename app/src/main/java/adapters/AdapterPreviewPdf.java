@@ -1,4 +1,4 @@
-package com.example.academia;
+package adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +24,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import clases.Constantes;
+import com.example.academia.LoginActivity;
+import com.example.academia.MainActivity;
+import clases.Pdf;
+import com.example.academia.PdfViewActivity;
+import com.example.academia.R;
 
 import java.util.HashMap;
 import java.util.List;

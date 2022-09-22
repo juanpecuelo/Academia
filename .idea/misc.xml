@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/evening_background_1.xml" value="0.1" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/evening_gradient_list.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_book.xml" value="0.2085" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_bug.xml" value="0.2085" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_info.xml" value="0.2085" />
@@ -10,6 +12,10 @@
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_my_stoic.xml" value="0.192" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_settings.xml" value="0.2085" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_widgets.xml" value="0.2085" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/morning_background_1.xml" value="0.1" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/morning_gradient_list.xml" value="0.1" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/night_background1.xml" value="0.1" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/night_gradient_list.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/tab_indicator_default.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-mdpi/green_background_1.xml" value="0.1065" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-mdpi/green_background_2.xml" value="0.1065" />

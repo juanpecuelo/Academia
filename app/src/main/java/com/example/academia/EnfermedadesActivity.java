@@ -24,6 +24,8 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import clases.Constantes;
+
 public class EnfermedadesActivity extends AppCompatActivity {
 
     private static final String URL = Constantes.IP + "/login/updateNewAccount.php";

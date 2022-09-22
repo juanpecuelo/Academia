@@ -1,4 +1,4 @@
-package com.example.academia;
+package clases;
 
 public class Constantes {
 

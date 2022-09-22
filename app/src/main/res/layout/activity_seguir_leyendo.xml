@@ -67,7 +67,7 @@
                 android:layout_toRightOf="@id/imageButtonCategoria"
                 android:height="50dp"
                 android:singleLine="true"
-                android:text="Nombre"
+                android:text="-"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="italic"></TextView>
@@ -79,14 +79,14 @@
                 android:layout_below="@id/categoria_textName"
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="Nombre"
+                android:text="-"
                 android:textColor="@color/black"
                 android:textSize="15sp"></TextView>
 
             <!--para que el texto gire hacia la derecha: se cambia la dirección del texto a la que usan los árabes-->
             <!--y se pone espacios detrás del texto hasta que se active el marquee-->
             <TextView
-                android:id="@+id/seguirLeyendoTxt"
+                android:id="@+id/marqueeSeguirLeyendo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/app_bar_margin"
