@@ -18,4 +18,8 @@
     <string name="estas_seguro">¿Estás seguro?</string>
     <string name="pierdes_progreso">Si borras tu cuenta, perderás todo tu progreso</string>
     <string name="nuevo_módulo">¡Se ha desbloqueado un nuevo módulo!</string>
+    <string name="enviar">enviar</string>
+    <string name="gracias_bug">¡Gracias por tu ayuda!</string>
+    <string name="error_envio">No se ha podido enviar</string>
+    <string name="sobre_nosotros">Sobre nosotros</string>
 </resources>

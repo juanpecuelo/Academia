@@ -3,10 +3,12 @@ package com.example.academia;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,9 +42,11 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.cvWidgets:
                 //intent = new Intent(MenuPrincipalActivity.this, WidgetsActivity.class);
+                toastCorrecto("¡Próximamente!");
                 break;
             case R.id.cvMyStoic:
                 //intent = new Intent(MenuPrincipalActivity.this, MyStoicActivity.class);
+                toastCorrecto("¡Próximamente!");
                 break;
             case R.id.cvAjustes:
                 intent = new Intent(MenuPrincipalActivity.this, AjustesActivity.class);
@@ -54,6 +58,17 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         if (intent != null) {
             startActivity(intent);
         }
+    }
+    private void toastCorrecto(String msg) {
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
+        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
+        txtMensaje.setText(msg);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(view);
+        toast.show();
     }
 
     @Override

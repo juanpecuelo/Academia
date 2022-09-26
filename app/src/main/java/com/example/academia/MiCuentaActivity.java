@@ -22,10 +22,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,8 +43,10 @@ public class MiCuentaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view_reusable);
-        String[] opciones = {"Módulos desbloqueados: ", "Email: ", "Cambiar email", "Cambiar contraseña", "Borrar usuario"};
+        String[] opciones = getResources().getStringArray(R.array.opciones_mi_cuenta);
         getPdfsDesbloqueados(opciones);
+        TextView txtTab = findViewById(R.id.reusableTextView);
+        txtTab.setText(getResources().getString(R.string.mi_cuenta));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item_reusable, opciones);
         ListView listView = findViewById(R.id.listViewReusable);
@@ -54,7 +58,7 @@ public class MiCuentaActivity extends AppCompatActivity {
                     case 2:
 
                         break;
-                    case 4:
+                    case 0:
                         mostrarDialogo(view);
                         break;
                 }

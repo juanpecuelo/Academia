@@ -57,6 +57,7 @@ public class SelectorPdfActivity extends AppCompatActivity {
         nombreCategoria.setText(extras.getString("nombre_categoria"));
         idCategoria = extras.getInt("id_categoria");
         listaTextos = new ArrayList<>();
+
         getPdfs();
 
     }
@@ -81,6 +82,7 @@ public class SelectorPdfActivity extends AppCompatActivity {
     }
 
     private void getPdfs() {
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, BASE_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -103,6 +105,7 @@ public class SelectorPdfActivity extends AppCompatActivity {
                         adapter = new AdapterPreviewPdf(SelectorPdfActivity.this, listaTextos);
                         infiniteViewPager.setAdapter(adapter);
                         infiniteViewPager.notifyDataSetChanged();
+                        infiniteViewPager.setCurrentItem(listaTextos.size()-1);
 
                     }
                 }, new Response.ErrorListener() {

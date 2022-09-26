@@ -19,12 +19,12 @@ public class AjustesActivity extends AppCompatActivity {
     //TODO
     //  session manager para cerrar la sesión
 
-    private static final String[] ajustes = {"Mi cuenta", "Modo oscuro", "Cerrar sesión"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view_reusable);
+        final String[] ajustes = getResources().getStringArray(R.array.opciones_ajustes);
         TextView textView = findViewById(R.id.reusableTextView);
         textView.setText(getResources().getString(R.string.ajustes));
         ListView listView = findViewById(R.id.listViewReusable);
@@ -40,6 +40,10 @@ public class AjustesActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 2:
+                        intent = new Intent(getApplicationContext(), ReportarBugActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
                         SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
                         SharedPreferences.Editor edit = sp.edit();
                         edit.remove(LoginActivity.HAS_LOGGED_IN);

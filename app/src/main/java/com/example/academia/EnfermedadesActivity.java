@@ -31,12 +31,12 @@ public class EnfermedadesActivity extends AppCompatActivity {
     private static final String URL = Constantes.IP + "/login/updateNewAccount.php";
     private static final String URL_INSERT = Constantes.IP + "/login/insertUser.php";
     private ListView listView;
-    private static final String[] arrayEnfermedades = {"Depresión", "Fobia social", "Déficit de atención", "Ansiedad","Me encuentro bien, pero quiero estar mejor"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enfermedades);
+        final String[] arrayEnfermedades = getResources().getStringArray(R.array.enfermedades);
         ArrayAdapter<String> adapter;
         listView = findViewById(R.id.lvEnfermedades);
         TextView textView = findViewById(R.id.tvIrASintomas);

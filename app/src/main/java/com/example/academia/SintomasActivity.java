@@ -29,7 +29,6 @@ import clases.Constantes;
 public class SintomasActivity extends AppCompatActivity {
     private static final String URL_ACCOUNT = Constantes.IP + "/login/updateNewAccount.php";
     private static final String URL_INSERT = Constantes.IP + "/login/insertUser.php";
-    private static final String[] arraySintomas = {"Tristeza", "Cansancio constante", "Mal humor", "Pena", "Soledad", "Dificultad para concentrarse", "Apatía", "Nerviosismo", "Estrés", "Culpa", "Me encuentro bien, pero quiero estar mejor"};
 
     private ListView listView;
 
@@ -37,6 +36,7 @@ public class SintomasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sintomas);
+        final String[] arraySintomas = getResources().getStringArray(R.array.sintomas);
         ArrayAdapter<String> adapter;
         listView = findViewById(R.id.lvSintomas);
         TextView textView = findViewById(R.id.tvIrAEnfermedades);

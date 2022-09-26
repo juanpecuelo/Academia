@@ -73,10 +73,11 @@
             ></com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
     <Button
+        android:id="@+id/buttonBug"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:text="enviar"
+        android:text="@string/enviar"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/black"
         android:layout_gravity="center"

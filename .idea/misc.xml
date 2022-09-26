@@ -37,6 +37,7 @@
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable/tab_indicator_selected.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable/tab_selector.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable/text_style.xml" value="0.1485" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_about.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_ajustes.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_enfermedades.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_info.xml" value="0.253125" />
@@ -57,6 +58,7 @@
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_sintomas.xml" value="0.264" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_success.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_texto.xml" value="0.17391304347826086" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/categoria.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/dialogo.xml" value="0.264" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/done_layout.xml" value="0.12487335359675786" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/infinite_cycle_viewpager.xml" value="0.264" />

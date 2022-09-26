@@ -30,6 +30,7 @@ import com.example.academia.MainActivity;
 import clases.Pdf;
 import com.example.academia.PdfViewActivity;
 import com.example.academia.R;
+import com.example.academia.SelectorPdfActivity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -114,7 +115,9 @@ public class AdapterPreviewPdf extends PagerAdapter {
                 SharedPreferences.Editor editor = sp.edit();
                 editor.putInt(MainActivity.PREFS_ULTIMA_CATEGORIA, pdf.getCategoriaId());
                 editor.commit();
-                //Intent intent = new Intent(PreviewPdfActivity.this, SelectorPdfActivity.class);
+                //Intent intent = new Intent(context, SelectorPdfActivity.class);
+                //context.startActivity(intent);
+
                 button.setClickable(false);
             }
         });

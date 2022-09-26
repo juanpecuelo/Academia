@@ -23,5 +23,7 @@
     <color name="blue_dark_theme">#361eae</color>
     <color name="yellow_green_theme">#e1fab1</color>
     <color name="pink_theme">#fab1e1</color>
+    <color name="brown">#ae2a1e</color>
+    <color name = "yellow_greyer">#d1cf5d</color>
 
 </resources>

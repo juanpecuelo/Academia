@@ -9,7 +9,34 @@
         <item>@color/yellow_green_theme</item>
         <item>@color/pink_theme</item>
     </array>
-
-
+    <array name="opciones_mi_cuenta">
+        <item>Borrar usuario</item>
+    </array>
+    <array name="enfermedades">
+        <item>Depresión</item>
+        <item>Fobia social</item>
+        <item>Déficit de atención</item>
+        <item>Ansiedad</item>
+        <item>Me encuentro bien, pero quiero estar mejor</item>
+    </array>
+    <array name="sintomas">
+        <item>Tristeza</item>
+        <item>Cansancio constante</item>
+        <item>Mal humor</item>
+        <item>Pena</item>
+        <item>Soledad</item>
+        <item>Dificultad para concentrarse</item>
+        <item>Apatía</item>
+        <item>Nerviosismo</item>
+        <item>Estrés</item>
+        <item>Culpa</item>
+        <item>Me encuentro bien, pero quiero estar mejor</item>
+    </array>
+    <array name="opciones_ajustes">
+        <item>Mi cuenta</item>
+        <item>Modo oscuro</item>
+        <item>Reportar errores</item>
+        <item>Cerrar sesión</item>
+    </array>
 
 </resources>
