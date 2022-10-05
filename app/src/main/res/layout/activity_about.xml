@@ -22,7 +22,7 @@
                 android:layout_centerInParent="true"
                 android:layout_margin="@dimen/app_bar_margin"
                 android:text="Ajustes"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color1"
                 android:textSize="@dimen/app_bar_textsize"></TextView>
 
             <ImageView
@@ -43,7 +43,7 @@
             android:background="@drawable/text_style"
             android:textSize="20sp"
             android:layout_margin="8dp"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color1"
             ></TextView>
 
 </LinearLayout>

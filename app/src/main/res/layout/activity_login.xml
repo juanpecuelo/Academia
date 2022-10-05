@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:text="Recuérdame"
-        android:buttonTint="@color/blue_solid"
+        android:buttonTint="@color/button_color"
         android:textColor="@color/white">
 
     </CheckBox>
@@ -79,7 +79,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/button_color"
         android:text="Ingresar"></Button>
 
 </LinearLayout>

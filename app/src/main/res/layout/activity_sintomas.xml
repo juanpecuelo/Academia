@@ -23,7 +23,7 @@
                 android:layout_marginEnd="@dimen/app_bar_margin"
                 android:layout_marginBottom="@dimen/app_bar_margin"
                 android:text="@string/que_me_pasa"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color1"
                 android:textSize="@dimen/app_bar_textsize"></TextView>
 
             <ImageView
@@ -41,6 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/text_style"
+
         android:choiceMode="multipleChoice">
     </ListView>
 
@@ -53,7 +54,7 @@
         android:layout_marginTop="5dp"
         android:clickable="true"
         android:textSize="15sp"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color1"
         android:background="@drawable/text_style"
         android:text="¿Ya sabes qué te pasa? Haz click aquí">
     </TextView>
@@ -67,7 +68,7 @@
         android:layout_below="@id/tvIrAEnfermedades"
         android:layout_centerInParent="true"
         android:textColor="@color/white"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/button_color"
         ></Button>
 
 </RelativeLayout>

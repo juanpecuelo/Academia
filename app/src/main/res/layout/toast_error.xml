@@ -20,7 +20,7 @@
         android:id="@+id/txtMensajeToastError"
         android:text="Ha habido un error"
         android:paddingStart="10dp"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color1"
         ></TextView>
 
 </LinearLayout>

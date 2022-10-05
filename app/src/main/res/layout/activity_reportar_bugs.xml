@@ -42,7 +42,7 @@
         android:background="@drawable/text_style"
         android:layout_margin="20dp"
         android:textSize="20sp"
-        android:textColor="@color/blue_solid"
+        android:textColor="@color/text_color2"
         >
 
 
@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="¿Qué ha pasado?"
-        app:hintTextColor="@color/black"
+        app:hintTextColor="@color/text_color1"
         android:layout_alignParentBottom="true"
         android:gravity="top"
         app:endIconMode="clear_text">
@@ -79,7 +79,7 @@
         android:textColor="@color/white"
         android:text="@string/enviar"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/button_color"
         android:layout_gravity="center"
         >
         ></Button>

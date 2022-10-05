@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.academia">
+    package="com.juanpecuelo.academia">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -22,28 +22,28 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".AboutActivity"
+            android:name="com.juanpecuelo.academia.AboutActivity"
             android:exported="false" />
         <activity
-            android:name=".MiCuentaActivity"
+            android:name="com.juanpecuelo.academia.MiCuentaActivity"
             android:exported="false" />
         <activity
-            android:name=".SeguirLeyendoActivity"
+            android:name="com.juanpecuelo.academia.SeguirLeyendoActivity"
             android:exported="false" />
         <activity
-            android:name=".InformacionActivity"
+            android:name="com.juanpecuelo.academia.InformacionActivity"
             android:exported="false" />
         <activity
-            android:name=".AjustesActivity"
+            android:name="com.juanpecuelo.academia.AjustesActivity"
             android:exported="false" />
         <activity
-            android:name=".ReportarBugActivity"
+            android:name="com.juanpecuelo.academia.ReportarBugActivity"
             android:exported="false" />
         <activity
-            android:name=".PdfViewActivity"
+            android:name="com.juanpecuelo.academia.PdfViewActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.juanpecuelo.academia.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,16 +52,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MenuPrincipalActivity"
+            android:name="com.juanpecuelo.academia.MenuPrincipalActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.juanpecuelo.academia.LoginActivity"
             android:exported="false" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".SelectorCategoriaActivity" />
-        <activity android:name=".SelectorPdfActivity" />
-        <activity android:name=".SintomasActivity" />
-        <activity android:name=".EnfermedadesActivity" />
+        <activity android:name="com.juanpecuelo.academia.RegisterActivity" />
+        <activity android:name="com.juanpecuelo.academia.SelectorCategoriaActivity" />
+        <activity android:name="com.juanpecuelo.academia.SelectorPdfActivity" />
+        <activity android:name="com.juanpecuelo.academia.SintomasActivity" />
+        <activity android:name="com.juanpecuelo.academia.EnfermedadesActivity" />
     </application>
 
 </manifest>

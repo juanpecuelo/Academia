@@ -32,7 +32,7 @@
             android:layout_marginEnd="5dp"
             android:background="@drawable/text_style"
             android:text="Título"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color1"
             android:textSize="22sp"
             android:textStyle="italic"></TextView>
 
@@ -44,7 +44,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/text_style"
             android:text="Pequeña introducción sobre el pdf"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color1"
             android:textSize="18sp"></TextView>
 
         <TextView
@@ -53,7 +53,7 @@
             android:layout_marginStart="10dp"
             android:background="@drawable/text_style"
             android:text="Presiona sobre la imagen para acceder al módulo de hoy"
-            android:textColor="@color/blue_solid"
+            android:textColor="@color/text_color2"
             android:textSize="14sp"
             android:textStyle="bold"></TextView>
 
@@ -63,8 +63,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/button_color"
             android:text="ya lo he leído"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:visibility="invisible"></Button>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

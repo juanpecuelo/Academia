@@ -68,7 +68,7 @@
                 android:height="50dp"
                 android:singleLine="true"
                 android:text="-"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color1"
                 android:textSize="20sp"
                 android:textStyle="italic"></TextView>
 
@@ -80,7 +80,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="5dp"
                 android:text="-"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color1"
                 android:textSize="15sp"></TextView>
 
             <!--para que el texto gire hacia la derecha: se cambia la dirección del texto a la que usan los árabes-->
@@ -90,14 +90,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/app_bar_margin"
-                android:background="@color/yellow_dark"
+                android:background="@color/last_pdf_color"
                 android:ellipsize="marquee"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:paddingStart="5dp"
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:text="                                                   Seguir leyendo"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color1"
                 android:textDirection="rtl"
                 android:textSize="20sp"
                 android:textStyle="bold"></TextView>
@@ -109,7 +109,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/text_style"
                 android:text="0 %"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color1"
                 android:textSize="15sp"
                 android:textStyle="bold"></TextView>
         </LinearLayout>
@@ -122,8 +122,8 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:background="@color/blue_solid"
-        app:itemTextColor="@color/blue_dark_theme"
-        app:itemIconTint="@color/blue_dark_theme"
+        app:itemIconTint="@color/navbar_icon_color"
+        app:itemTextColor="@color/navbar_icon_color"
         app:menu="@menu/bottom_menu_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </RelativeLayout>

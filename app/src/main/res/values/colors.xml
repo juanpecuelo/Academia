@@ -5,6 +5,12 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name ="button_color">#FF000000</color>
+    <color name="text_color1">#FF000000</color>
+    <color name="text_color2">#1e7dae</color>
+    <color name="cardview_color">#FFFFFFFF</color>
+    <color name="text_style_background">#FFFFFFFF</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#8C8585</color>
@@ -14,12 +20,13 @@
     <color name = "red">#ff0000</color>
     <color name="blue_solid">#1e7dae</color>
     <color name = "yellow">#FFFB00</color>
-    <color name = "yellow_dark">#EAE739</color>
+    <color name = "last_pdf_color">#EAE739</color>
     <color name = "orange_theme">#fae2b1</color>
     <color name = "magenta_theme">#fabeb1</color>
     <color name="purple_theme">#cab1fa</color>
     <color name="green_theme">#b1fae1</color>
     <color name="green_darker_theme">#1eae4e</color>
+    <color name="navbar_icon_color">#361eae</color>
     <color name="blue_dark_theme">#361eae</color>
     <color name="yellow_green_theme">#e1fab1</color>
     <color name="pink_theme">#fab1e1</color>

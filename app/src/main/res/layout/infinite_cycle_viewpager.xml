@@ -29,7 +29,7 @@
             android:layout_gravity="center"
             android:background="@drawable/text_style"
             android:text="Nombre de la categoría"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color1"
             android:textSize="17sp"
             android:textStyle="italic"></TextView>
         <com.google.android.material.floatingactionbutton.FloatingActionButton

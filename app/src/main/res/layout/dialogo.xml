@@ -18,7 +18,7 @@
         android:text="Título"
         android:layout_margin="5dp"
         android:background="@drawable/text_style"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color1"
         android:textSize="25sp"
         android:textStyle="bold"
         ></TextView>
@@ -29,7 +29,7 @@
         android:text="Texto de apoyo al título"
         android:layout_margin="5dp"
         android:background="@drawable/text_style"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color1"
         android:textSize="18sp"
         android:textStyle="bold"
         ></TextView>
@@ -46,7 +46,7 @@
             android:text="Si"
             android:textAllCaps="true"
             android:layout_margin="7dp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/button_color"
 
             ></Button>
         <Button
@@ -57,7 +57,7 @@
             android:layout_margin="7dp"
             android:layout_weight="1"
             android:textAllCaps="true"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/button_color"
             ></Button>
 
     </LinearLayout>

@@ -39,7 +39,7 @@
             android:layout_marginEnd="5dp"
             android:padding="6dp"
             android:height="50dp"
-            android:textColor="@color/black">
+            android:textColor="@color/text_color1">
         </TextView>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

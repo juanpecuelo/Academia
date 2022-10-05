@@ -51,7 +51,7 @@
         app:helperText="Letras y carácteres alfanuméricos"
         app:helperTextTextColor="@color/black"
         android:hint="Contraseña"
-        app:hintTextColor="@color/black"
+        app:hintTextColor="@color/text_color1"
         app:startIconDrawable="@drawable/ic_lock"
         >
 
@@ -96,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/button_color"
         android:text="Registrar"></Button>
 
 </LinearLayout>

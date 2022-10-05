@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import clases.Categoria;
-import com.example.academia.R;
-import com.example.academia.SelectorPdfActivity;
+import com.juanpecuelo.academia.R;
+import com.juanpecuelo.academia.SelectorPdfActivity;
 import viewholders.ViewHolderCategoria;
 
 import java.util.List;

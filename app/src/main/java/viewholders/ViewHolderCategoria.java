@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.academia.R;
+import com.juanpecuelo.academia.R;
 
 public class ViewHolderCategoria extends RecyclerView.ViewHolder {
     public TextView txtName;

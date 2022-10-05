@@ -25,12 +25,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import clases.Constantes;
-import com.example.academia.LoginActivity;
-import com.example.academia.MainActivity;
+import com.juanpecuelo.academia.LoginActivity;
+import com.juanpecuelo.academia.MainActivity;
 import clases.Pdf;
-import com.example.academia.PdfViewActivity;
-import com.example.academia.R;
-import com.example.academia.SelectorPdfActivity;
+import com.juanpecuelo.academia.PdfViewActivity;
+import com.juanpecuelo.academia.R;
 
 import java.util.HashMap;
 import java.util.List;
@@ -81,7 +80,7 @@ public class AdapterPreviewPdf extends PagerAdapter {
 
 
         if(position == getCount()-1){
-            layout.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow_dark));
+            layout.setBackgroundColor(ContextCompat.getColor(context, R.color.last_pdf_color));
             button.setVisibility(View.VISIBLE);
         }
         final Pdf pdf = pdfFiles.get(position);
