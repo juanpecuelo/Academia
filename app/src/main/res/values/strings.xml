@@ -12,7 +12,7 @@
     <string name="que_me_pasa">¿Qué me pasa?</string>
     <string name="my_stoic">My Stoic</string>
     <string name="informacion">Sobre\nnosotros</string>
-    <string name="widgets">Widgets</string>
+    <string name="pildora">Píldora</string>
     <string name="reportar_error_tv">Por favor, explícanos cómo era el error y dónde lo has encontrado. ¡Gracias!</string>
     <string name="mi_cuenta">Mi cuenta</string>
     <string name="estas_seguro">¿Estás seguro?</string>
@@ -22,4 +22,7 @@
     <string name="gracias_bug">¡Gracias por tu ayuda!</string>
     <string name="error_envio">No se ha podido enviar</string>
     <string name="sobre_nosotros">Sobre nosotros</string>
+    <string name="futuro">FUTURO</string>
+    <string name="exito_cerrar_sesion">Se ha cerrado sesión con éxito</string>
+    <string name="proximamente">¡Próximamente!</string>
 </resources>

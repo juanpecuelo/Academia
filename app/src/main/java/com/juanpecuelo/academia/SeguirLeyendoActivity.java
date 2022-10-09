@@ -4,15 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -31,6 +28,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import clases.Constantes;
+import clases.SessionManager;
+import clases.Utiles;
 
 public class SeguirLeyendoActivity extends AppCompatActivity {
 
@@ -41,10 +40,13 @@ public class SeguirLeyendoActivity extends AppCompatActivity {
     private TextView porcentaje;
     private int idCategoria;
 
+    private SessionManager sm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seguir_leyendo);
+        sm = new SessionManager(getApplicationContext());
         image = findViewById(R.id.seguirLeyendoimageButtonCategoria);
         name = findViewById(R.id.seguirLeyendo_textName);
         descripcion = findViewById(R.id.seguirLeyendo_textDescripcion);
@@ -113,30 +115,21 @@ public class SeguirLeyendoActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                toastError(error.toString().trim());
+                final Utiles utiles = new Utiles(SeguirLeyendoActivity.this);
+                utiles.toast(error.toString().trim());
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
-                params.put("id_usuario", sp.getInt("user_id", -1) + "");
-                params.put("id_ultima_categoria", sp.getInt(MainActivity.PREFS_ULTIMA_CATEGORIA, -1) + "");
+                params.put("id_usuario", sm.getId() + "");
+                params.put("id_ultima_categoria", sm.getUltimaCategoria() + "");
                 return params;
             }
         };
         Volley.newRequestQueue(SeguirLeyendoActivity.this).add(stringRequest);
     }
 
-    private void toastError(String msg) {
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
-        txtMensaje.setText(msg);
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
+
 
 }

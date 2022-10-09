@@ -4,7 +4,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -31,16 +29,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import clases.Constantes;
+import clases.SessionManager;
+import clases.Utiles;
 
 public class MiCuentaActivity extends AppCompatActivity {
     private static final String URL_BORRAR_USUARIO = Constantes.IP + "/login/borrarUsuario.php";
     private static final String URL_PDFS_DESBLOQUEADOS = Constantes.IP + "/login/getPdfsDesbloqueados.php";
+
+    private SessionManager sm;
+    private Utiles utiles;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view_reusable);
+        sm = new SessionManager(getApplicationContext());
+        utiles = new Utiles(MiCuentaActivity.this);
         String[] opciones = getResources().getStringArray(R.array.opciones_mi_cuenta);
         getPdfsDesbloqueados(opciones);
         TextView txtTab = findViewById(R.id.reusableTextView);
@@ -113,14 +118,13 @@ public class MiCuentaActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                toastError(getResources().getString(R.string.error));
+                utiles.toast(getResources().getString(R.string.error));
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
-                params.put("id_usuario", sp.getInt("user_id", -1) + "");
+                params.put("id_usuario", sm.getId() + "");
                 return params;
             }
         };
@@ -133,26 +137,22 @@ public class MiCuentaActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, URL_BORRAR_USUARIO, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
-                SharedPreferences.Editor editor = sp.edit();
-                editor.remove(LoginActivity.HAS_LOGGED_IN);
-                editor.commit();
+                sm.setLogin(false);
                 Intent intent = new Intent(MiCuentaActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-                toastCorrecto("Se ha borrado tu cuenta con éxito");
+                utiles.toast("Se ha borrado tu cuenta con éxito");
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                toastError(getResources().getString(R.string.error));
+                utiles.toast(getResources().getString(R.string.error));
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
-                params.put("id_usuario", sp.getInt("user_id", -1) + "");
+                params.put("id_usuario", sm.getId()+ "");
                 return params;
             }
         };
@@ -160,27 +160,7 @@ public class MiCuentaActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    private void toastCorrecto(String msg) {
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
-        txtMensaje.setText(msg);
 
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
 
-    private void toastError(String msg) {
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
-        txtMensaje.setText(msg);
 
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
 }

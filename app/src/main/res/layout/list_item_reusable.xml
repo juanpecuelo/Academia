@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:text="Prueba"
     android:textColor="@color/text_color1"
+    android:background="@color/white"
     android:layout_marginBottom="@dimen/app_bar_margin"
     android:textSize="25sp">
 </TextView>

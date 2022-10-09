@@ -3,13 +3,14 @@
     <color name="black">#FF000000</color>
     <color name="text_style_background">#a93763</color>
     <color name ="theme_color">#0a082e</color>
+    <color name="gold">#ae00ff</color>
     <color name="blue_light">#276bb0</color>
     <color name="button_color">#a93763</color>
     <color name="text_color1">#FFFFFFFF</color>
     <color name="text_color2">#FFFFFF</color>
     <color name="cardview_color">#2f1d85</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue_solid">#090057</color>
+    <color name="complementary_theme_color">#090057</color>
     <color name="green_theme">#60C689</color>
     <color name="purple_theme">#9972e0</color>
     <color name="yellow_green_theme">#bae072</color>

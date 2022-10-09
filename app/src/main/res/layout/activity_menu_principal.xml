@@ -11,8 +11,7 @@
         android:id="@+id/tbLayoutPrincipal">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/theme_color">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:layout_width="@dimen/app_bar_image"
@@ -42,10 +41,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/txtBienvenido"
         android:layout_above="@id/bottomNavigation"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_margin="20dp"
         android:columnCount="2"
         android:rowCount="3">
 
@@ -93,13 +89,14 @@
             android:id="@+id/cvMyStoic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
+
             android:layout_rowWeight="1"
-            android:layout_column="1"
             app:cardBackgroundColor="@color/cardview_color"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="8dp"
+            android:layout_row="1"
+            android:layout_column="0"
             android:clickable="true"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
@@ -130,12 +127,15 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvWidgets"
+            android:id="@+id/cvPildoras"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="1"
+
+
+            android:layout_row="0"
+            android:layout_column="1"
+
             android:layout_rowWeight="1"
-            android:layout_column="0"
             app:cardBackgroundColor="@color/cardview_color"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
@@ -154,14 +154,14 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_widgets"
-                    android:backgroundTint="@color/orange_theme"></ImageView>
+                    android:background="@drawable/ic_pill"
+                    android:backgroundTint="@color/gold"></ImageView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/cardview_margin_text"
-                    android:text="@string/widgets"
+                    android:text="@string/pildora"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textSize="15sp"
@@ -296,7 +296,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@color/blue_solid"
+        android:background="@color/complementary_theme_color"
         app:itemIconTint="@color/navbar_icon_color"
         app:itemTextColor="@color/navbar_icon_color"
         app:menu="@menu/bottom_menu_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>

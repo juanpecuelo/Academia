@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/theme_color"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -16,7 +15,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/theme_color">
+            >
 
             <ImageView
                 android:layout_width="@dimen/app_bar_image"
@@ -41,7 +40,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue_solid"
+            android:background="@color/complementary_theme_color"
             android:orientation="vertical"
             android:padding="5dp">
             <!-- TODO arreglar visualmente las imágenes pequeñas-->
@@ -55,7 +54,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/blue_solid"
+                android:background="@color/complementary_theme_color"
                 android:scaleType="centerInside"></ImageButton>
 
             <TextView
@@ -121,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@color/blue_solid"
+        android:background="@color/complementary_theme_color"
         app:itemIconTint="@color/navbar_icon_color"
         app:itemTextColor="@color/navbar_icon_color"
         app:menu="@menu/bottom_menu_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>

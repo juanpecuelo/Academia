@@ -13,4 +13,18 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="button1Style" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/button_text_color</item>
+        <item name="backgroundTint">@color/complementary_theme_color</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
+    <style name="textInputEditTextStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name ="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/complementary_theme_color</item>
+        <item name="hintTextColor">@color/complementary_theme_color</item>
+    </style>
 </resources>

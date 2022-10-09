@@ -1,13 +1,8 @@
 package com.juanpecuelo.academia;
 
-import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +27,8 @@ import java.util.Map;
 import adapters.AdapterCategoria;
 import clases.Categoria;
 import clases.Constantes;
+import clases.SessionManager;
+import clases.Utiles;
 
 public class SelectorCategoriaActivity extends AppCompatActivity {
 
@@ -41,13 +38,15 @@ public class SelectorCategoriaActivity extends AppCompatActivity {
     private Parcelable recyclerViewState;
 
     private List<Categoria> listaCategorias;
+    private SessionManager sm;
 
-    private static final String BASE_URL = Constantes.IP+"/login/getCategorias.php";
-    private int scrollState;
+    private static final String BASE_URL = Constantes.IP + "/login/getCategorias.php";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selector_pdf);
+        sm = new SessionManager(getApplicationContext());
         recyclerView = findViewById(R.id.rvPreview);
         recyclerView.setLayoutManager(new GridLayoutManager(SelectorCategoriaActivity.this, 1));
 
@@ -56,16 +55,7 @@ public class SelectorCategoriaActivity extends AppCompatActivity {
     }
 
 
-    private void toastError(String msg) {
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
-        txtMensaje.setText(msg);
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
+
 
 
     //TODO conseguir que se guarde el estado del recyclerview al cambiar de activity
@@ -74,6 +64,7 @@ public class SelectorCategoriaActivity extends AppCompatActivity {
         super.onPause();
         recyclerViewState = recyclerView.getLayoutManager().onSaveInstanceState();
     }
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -108,9 +99,9 @@ public class SelectorCategoriaActivity extends AppCompatActivity {
                                 String nombre = object.getString("nombre");
                                 String descripcion = object.getString("descripcion");
                                 int unlocked = object.getInt("unlocked");
-                                color = colors.getColor(i, getResources().getColor(R.color.blue_solid));
-                                Categoria categoria = new Categoria(id,image,nombre,descripcion,unlocked, color);
-                                    listaCategorias.add(categoria);
+                                color = colors.getColor(i, getResources().getColor(R.color.complementary_theme_color));
+                                Categoria categoria = new Categoria(id, image, nombre, descripcion, unlocked, color);
+                                listaCategorias.add(categoria);
                             }
 
                         } catch (Exception e) {
@@ -123,14 +114,14 @@ public class SelectorCategoriaActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                toastError(error.toString().trim());
+                Utiles utiles = new Utiles(SelectorCategoriaActivity.this);
+                utiles.toast(error.toString().trim());
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
-                params.put("id", sp.getInt("user_id", -1)+"");
+                params.put("id", sm.getId() + "");
                 return params;
             }
         };

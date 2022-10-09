@@ -3,16 +3,13 @@ package com.juanpecuelo.academia;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -30,54 +27,34 @@ import java.util.HashMap;
 import java.util.Map;
 
 import clases.Constantes;
+import clases.SessionManager;
+import clases.Utiles;
 
 public class LoginActivity extends AppCompatActivity {
 
 
     //TODO
     // no funciona el boton de siguiente en el teclado
-    public static final String PREFS_NAME = "already_login";
-    public static final String HAS_LOGGED_IN = "has_logged_in";
-    public static final String PREFS_USER = "user";
     private EditText etEmail, etContrasena;
     private String email, contrasena;
     private static final String URL = Constantes.IP + "/login/login.php";
     private static final String URL_ID = Constantes.IP + "/login/getId.php";
     private CheckBox recuerdame;
-    private SharedPreferences.Editor editor;
-
-    private void guardarRecuerdame() {
-        SharedPreferences sp = getSharedPreferences("datos", 0);
-        editor = sp.edit();
-        String email = etEmail.getText().toString();
-        String contrasena = etContrasena.getText().toString();
-        boolean isChecked = recuerdame.isChecked();
-        editor.putString("email", email);
-        editor.putString("contrasena", contrasena);
-        editor.putBoolean("checked", isChecked);
-        editor.commit();
-    }
-    //TODO hay que meter todos estos métodos en la clase SessionManager
-    public void borrarRecuerdame() {
-        SharedPreferences sp = getSharedPreferences("datos", 0);
-        editor = sp.edit();
-        editor.putString("email", "");
-        editor.putString("contrasena", "");
-        editor.putBoolean("checked", false);
-        editor.commit();
-    }
+    private SessionManager sm;
+    private Utiles utiles;
 
     private void cargarRecuerdame() {
-        SharedPreferences sp = getSharedPreferences("datos", 0);
-        etEmail.setText(sp.getString("email", ""));
-        etContrasena.setText(sp.getString("contrasena", ""));
-        recuerdame.setChecked(sp.getBoolean("checked", false));
+        etEmail.setText(sm.getEmail());
+        etContrasena.setText(sm.getContrasena());
+        recuerdame.setChecked(sm.getCheckedRecuerdame());
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        sm = new SessionManager(getApplicationContext());
+        utiles = new Utiles(LoginActivity.this);
         etEmail = findViewById(R.id.etEmail);
         etContrasena = findViewById(R.id.etContrasena);
         TextView tvHacerRegistro = findViewById(R.id.tvRegistrateAqui);
@@ -109,19 +86,20 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(String response) {
                     int newAccount=0;
                     String[] respuesta = response.split("@");
-                    System.out.println(response + "<--- respuesta login");
+                   // System.out.println(response + "<--- respuesta login");
                     if (respuesta[0].equals("success")) {
                         if (recuerdame.isChecked()) {
-                            guardarRecuerdame();
+                            sm.setLogin(true);
+                            sm.guardarRecuerdame(email, contrasena, recuerdame.isChecked());
                         } else {
-                            borrarRecuerdame();
+                            sm.borrarRecuerdame();
                         }
                         try {
                             JSONArray array = new JSONArray(respuesta[1]);
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject object = array.getJSONObject(i);
                                 newAccount= object.getInt("is_new_account");
-                                System.out.println(newAccount + " arriba");
+                               // System.out.println(newAccount + " arriba");
                             }
                         } catch (Exception e) {
                             System.out.println(e);
@@ -136,15 +114,15 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     } else if (respuesta[0].equals("failure")) {
-                        toastError(getResources().getString(R.string.email_contra_incorrectos));
+                        utiles.toast(getResources().getString(R.string.email_contra_incorrectos));
                     } else {
-                        toastError(getResources().getString(R.string.campos_vacios));
+                        utiles.toast(getResources().getString(R.string.campos_vacios));
                     }
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    toastError(error.toString().trim());
+                    utiles.toast(error.toString().trim());
                     System.out.println(error.toString().trim());
                 }
             }) {
@@ -167,7 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println(response + "<--- respuesta id");
+  //                      System.out.println(response + "<--- respuesta id");
                         try {
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
@@ -175,11 +153,8 @@ public class LoginActivity extends AppCompatActivity {
                                 JSONObject object = array.getJSONObject(i);
                                 int id = object.getInt("id");
                                 System.out.println(id);
-                                SharedPreferences sp = getSharedPreferences(PREFS_USER, 0);
-                                SharedPreferences.Editor edit = sp.edit();
-                                edit.putInt("user_id", id);
-                                edit.commit();
-                                System.out.println(sp.getInt("user_id", -1));
+                                sm.setId(id);
+//                                System.out.println(sp.getInt("user_id", -1));
                             }
 
                         } catch (Exception e) {
@@ -190,7 +165,7 @@ public class LoginActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                toastError(error.toString().trim());
+                utiles.toast(error.toString().trim());
             }
         }) {
             @Override
@@ -209,27 +184,5 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    private void toastCorrecto(String msg) {
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
-        txtMensaje.setText(msg);
-
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
-
-    private void toastError(String msg) {
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
-        txtMensaje.setText(msg);
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
 
 }   

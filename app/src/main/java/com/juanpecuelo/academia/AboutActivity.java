@@ -23,7 +23,7 @@ public class AboutActivity extends AppCompatActivity {
         try {
             br = new BufferedReader
                     (new InputStreamReader(getAssets().open("about.txt")));
-            String line = "";
+            String line;
             while((line = br.readLine())!= null){
                 sb.append(line);
                 sb.append("\n");

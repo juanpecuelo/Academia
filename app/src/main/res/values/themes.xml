@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Academia" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/theme_color</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -12,5 +12,37 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="materialButtonStyle">@style/button1Style</item>
+        <item name ="textInputStyle">@style/textInputEditTextStyle</item>
+        <item name="appBarLayoutStyle">@style/appBarStyle</item>
+        <item name ="android:windowBackground">@color/theme_color</item>
     </style>
+                <!-- BOTONES-->
+    <style name="button1Style" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/button_text_color</item>
+        <item name="backgroundTint">@color/complementary_theme_color</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
+    <style name="buttonPildora" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/text_color2</item>
+        <item name="android:minHeight">5dp</item>
+        <item name="android:background">@drawable/pildora_background</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
+                <!--TEXT INPUT EDTI TEXT-->
+    <style name="textInputEditTextStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name ="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/complementary_theme_color</item>
+        <item name="hintTextColor">@color/complementary_theme_color</item>
+    </style>
+
+                <!--TOP BAR-->
+    <style name="appBarStyle" parent="Widget.Material3.AppBarLayout">
+        <item name="android:background">@color/theme_color</item>
+    </style>
+
 </resources>

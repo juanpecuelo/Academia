@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="vertical"
-        android:background="@color/blue_solid"
+        android:background="@color/complementary_theme_color"
         >
         <ImageButton
             android:id="@+id/imageButtonPreviewPdf"

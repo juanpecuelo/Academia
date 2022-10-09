@@ -10,6 +10,7 @@
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_info.xml" value="0.2085" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_interrogation_mark.xml" value="0.192" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_my_stoic.xml" value="0.192" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_pill.xml" value="0.1645" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_settings.xml" value="0.2085" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/ic_widgets.xml" value="0.2085" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-anydpi/morning_background_1.xml" value="0.1" />
@@ -22,6 +23,7 @@
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-hdpi/background3_nightmode.xml" value="0.176" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-hdpi/blue_background_2.xml" value="0.1" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-hdpi/blue_background_3.xml" value="0.1" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-hdpi/pildora_background.xml" value="0.2595" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-mdpi/green_background_1.xml" value="0.1065" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-mdpi/green_background_2.xml" value="0.1065" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/drawable-mdpi/green_background_3.xml" value="0.1065" />
@@ -52,12 +54,13 @@
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_enfermedades.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_info.xml" value="0.253125" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_informacion.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_login.xml" value="0.2008230452674897" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_menu_principal.xml" value="0.2" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_menu_principal.xml" value="0.25" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_mi_cuenta.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_pdf.xml" value="0.264" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_pdf_view.xml" value="0.12537993920972645" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_pildoras.xml" value="0.2" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_preview.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_preview_pdf.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/activity_principal.xml" value="0.264" />
@@ -89,7 +92,7 @@
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/texto_activity.xml" value="0.264" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/toast_error.xml" value="0.2" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/toast_incorrecto.xml" value="0.11203703703703703" />
-        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/toast_ok.xml" value="0.6" />
+        <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/toast_ok.xml" value="0.264" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/layout/view_pager_activity.xml" value="0.12335359675785208" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/menu/bottom_menu_navigation.xml" value="0.253125" />
         <entry key="..\:/Users/Estudio/AndroidStudioProjects/Academia/app/src/main/res/menu/done_menu.xml" value="0.2" />

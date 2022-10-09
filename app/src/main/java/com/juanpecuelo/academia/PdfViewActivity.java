@@ -1,7 +1,6 @@
 package com.juanpecuelo.academia;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.res.Configuration;
 import android.os.AsyncTask;
@@ -41,10 +40,8 @@ public class PdfViewActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(InputStream inputStream) {
             int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-            boolean nightMode = false;
-            if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
-                nightMode = true;
-            }
+            boolean nightMode = nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
+
             pdfView.fromStream(inputStream).nightMode(nightMode)
                     .password("Your Password")
                     .load();

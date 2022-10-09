@@ -7,28 +7,44 @@
     app:cardCornerRadius="8dp">
 
     <LinearLayout
-        android:id="@+id/linearLayoutPrueba"
+        android:id="@+id/linearLayoutPdfAdapter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/blue_solid">
+        android:background="@color/complementary_theme_color"
+        android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/imagePrueba"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@color/blue_solid"
-            android:scaleType="fitCenter"></ImageButton>
+            android:layout_gravity="center">
+            <ImageButton
+                android:id="@+id/imagePdfAdapter"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/complementary_theme_color"
+                android:scaleType="fitCenter"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/imagePdfAdapter"
+                app:layout_constraintLeft_toLeftOf="@id/imagePdfAdapter"
+                android:layout_marginTop="20dp"
+                android:src="@mipmap/ic_bookmark" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/titlePrueba"
+            android:id="@+id/titlePdfAdapter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/text_style"
             android:text="Título"
@@ -37,7 +53,7 @@
             android:textStyle="italic"></TextView>
 
         <TextView
-            android:id="@+id/introductionPrueba"
+            android:id="@+id/introductionPdfAdapter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -58,7 +74,7 @@
             android:textStyle="bold"></TextView>
 
         <Button
-            android:id="@+id/btnEntendidoPrueba"
+            android:id="@+id/btnEntendidoPdfAdapter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"

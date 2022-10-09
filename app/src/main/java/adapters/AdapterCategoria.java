@@ -32,13 +32,13 @@ public class AdapterCategoria extends RecyclerView.Adapter<ViewHolderCategoria> 
         this.context = context;
         this.listaCategoria = listaCategoria;
     }
-    private int color;
     @Override
     public void onBindViewHolder(@NonNull ViewHolderCategoria holder, int position) {
         final Categoria categoria = listaCategoria.get(position);
         int porcentaje = listaCategoria.get(position).getProgressBarPorcentaje();
         holder.txtName.setText(listaCategoria.get(position).getNombre());
         holder.txtDescripcion.setText(listaCategoria.get(position).getDescripcion());
+        // TODO poner esto es un string resource
         holder.txtPorcentaje.setText(porcentaje + " módulo" + (porcentaje != 1 ? "s" : "") + " desbloqueado" + (porcentaje != 1 ? "s" : ""));
         holder.txtName.setSelected(true);
         //holder.progressBar.setProgress(porcentaje);

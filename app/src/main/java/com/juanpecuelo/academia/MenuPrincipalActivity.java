@@ -3,17 +3,15 @@ package com.juanpecuelo.academia;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.cardview.widget.CardView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,6 +19,8 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.Calendar;
 import java.util.Random;
+
+import clases.Utiles;
 
 //TODO
 //  cambiar el tamaño de las frases si son muy grandes
@@ -34,6 +34,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         Intent intent = null;
+        Utiles utiles = new Utiles(MenuPrincipalActivity.this);
         switch (view.getId()) {
             case R.id.cvModulos:
                 intent = new Intent(MenuPrincipalActivity.this, SelectorCategoriaActivity.class);
@@ -41,13 +42,13 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
             case R.id.cvQueMePasa:
                 intent = new Intent(MenuPrincipalActivity.this, SintomasActivity.class);
                 break;
-            case R.id.cvWidgets:
-                //intent = new Intent(MenuPrincipalActivity.this, WidgetsActivity.class);
-                toastCorrecto("¡Próximamente!");
+            case R.id.cvPildoras:
+                intent = new Intent(MenuPrincipalActivity.this, PildorasActivity.class);
+                utiles.toast(getString(R.string.proximamente));
                 break;
             case R.id.cvMyStoic:
                 //intent = new Intent(MenuPrincipalActivity.this, MyStoicActivity.class);
-                toastCorrecto("¡Próximamente!");
+                utiles.toast(getString(R.string.proximamente));
                 break;
             case R.id.cvAjustes:
                 intent = new Intent(MenuPrincipalActivity.this, AjustesActivity.class);
@@ -61,17 +62,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    private void toastCorrecto(String msg) {
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
-        txtMensaje.setText(msg);
 
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,13 +72,13 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
             if (timeOfDay >= 5 && timeOfDay < 12) {
-                relativeLayout.setBackground(getDrawable(R.drawable.morning_gradient_list));
+                relativeLayout.setBackground(AppCompatResources.getDrawable(getApplicationContext(),R.drawable.morning_gradient_list));
             } else if (timeOfDay >= 12 && timeOfDay < 18) {
-                relativeLayout.setBackground(getDrawable(R.drawable.blue_gradient_list));
+                relativeLayout.setBackground(AppCompatResources.getDrawable(getApplicationContext(),R.drawable.blue_gradient_list));
             } else if (timeOfDay >= 18 && timeOfDay < 22) {
-                relativeLayout.setBackground(getDrawable(R.drawable.evening_gradient_list));
+                relativeLayout.setBackground(AppCompatResources.getDrawable(getApplicationContext(),R.drawable.evening_gradient_list));
             } else {
-                relativeLayout.setBackground(getDrawable(R.drawable.night_gradient_list));
+                relativeLayout.setBackground(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.night_gradient_list));
             }
         //TODO si se pone la animacion en un thread aparte, no se reseteará al cambiar de activity?
 
@@ -102,7 +93,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
 
         CardView misModulos = findViewById(R.id.cvModulos);
         CardView queMePasa = findViewById(R.id.cvQueMePasa);
-        CardView widgets = findViewById(R.id.cvWidgets);
+        CardView pildoras = findViewById(R.id.cvPildoras);
         CardView myStoic = findViewById(R.id.cvMyStoic);
         CardView ajustes = findViewById(R.id.cvAjustes);
         CardView info = findViewById(R.id.cvInfo);
@@ -123,11 +114,9 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
                 return false;
             }
         });
-
-
         misModulos.setOnClickListener(this);
         queMePasa.setOnClickListener(this);
-        widgets.setOnClickListener(this);
+        pildoras.setOnClickListener(this);
         myStoic.setOnClickListener(this);
         ajustes.setOnClickListener(this);
         info.setOnClickListener(this);

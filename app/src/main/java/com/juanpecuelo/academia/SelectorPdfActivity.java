@@ -1,11 +1,7 @@
 package com.juanpecuelo.academia;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +25,8 @@ import java.util.Map;
 import adapters.AdapterPreviewPdf;
 import clases.Constantes;
 import clases.Pdf;
+import clases.SessionManager;
+import clases.Utiles;
 
 public class SelectorPdfActivity extends AppCompatActivity {
     //TODO
@@ -40,6 +38,7 @@ public class SelectorPdfActivity extends AppCompatActivity {
 
     private HorizontalInfiniteCycleViewPager infiniteViewPager;
     private AdapterPreviewPdf adapter;
+    private SessionManager sm;
 
     private static final String BASE_URL = Constantes.IP + "/login/getPdfs.php";
 
@@ -47,6 +46,7 @@ public class SelectorPdfActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infinite_cycle_viewpager);
+        sm = new SessionManager(getApplicationContext());
         //TODO con el auto scroll, hacer que hasta que llegue al final haga autoscroll rápido
         infiniteViewPager = findViewById(R.id.viewPager);
         infiniteViewPager.setAdapter(adapter);
@@ -70,16 +70,7 @@ public class SelectorPdfActivity extends AppCompatActivity {
         getPdfs();
     }
 
-    private void toastError(String msg) {
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
-        txtMensaje.setText(msg);
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
+
 
     private void getPdfs() {
 
@@ -111,17 +102,17 @@ public class SelectorPdfActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                toastError(error.toString().trim());
+                Utiles utiles = new Utiles(SelectorPdfActivity.this);
+                utiles.toast(error.toString().trim());
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
                 Bundle extras = getIntent().getExtras();
                 int id = extras.getInt("id_categoria");
                 params.put("id_categoria", id + "");
-                params.put("id_usuario", sp.getInt("user_id", -1) + "");
+                params.put("id_usuario", sm.getId() + "");
                 return params;
             }
         };

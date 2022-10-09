@@ -2,12 +2,10 @@ package com.juanpecuelo.academia;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import clases.Constantes;
+import clases.Utiles;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -35,6 +34,8 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String URL = Constantes.IP+"/login/register.php";
     private String email, contrasena, contrasena2;
     private TextInputLayout textInputLayout;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
     public void registrar(View view){
+        Utiles utiles = new Utiles(RegisterActivity.this);
         email=etMail.getText().toString().trim();
         contrasena=etContrasena.getText().toString().trim();
         contrasena2=etContrasena2.getText().toString().trim();
@@ -68,23 +70,24 @@ public class RegisterActivity extends AppCompatActivity {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
+                    Utiles utiles = new Utiles(RegisterActivity.this);
                     if (response.equals("success")) {
-                        toastCorrecto(getResources().getString(R.string.ya_registrado));
+                        utiles.toast(getResources().getString(R.string.ya_registrado));
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
                     } else if (response.equals("failure")) {
-                        toastError(getResources().getString(R.string.error));
+                        utiles.toast(getResources().getString(R.string.error));
                         System.out.println(response);
                     }else{
-                        toastError(response);
+                        utiles.toast(response);
                         System.out.println(response);
                     }
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    toastError(error.toString().trim());
+                    utiles.toast(error.toString().trim());
                 }
             }){
                 @Override
@@ -104,26 +107,5 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    private void toastCorrecto(String msg){
-        LayoutInflater inflater = getLayoutInflater();
-        View view =inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
-        txtMensaje.setText(msg);
 
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
-    private void toastError(String msg){
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
-        txtMensaje.setText(msg);
-
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
 }

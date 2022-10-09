@@ -3,16 +3,12 @@ package com.juanpecuelo.academia;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,17 +21,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 import clases.Constantes;
+import clases.SessionManager;
+import clases.Utiles;
 
 public class SintomasActivity extends AppCompatActivity {
     private static final String URL_ACCOUNT = Constantes.IP + "/login/updateNewAccount.php";
     private static final String URL_INSERT = Constantes.IP + "/login/insertUser.php";
 
     private ListView listView;
-
+    private SessionManager sm;
+    private Utiles utiles;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sintomas);
+        sm = new SessionManager(getApplicationContext());
+        utiles = new Utiles(SintomasActivity.this);
         final String[] arraySintomas = getResources().getStringArray(R.array.sintomas);
         ArrayAdapter<String> adapter;
         listView = findViewById(R.id.lvSintomas);
@@ -83,16 +84,10 @@ public class SintomasActivity extends AppCompatActivity {
                             }
                         }
                     }
-                    toastCorrecto("Tienes nuevos módulos para leer");
+                    utiles.toast("Tienes nuevos módulos para leer");
                     setNewAccount(view);
                     Intent intent = new Intent(getApplicationContext(), MenuPrincipalActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
-                    if (!sp.getBoolean(LoginActivity.HAS_LOGGED_IN, false)) {
-                        SharedPreferences.Editor edit = sp.edit();
-                        edit.putBoolean(LoginActivity.HAS_LOGGED_IN, true);
-                        edit.commit();
-                    }
                     finish();
                     startActivity(intent);
                 }
@@ -110,14 +105,13 @@ public class SintomasActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                toastError(getResources().getString(R.string.error));
+                utiles.toast(getResources().getString(R.string.error));
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
-                params.put("id_usuario", sp.getInt("user_id", -1) + "");
+                params.put("id_usuario", sm.getId()+ "");
                 return params;
             }
         };
@@ -135,15 +129,14 @@ public class SintomasActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                toastError(getResources().getString(R.string.error));
+                utiles.toast(getResources().getString(R.string.error));
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS_USER, 0);
                 params.put("id_categoria", (id_categoria) + "");
-                params.put("id_usuario", sp.getInt("user_id", -1) + "");
+                params.put("id_usuario", sm.getId() + "");
                 return params;
             }
         };
@@ -151,27 +144,7 @@ public class SintomasActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    private void toastCorrecto(String msg) {
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_ok, findViewById(R.id.ll_custom_toast_ok));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
-        txtMensaje.setText(msg);
 
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
 
-    private void toastError(String msg) {
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.toast_error, findViewById(R.id.ll_custom_toast_error));
-        TextView txtMensaje = view.findViewById(R.id.txtMensajeToastError);
-        txtMensaje.setText(msg);
 
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.show();
-    }
 }

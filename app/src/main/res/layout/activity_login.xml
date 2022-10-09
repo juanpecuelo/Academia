@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/theme_color"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
@@ -21,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Introduce tu email"
-        app:hintTextColor="@color/black"
         app:startIconDrawable="@drawable/ic_person"
         app:endIconMode="clear_text">
         <!--TODO cambiar el color al seleccionar las cajas -->
@@ -36,12 +34,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Introduce tu contraseña"
-        app:hintTextColor="@color/black"
         app:passwordToggleEnabled="true"
-        style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
         app:startIconDrawable="@drawable/ic_lock">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -60,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:text="Recuérdame"
-        android:buttonTint="@color/button_color"
+        android:buttonTint="@color/complementary_theme_color"
         android:textColor="@color/white">
 
     </CheckBox>
@@ -79,8 +76,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/button_color"
         android:text="Ingresar"></Button>
 
 </LinearLayout>

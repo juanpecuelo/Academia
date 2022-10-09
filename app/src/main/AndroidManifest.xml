@@ -22,28 +22,31 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.juanpecuelo.academia.AboutActivity"
+            android:name=".PildorasActivity"
             android:exported="false" />
         <activity
-            android:name="com.juanpecuelo.academia.MiCuentaActivity"
+            android:name=".AboutActivity"
             android:exported="false" />
         <activity
-            android:name="com.juanpecuelo.academia.SeguirLeyendoActivity"
+            android:name=".MiCuentaActivity"
             android:exported="false" />
         <activity
-            android:name="com.juanpecuelo.academia.InformacionActivity"
+            android:name=".SeguirLeyendoActivity"
             android:exported="false" />
         <activity
-            android:name="com.juanpecuelo.academia.AjustesActivity"
+            android:name=".InformacionActivity"
             android:exported="false" />
         <activity
-            android:name="com.juanpecuelo.academia.ReportarBugActivity"
+            android:name=".AjustesActivity"
             android:exported="false" />
         <activity
-            android:name="com.juanpecuelo.academia.PdfViewActivity"
+            android:name=".ReportarBugActivity"
             android:exported="false" />
         <activity
-            android:name="com.juanpecuelo.academia.MainActivity"
+            android:name=".PdfViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,16 +55,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.juanpecuelo.academia.MenuPrincipalActivity"
+            android:name=".MenuPrincipalActivity"
             android:exported="false" />
         <activity
-            android:name="com.juanpecuelo.academia.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
-        <activity android:name="com.juanpecuelo.academia.RegisterActivity" />
-        <activity android:name="com.juanpecuelo.academia.SelectorCategoriaActivity" />
-        <activity android:name="com.juanpecuelo.academia.SelectorPdfActivity" />
-        <activity android:name="com.juanpecuelo.academia.SintomasActivity" />
-        <activity android:name="com.juanpecuelo.academia.EnfermedadesActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SelectorCategoriaActivity" />
+        <activity android:name=".SelectorPdfActivity" />
+        <activity android:name=".SintomasActivity" />
+        <activity android:name=".EnfermedadesActivity" />
     </application>
 
 </manifest>

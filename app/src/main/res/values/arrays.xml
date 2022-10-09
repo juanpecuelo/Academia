@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="colors">
-        <item>@color/blue_solid</item>
+        <item>@color/complementary_theme_color</item>
         <item>@color/magenta_theme</item>
         <item>@color/orange_theme</item>
         <item>@color/green_theme</item>
