@@ -11,29 +11,27 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher_academia2"
         android:background="@color/complementary_theme_color"
-        ></ImageView>
+        />
     <TextView
         android:id="@+id/dialogTxtTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Título"
         android:layout_margin="5dp"
         android:background="@drawable/text_style"
         android:textColor="@color/text_color1"
         android:textSize="25sp"
         android:textStyle="bold"
-        ></TextView>
+        />
     <TextView
         android:id="@+id/dialogTxtApoyo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Texto de apoyo al título"
         android:layout_margin="5dp"
         android:background="@drawable/text_style"
         android:textColor="@color/text_color1"
         android:textSize="18sp"
         android:textStyle="bold"
-        ></TextView>
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,22 +42,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Si"
+            android:text="@string/aceptar"
             android:textAllCaps="true"
             android:layout_margin="7dp"
             android:backgroundTint="@color/button_color"
-
-            ></Button>
+            />
         <Button
             android:id="@+id/dialogBtnCancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NO"
+            android:text="@string/cancelar"
             android:layout_margin="7dp"
             android:layout_weight="1"
             android:textAllCaps="true"
             android:backgroundTint="@color/button_color"
-            ></Button>
+            />
 
     </LinearLayout>
 

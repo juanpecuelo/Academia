@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:clickable="true"
+    android:focusable="true"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
@@ -21,20 +22,18 @@
                 android:id="@+id/imageButtonCategoria"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_alignParentLeft="true"
                 android:layout_gravity="center"
                 android:background="@color/complementary_theme_color"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:scaleType="centerInside"></ImageButton>
+                android:scaleType="centerInside"/>
 
             <TextView
                 android:id="@+id/categoria_textName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/imageButtonCategoria"
                 android:layout_marginBottom="5dp"
                 android:height="50dp"
                 android:singleLine="true"
@@ -42,19 +41,17 @@
                 android:layout_gravity="center"
                 android:textColor="@color/text_color1"
                 android:textSize="20sp"
-                android:textStyle="italic"></TextView>
+                android:textStyle="italic"/>
 
             <TextView
                 android:id="@+id/categoria_textDescripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/categoria_textName"
-                android:layout_toRightOf="@id/imageButtonCategoria"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:text="Nombre"
                 android:textColor="@color/text_color1"
-                android:textSize="15sp"></TextView>
+                android:textSize="15sp"/>
 
 
         <ProgressBar
@@ -64,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:indeterminateTint="@color/yellow"></ProgressBar>
+            android:indeterminateTint="@color/yellow"/>
 
         <TextView
             android:id="@+id/txtPorcentajePbCategorias"
@@ -75,7 +72,7 @@
             android:text="0 %"
             android:textColor="@color/text_color1"
             android:textSize="15sp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
 

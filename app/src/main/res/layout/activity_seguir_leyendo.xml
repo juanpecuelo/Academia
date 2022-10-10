@@ -20,9 +20,10 @@
             <ImageView
                 android:layout_width="@dimen/app_bar_image"
                 android:layout_height="@dimen/app_bar_image"
+                android:contentDescription="@string/logo_content_description"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/app_bar_margin"
-                android:background="@drawable/logo_layout"></ImageView>
+                android:background="@drawable/logo_layout"/>
         </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -35,6 +36,7 @@
         android:layout_marginBottom="20dp"
         android:background="@color/theme_color"
         android:clickable="true"
+        android:focusable="true"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp">
         <LinearLayout
@@ -48,14 +50,13 @@
                 android:id="@+id/seguirLeyendoimageButtonCategoria"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_alignParentLeft="true"
                 android:layout_gravity="center"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
                 android:background="@color/complementary_theme_color"
-                android:scaleType="centerInside"></ImageButton>
+                android:scaleType="centerInside"/>
 
             <TextView
                 android:id="@+id/seguirLeyendo_textName"
@@ -63,24 +64,21 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
-                android:layout_toRightOf="@id/imageButtonCategoria"
                 android:height="50dp"
                 android:singleLine="true"
-                android:text="-"
                 android:textColor="@color/text_color1"
                 android:textSize="20sp"
-                android:textStyle="italic"></TextView>
+                android:textStyle="italic"/>
 
             <TextView
                 android:id="@+id/seguirLeyendo_textDescripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/categoria_textName"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="-"
+                android:text=""
                 android:textColor="@color/text_color1"
-                android:textSize="15sp"></TextView>
+                android:textSize="15sp"/>
 
             <!--para que el texto gire hacia la derecha: se cambia la dirección del texto a la que usan los árabes-->
             <!--y se pone espacios detrás del texto hasta que se active el marquee-->
@@ -93,13 +91,14 @@
                 android:ellipsize="marquee"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:paddingStart="5dp"
+                android:paddingEnd="5dp"
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:text="                                                   Seguir leyendo"
                 android:textColor="@color/text_color1"
                 android:textDirection="rtl"
                 android:textSize="20sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/txtPorcentajeSeguirLeyendo"
@@ -107,10 +106,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/text_style"
-                android:text="0 %"
                 android:textColor="@color/text_color1"
                 android:textSize="15sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -123,6 +121,6 @@
         android:background="@color/complementary_theme_color"
         app:itemIconTint="@color/navbar_icon_color"
         app:itemTextColor="@color/navbar_icon_color"
-        app:menu="@menu/bottom_menu_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/bottom_menu_navigation"/>
 
 </RelativeLayout>

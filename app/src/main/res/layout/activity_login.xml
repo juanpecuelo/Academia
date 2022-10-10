@@ -13,13 +13,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/logo_layout"></ImageView>
+        android:src="@drawable/logo_layout"
+        android:contentDescription="@string/logo_content_description"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Introduce tu email"
+        android:hint="@string/introduce_tu_email"
         app:startIconDrawable="@drawable/ic_person"
         app:endIconMode="clear_text">
         <!--TODO cambiar el color al seleccionar las cajas -->
@@ -30,14 +32,14 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:maxLength="30"
-            android:layout_marginTop="25dp"></com.google.android.material.textfield.TextInputEditText>
+            android:layout_marginTop="25dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Introduce tu contraseña"
+        android:hint="@string/introduce_tu_contrasena"
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@drawable/ic_lock">
 
@@ -47,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:maxLength="20"
-            android:inputType="textPassword"></com.google.android.material.textfield.TextInputEditText>
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -55,9 +57,9 @@
         android:id="@+id/cbRecuerdame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:text="Recuérdame"
-        android:buttonTint="@color/complementary_theme_color"
+        android:layout_gravity="start"
+        android:text="@string/recuerdame"
+        android:buttonTint="@color/blue_solid"
         android:textColor="@color/white">
 
     </CheckBox>
@@ -67,7 +69,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:text="¿No tienes cuenta?\n\t\tRegístrate aquí"
+        android:focusable="true"
+        android:text="@string/registrate_aqui"
         android:textColor="@color/white"
         android:textColorLink="@color/purple_700" />
 
@@ -76,6 +79,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Ingresar"></Button>
+        android:text="@string/ingresar"/>
 
 </LinearLayout>

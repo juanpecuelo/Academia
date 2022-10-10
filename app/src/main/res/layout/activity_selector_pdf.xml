@@ -16,14 +16,15 @@
                 android:layout_width="@dimen/app_bar_image"
                 android:layout_height="@dimen/app_bar_image"
                 android:layout_marginTop="@dimen/app_bar_margin"
+                android:contentDescription="@string/logo_content_description"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/logo_layout"
 
-                ></ImageView>
+                />
         </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPreview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"/>
 </LinearLayout>

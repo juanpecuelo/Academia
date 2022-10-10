@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,17 +19,18 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_margin="@dimen/app_bar_margin"
-                android:text="Ajustes"
+                android:text="@string/ajustes"
                 android:textColor="@color/text_color1"
-                android:textSize="@dimen/app_bar_textsize"></TextView>
+                android:textSize="@dimen/app_bar_textsize"/>
 
             <ImageView
                 android:layout_width="@dimen/app_bar_image"
                 android:layout_height="@dimen/app_bar_image"
                 android:layout_margin="@dimen/app_bar_margin"
-                android:layout_alignParentRight="true"
+                android:contentDescription="@string/logo_content_description"
+                android:layout_alignParentEnd="true"
                 android:background="@drawable/logo_layout"
-                ></ImageView>
+                />
         </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -38,11 +38,10 @@
             android:id="@+id/txtAboutUs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="about us"
             android:background="@drawable/text_style"
             android:textSize="20sp"
             android:layout_margin="8dp"
             android:textColor="@color/text_color1"
-            ></TextView>
+            />
 
 </LinearLayout>

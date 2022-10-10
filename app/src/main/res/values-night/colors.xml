@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="text_style_background">#a93763</color>
-    <color name ="theme_color">#0a082e</color>
-    <color name="gold">#ae00ff</color>
+    <color name="text_style_background">#FF000000</color>
+
+    <color name ="theme_color">#1e7dae</color>
+    <!---<color name ="theme_color2">#B1CAFA</color>-->
+    <color name="complementary_theme_color">#14171a</color>
+    <color name="blue_solid">#1e7dae</color>
+    <color name = "ic_book_color">#483895</color>
+    <color name="ic_settings_color"> #ae961e</color>
+    <color name="ic_about_us_color">#ae1e4e</color>
+    <color name="ic_my_stoic_color">#1eae4e</color>
+
+    <color name="last_pdf_color">#57007E</color>
+
+
+
+    <color name="ic_pill_color">#FFD700</color>
     <color name="blue_light">#276bb0</color>
     <color name="button_color">#a93763</color>
     <color name="text_color1">#FFFFFFFF</color>
     <color name="text_color2">#FFFFFF</color>
-    <color name="cardview_color">#2f1d85</color>
+    <color name="cardview_color">#1e7dae</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="complementary_theme_color">#090057</color>
     <color name="green_theme">#60C689</color>
     <color name="purple_theme">#9972e0</color>
     <color name="yellow_green_theme">#bae072</color>
     <color name="magenta_theme">#e08672</color>
     <color name="pink_theme">#e072ba</color>
     <color name="orange_theme">#e0bb72</color>
-    <color name="navbar_icon_color">#a93763</color>
+    <color name="navbar_icon_color">#1e7dae</color>
 
-    <color name="last_pdf_color">#57007E</color>
 
 </resources>

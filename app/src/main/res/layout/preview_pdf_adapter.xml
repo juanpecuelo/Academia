@@ -28,6 +28,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:background="@color/complementary_theme_color"
+                android:contentDescription="@string/imagen_preview_pdf_content_description"
                 android:scaleType="fitCenter"/>
             <ImageView
                 android:layout_width="wrap_content"
@@ -35,6 +36,7 @@
                 app:layout_constraintTop_toTopOf="@id/imagePdfAdapter"
                 app:layout_constraintLeft_toLeftOf="@id/imagePdfAdapter"
                 android:layout_marginTop="20dp"
+                android:contentDescription="@string/mis_modulos_content_description"
                 android:src="@mipmap/ic_bookmark" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -50,7 +52,7 @@
             android:text="Título"
             android:textColor="@color/text_color1"
             android:textSize="22sp"
-            android:textStyle="italic"></TextView>
+            android:textStyle="italic"/>
 
         <TextView
             android:id="@+id/introductionPdfAdapter"
@@ -61,17 +63,17 @@
             android:background="@drawable/text_style"
             android:text="Pequeña introducción sobre el pdf"
             android:textColor="@color/text_color1"
-            android:textSize="18sp"></TextView>
+            android:textSize="18sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:background="@drawable/text_style"
-            android:text="Presiona sobre la imagen para acceder al módulo de hoy"
+            android:text="@string/accede_modulo"
             android:textColor="@color/text_color2"
             android:textSize="14sp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/btnEntendidoPdfAdapter"
@@ -79,10 +81,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/button_color"
-            android:text="ya lo he leído"
-            android:textColor="@color/white"
             android:textStyle="bold"
-            android:visibility="invisible"></Button>
+            android:text="@string/ya_leido"
+            android:visibility="invisible"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

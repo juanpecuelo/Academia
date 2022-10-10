@@ -14,14 +14,15 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:scaleType="center"
-        android:src="@drawable/logo_layout"></ImageView>
+        android:contentDescription="@string/logo_content_description"
+        android:src="@drawable/logo_layout"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutEmailRegistro"
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="@string/email"
         app:endIconMode="clear_text"
         app:startIconDrawable="@drawable/ic_email">
         <!-- TODO
@@ -41,7 +42,7 @@
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
+        android:hint="@string/contrasena"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:counterTextColor="@color/complementary_theme_color"
@@ -63,7 +64,7 @@
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Repite la contraseña"
+        android:hint="@string/repite_contrasena"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -80,7 +81,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:clickable="true"
-        android:text="¿Ya tienes una cuenta?\n\t\tInicia sesión aquí"
+        android:focusable="true"
+        android:text="@string/inicia_sesion_aqui"
         android:textColor="@color/white" />
 
     <Button
@@ -88,6 +90,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Registrar"></Button>
+        android:text="@string/registrar"/>
 
 </LinearLayout>

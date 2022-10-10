@@ -5,7 +5,7 @@
             <gradient
                 android:angle="225"
                 android:startColor="@color/green_theme"
-                android:endColor="@color/green_darker_theme">
+                android:endColor="@color/ic_my_stoic_color">
             </gradient>
         </shape>
     </item>

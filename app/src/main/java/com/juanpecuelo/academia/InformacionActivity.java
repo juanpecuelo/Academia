@@ -22,7 +22,7 @@ public class InformacionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view_reusable);
         TextView textView = findViewById(R.id.reusableTextView);
-        textView.setText(getResources().getString(R.string.informacion));
+        textView.setText(getResources().getString(R.string.about_us));
         ListView listView = findViewById(R.id.listViewReusable);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item_reusable, informacion);
         listView.setAdapter(adapter);

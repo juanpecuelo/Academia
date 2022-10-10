@@ -38,8 +38,8 @@
         <item name="boxBackgroundColor">@color/white</item>
         <item name="boxStrokeColor">@color/complementary_theme_color</item>
         <item name="hintTextColor">@color/complementary_theme_color</item>
+        <item name="startIconTint">@color/theme_color</item>
     </style>
-
                 <!--TOP BAR-->
     <style name="appBarStyle" parent="Widget.Material3.AppBarLayout">
         <item name="android:background">@color/theme_color</item>

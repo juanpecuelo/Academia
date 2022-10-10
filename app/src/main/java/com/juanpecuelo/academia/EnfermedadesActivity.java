@@ -76,6 +76,7 @@ public class EnfermedadesActivity extends AppCompatActivity {
                                     vincularUsuarioCategoria(Constantes.CATEGORIA_LECCIONES);
                                     vincularUsuarioCategoria(Constantes.CATEGORIA_CONCENTRACION);
                                     vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
+                                    break;
                             }
                         }
                     }

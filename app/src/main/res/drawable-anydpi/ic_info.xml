@@ -3,7 +3,7 @@
     android:height="@dimen/cardview_icons_size"
     android:viewportWidth="24"
     android:viewportHeight="24"
-    android:tint="#1E7DAE"
+    android:tint="@color/ic_about_us_color"
     android:alpha="0.8">
   <group android:scaleX="1.2"
       android:scaleY="1.2"

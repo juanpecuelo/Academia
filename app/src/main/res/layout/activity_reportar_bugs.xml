@@ -16,21 +16,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reportar errores"
+                android:text="@string/reportar_errores_tb"
                 android:textSize="@dimen/app_bar_textsize"
                 android:layout_margin="@dimen/app_bar_margin"
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
                 android:textColor="@color/black"
-                ></TextView>
+                />
 
             <ImageView
                 android:layout_width="@dimen/app_bar_image"
                 android:layout_height="@dimen/app_bar_image"
                 android:layout_margin="@dimen/app_bar_margin"
-                android:layout_alignParentRight="true"
+                android:contentDescription="@string/logo_content_description"
+                android:layout_alignParentEnd="true"
                 android:background="@drawable/logo_layout"
-                ></ImageView>
+                />
         </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -51,9 +52,8 @@
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="¿Qué ha pasado?"
+        android:hint="@string/que_ha_pasado"
         app:hintTextColor="@color/text_color1"
-        android:layout_alignParentBottom="true"
         android:gravity="top"
         app:endIconMode="clear_text">
         <com.google.android.material.textfield.TextInputEditText
@@ -69,17 +69,14 @@
             android:scrollbarStyle="insideInset"
             android:gravity="top"
             android:background="@drawable/text_style"
-            ></com.google.android.material.textfield.TextInputEditText>
+            />
     </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/buttonBug"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
         android:text="@string/enviar"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/button_color"
         android:layout_gravity="center"
-        >
-        ></Button>
+        />
 </LinearLayout>

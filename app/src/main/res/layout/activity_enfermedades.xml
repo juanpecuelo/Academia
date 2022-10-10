@@ -20,15 +20,16 @@
                 android:layout_margin="@dimen/app_bar_margin"
                 android:text="@string/que_me_pasa"
                 android:textColor="@color/text_color1"
-                android:textSize="@dimen/app_bar_textsize"></TextView>
+                android:textSize="@dimen/app_bar_textsize"/>
 
             <ImageView
                 android:layout_width="@dimen/app_bar_image"
                 android:layout_height="@dimen/app_bar_image"
                 android:layout_margin="@dimen/app_bar_margin"
-                android:layout_alignParentRight="true"
+                android:contentDescription="@string/logo_content_description"
+                android:layout_alignParentEnd="true"
                 android:background="@drawable/logo_layout"
-                ></ImageView>
+                />
         </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -50,21 +51,22 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:clickable="true"
+        android:focusable="true"
         android:textSize="15sp"
         android:textColor="@color/text_color1"
         android:background="@drawable/text_style"
-        android:text="¿No sabes qué te pasa? Haz click aquí">
+        android:text="@string/enfermedades_click_aqui">
     </TextView>
     <Button
         android:id="@+id/buttonEnfermedades"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ACEPTAR"
+        android:text="@string/aceptar"
         android:layout_marginTop="30dp"
         android:layout_below="@id/tvIrASintomas"
         android:layout_centerInParent="true"
         android:textColor="@color/white"
         android:backgroundTint="@color/button_color"
-        ></Button>
+        />
 
 </RelativeLayout>

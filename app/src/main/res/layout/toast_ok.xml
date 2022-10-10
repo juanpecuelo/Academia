@@ -18,9 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="10dp"
-        android:text="Has iniciado sesión satisfactoriamente"
+        android:paddingEnd="10dp"
+        android:text="@string/iniciar_sesion_toast"
         android:textColor="@color/white"
-
-        ></TextView>
+        />
 
 </LinearLayout>

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,6 +32,7 @@ public class SintomasActivity extends AppCompatActivity {
     private ListView listView;
     private SessionManager sm;
     private Utiles utiles;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,28 +61,41 @@ public class SintomasActivity extends AppCompatActivity {
                 if (listView.getCheckedItemCount() != 0) {
                     for (int i = 0; i < listView.getCount(); i++) {
                         if (listView.isItemChecked(i)) {
-                           //TODO arreglar todo esto
-                            if (i == 0 || i == 1 || i == 4 || i == 6) {
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_DEPRESION);
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_AUTOESTIMA);
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_SESIONES);
-                            } else if (i == 5 || i == 7) {
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_CONCENTRACION);
-                            } else if (i == 9) {
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
-                            } else if (i == 2 || i == 7) {
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_LECCIONES);
-                            } else if (i == 3) {
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_DEPRESION);
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
-                            }
-                            else if(i == 10){
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_DEPRESION);
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_AUTOESTIMA);
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_SESIONES);
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_LECCIONES);
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_CONCENTRACION);
-                                vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
+                            //TODO optimizar todo esto
+                            switch (i) {
+                                case 0:
+                                case 1:
+                                case 4:
+                                case 6:
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_DEPRESION);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_AUTOESTIMA);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_SESIONES);
+                                    break;
+                                case 2:
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_LECCIONES);
+                                    break;
+                                case 3:
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_DEPRESION);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
+                                    break;
+                                case 5:
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_CONCENTRACION);
+                                    break;
+                                case 7:
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_CONCENTRACION);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_LECCIONES);
+                                    break;
+                                case 9:
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
+                                    break;
+                                case 10:
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_DEPRESION);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_AUTOESTIMA);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_SESIONES);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_LECCIONES);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_CONCENTRACION);
+                                    vincularUsuarioCategoria(Constantes.CATEGORIA_CULPABILIDAD);
+                                    break;
                             }
                         }
                     }
@@ -111,7 +126,7 @@ public class SintomasActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("id_usuario", sm.getId()+ "");
+                params.put("id_usuario", sm.getId() + "");
                 return params;
             }
         };
@@ -143,8 +158,6 @@ public class SintomasActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(request);
     }
-
-
 
 
 }
