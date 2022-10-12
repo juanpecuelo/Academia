@@ -28,7 +28,7 @@ public class AjustesActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.reusableTextView);
 
         final SessionManager sm = new SessionManager(getApplicationContext());
-        Utiles utiles = new Utiles(AjustesActivity.this);
+        Utiles utiles = new Utiles(this);
 
         textView.setText(getResources().getString(R.string.ajustes));
         ListView listView = findViewById(R.id.listViewReusable);
@@ -49,10 +49,10 @@ public class AjustesActivity extends AppCompatActivity {
                         break;
                     case 3:
                         sm.setLogin(false);
+                        utiles.toast(getString(R.string.exito_cerrar_sesion));
                         intent = new Intent(getApplicationContext(), LoginActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
-                        utiles.toast(getString(R.string.exito_cerrar_sesion));
                         break;
                 }
             }

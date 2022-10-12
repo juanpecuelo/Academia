@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/app_bar_margin"
-                android:background="@color/last_pdf_color"
+                android:background="@color/seguir_leyendo_color"
                 android:ellipsize="marquee"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:paddingStart="5dp"

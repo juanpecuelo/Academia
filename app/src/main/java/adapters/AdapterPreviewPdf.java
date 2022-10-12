@@ -79,7 +79,7 @@ public class AdapterPreviewPdf extends PagerAdapter {
 
 
         if (position == getCount() - 1) {
-            layout.setBackgroundColor(ContextCompat.getColor(context, R.color.last_pdf_color));
+            layout.setBackground(ContextCompat.getDrawable(context,R.drawable.background_last_pdf));
             button.setVisibility(View.VISIBLE);
         }
         final Pdf pdf = pdfFiles.get(position);

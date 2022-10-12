@@ -41,7 +41,7 @@ public class PdfViewActivity extends AppCompatActivity {
         protected void onPostExecute(InputStream inputStream) {
             int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
             boolean nightMode = nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
-
+            //TODO fijar el starting zoom level
             pdfView.fromStream(inputStream).nightMode(nightMode)
                     .password("Your Password")
                     .load();
@@ -54,7 +54,6 @@ public class PdfViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pdf_view);
         pdfView = findViewById(R.id.pdf_viewer);
-
         Bundle extras = getIntent().getExtras();
         String path = extras.getString("path");
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);

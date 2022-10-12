@@ -14,10 +14,13 @@ public class Utiles {
         this.activity = activity;
     }
     public void toast(String msg) {
-        LayoutInflater inflater = (LayoutInflater) activity.getLayoutInflater();
+        LayoutInflater inflater = activity.getLayoutInflater();
         View view = inflater.inflate(R.layout.toast_ok, activity.findViewById(R.id.ll_custom_toast_ok));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToastOk);
         txtMensaje.setText(msg);
-        Toast.makeText(activity.getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+        Toast toast = new Toast(activity.getApplicationContext());
+        toast.setView(view);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

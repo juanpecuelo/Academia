@@ -16,6 +16,8 @@
         <item name ="textInputStyle">@style/textInputEditTextStyle</item>
         <item name="appBarLayoutStyle">@style/appBarStyle</item>
         <item name ="android:windowBackground">@color/theme_color</item>
+        <item name="fontFamily">@font/opensans_medium</item>
+
     </style>
                 <!-- BOTONES-->
     <style name="button1Style" parent="Widget.MaterialComponents.Button">
@@ -26,6 +28,7 @@
     <style name="buttonPildora" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/text_color2</item>
         <item name="android:minHeight">5dp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:background">@drawable/pildora_background</item>
         <item name="cornerRadius">15dp</item>
     </style>

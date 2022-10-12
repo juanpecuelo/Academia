@@ -1,15 +1,10 @@
-package com.juanpecuelo.academia;
+package clases;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -18,7 +13,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
+import com.juanpecuelo.academia.LoginActivity;
+import com.juanpecuelo.academia.MenuPrincipalActivity;
+import com.juanpecuelo.academia.R;
+import com.juanpecuelo.academia.SintomasActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,70 +24,37 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import clases.Constantes;
-import clases.SessionManager;
-import clases.Utiles;
+public class InformationManager {
 
-public class LoginActivity extends AppCompatActivity {
-
-
-    //TODO
-    // no funciona el boton de siguiente en el teclado
-    private EditText etEmail, etContrasena;
-    private String email, contrasena;
-    private static final String URL = Constantes.IP + "/login/login.php";
+    private static final String URL_LOGIN = Constantes.IP + "/login/login.php";
     private static final String URL_ID = Constantes.IP + "/login/getId.php";
-    private CheckBox cbRecuerdame;
-    private SessionManager sm;
+    private Activity activity;
     private Utiles utiles;
+    private SessionManager sm;
 
-    private void cargarRecuerdame() {
-        etEmail.setText(sm.getEmail());
-        etContrasena.setText(sm.getContrasena());
-        cbRecuerdame.setChecked(sm.getCheckedRecuerdame());
+
+    public InformationManager(Activity activity, Utiles utiles){
+        this.activity = activity;
+        this.utiles = utiles;
+    }
+    public InformationManager(Activity activity, Utiles utiles, SessionManager sm){
+        this.activity = activity;
+        this.utiles = utiles;
+        this.sm = sm;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        sm = new SessionManager(getApplicationContext());
-        utiles = new Utiles(LoginActivity.this);
-        etEmail = findViewById(R.id.etEmail);
-        etContrasena = findViewById(R.id.etContrasena);
-        TextView tvHacerRegistro = findViewById(R.id.tvRegistrateAqui);
-        Button btnIngresar = findViewById(R.id.btIngresar);
-        cbRecuerdame = findViewById(R.id.cbRecuerdame);
-        btnIngresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                login(view);
-            }
-        });
-        tvHacerRegistro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                register(view);
-            }
-        });
-
-        email = contrasena = "";
-        cargarRecuerdame();
-
-    }
-    public void login(View view) {
-        email = etEmail.getText().toString().trim();
-        contrasena = etContrasena.getText().toString().trim();
-        boolean recuerdame = cbRecuerdame.isChecked();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+    public void enviarLogin(String email, String contrasena, boolean recuerdame){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                int newAccount=0;
+                int newAccount = 0;
                 String[] respuesta = response.split("@");
+                // System.out.println(response + "<--- respuesta login");
+                System.out.println(email);
                 if (respuesta[0].equals("success")) {
                     if (recuerdame) {
                         sm.setLogin(true);
-                        sm.guardarRecuerdame(email, contrasena, true);
+                        sm.guardarRecuerdame(email, contrasena, recuerdame);
                     } else {
                         sm.borrarRecuerdame();
                     }
@@ -97,25 +62,25 @@ public class LoginActivity extends AppCompatActivity {
                         JSONArray array = new JSONArray(respuesta[1]);
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject object = array.getJSONObject(i);
-                            newAccount= object.getInt("is_new_account");
+                            newAccount = object.getInt("is_new_account");
                             // System.out.println(newAccount + " arriba");
                         }
                     } catch (Exception e) {
                         System.out.println(e);
                     }
-                    establecerId();
+                    establecerId(email);
                     Intent intent;
                     if (newAccount == 1) {
-                        intent = new Intent(LoginActivity.this, SintomasActivity.class);
+                        intent = new Intent(activity, SintomasActivity.class);
                     } else {
-                        intent = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
+                        intent = new Intent(activity, MenuPrincipalActivity.class);
                     }
-                    startActivity(intent);
-                    finish();
+                    activity.startActivity(intent);
+                    activity.finish();
                 } else if (respuesta[0].equals("failure")) {
-                    utiles.toast(getResources().getString(R.string.email_contra_incorrectos));
+                    utiles.toast(activity.getResources().getString(R.string.email_contra_incorrectos));
                 } else {
-                    utiles.toast(getResources().getString(R.string.campos_vacios));
+                    utiles.toast(activity.getResources().getString(R.string.campos_vacios));
                 }
             }
         }, new Response.ErrorListener() {
@@ -133,13 +98,11 @@ public class LoginActivity extends AppCompatActivity {
                 return data;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        RequestQueue requestQueue = Volley.newRequestQueue(activity.getApplicationContext());
         requestQueue.add(stringRequest);
     }
 
-
-
-    public void establecerId() {
+    private void establecerId(String email) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ID,
                 new Response.Listener<String>() {
                     @Override
@@ -155,7 +118,6 @@ public class LoginActivity extends AppCompatActivity {
                                 sm.setId(id);
 //                                System.out.println(sp.getInt("user_id", -1));
                             }
-
                         } catch (Exception e) {
                             System.out.println(e + " excepción");
                         }
@@ -174,14 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                 return params;
             }
         };
-        Volley.newRequestQueue(LoginActivity.this).add(stringRequest);
+        Volley.newRequestQueue(activity).add(stringRequest);
     }
 
-    public void register(View view) {
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-
-}   
+}
