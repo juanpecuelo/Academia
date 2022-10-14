@@ -22,6 +22,7 @@
     <color name="ic_pill_color">#FFD700</color>
     <color name="ic_about_us_color">#e0d772</color>
     <color name="ic_my_stoic_color">#1eae4e</color>
+    <color name="ic_question_mark_color">#cab1fa</color>
 
     <color name="seguir_leyendo_color">#EAE739</color>
 
@@ -35,7 +36,6 @@
     <color name="yellow">#FFFB00</color>
     <color name="orange_theme">#fae2b1</color>
     <color name="magenta_theme">#fabeb1</color>
-    <color name="purple_theme">#cab1fa</color>
     <color name="green_theme">#b1fae1</color>
     <color name="navbar_icon_color">#361eae</color>
     <color name="blue_dark_theme">#361eae</color>

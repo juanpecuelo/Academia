@@ -16,9 +16,23 @@
         <item name ="textInputStyle">@style/textInputEditTextStyle</item>
         <item name="appBarLayoutStyle">@style/appBarStyle</item>
         <item name ="android:windowBackground">@color/complementary_theme_color</item>
-
-
+        <item name ="cardViewStyle">@style/cardviewStyle</item>
     </style>
+
+    <!-- CARDVIEW-->
+    <style name="cardviewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:layout_gravity">fill</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="backgroundColor">@color/cardview_color</item>
+        <item name="strokeColor">@color/complementary_theme_color</item>
+        <item name="strokeWidth">0.7dp</item>
+    </style>
+
     <style name="button1Style" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/button_text_color</item>
         <item name="backgroundTint">@color/theme_color</item>

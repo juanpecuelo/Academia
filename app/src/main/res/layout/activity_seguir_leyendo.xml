@@ -9,14 +9,11 @@
         android:id="@+id/tbLayoutPrincipal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        >
+        android:layout_marginBottom="20dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
+            android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="@dimen/app_bar_image"
                 android:layout_height="@dimen/app_bar_image"
@@ -42,7 +39,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/complementary_theme_color"
+            android:background="@drawable/background_preview_pdf"
             android:orientation="vertical"
             android:padding="5dp">
             <!-- TODO arreglar visualmente las imágenes pequeñas-->
@@ -55,7 +52,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/complementary_theme_color"
+                android:background="@android:color/transparent"
                 android:scaleType="centerInside"/>
 
             <TextView

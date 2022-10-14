@@ -25,7 +25,7 @@
     <color name="cardview_color">#1e7dae</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green_theme">#60C689</color>
-    <color name="purple_theme">#9972e0</color>
+    <color name="ic_question_mark_color">#9972e0</color>
     <color name="yellow_green_theme">#bae072</color>
     <color name="magenta_theme">#e08672</color>
     <color name="pink_theme">#e072ba</color>
