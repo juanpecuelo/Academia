@@ -51,9 +51,7 @@ public class SelectorPdfActivity extends AppCompatActivity {
         infiniteViewPager = findViewById(R.id.viewPager);
         infiniteViewPager.setAdapter(adapter);
         TextView nombreCategoria = findViewById(R.id.nombreCategoriaViewPager);
-        //LinearLayout linearLayout = findViewById(R.id.viewPagerBackground);
         Bundle extras = getIntent().getExtras();
-        //linearLayout.setBackgroundColor(extras.getInt("color"));
         nombreCategoria.setText(extras.getString("nombre_categoria"));
         idCategoria = extras.getInt("id_categoria");
         listaTextos = new ArrayList<>();
@@ -73,7 +71,6 @@ public class SelectorPdfActivity extends AppCompatActivity {
 
 
     private void getPdfs() {
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, BASE_URL,
                 new Response.Listener<String>() {
                     @Override

@@ -62,12 +62,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_principal);
+    private void setAnimatedBackground(){
         RelativeLayout relativeLayout = findViewById(R.id.layoutMenuPrincipal);
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
@@ -81,12 +76,16 @@ public class MenuPrincipalActivity extends AppCompatActivity implements View.OnC
                 relativeLayout.setBackground(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.night_gradient_list));
             }
         //TODO si se pone la animacion en un thread aparte, no se reseteará al cambiar de activity?
-
         AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
-
         animationDrawable.setEnterFadeDuration(2500);
         animationDrawable.setExitFadeDuration(5000);
         animationDrawable.start();
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu_principal);
 
         TextView frase = findViewById(R.id.txtBienvenido);
         frase.setText(FRASES[new Random().nextInt(FRASES.length)]);

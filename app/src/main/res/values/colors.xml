@@ -25,7 +25,7 @@
     <color name="ic_question_mark_color">#cab1fa</color>
 
     <color name="seguir_leyendo_color">#EAE739</color>
-
+    <color name="preview_pdf_color">#FF000000</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

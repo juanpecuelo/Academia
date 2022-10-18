@@ -9,7 +9,12 @@
             <padding android:top="2dp"></padding>
             <padding android:bottom="2dp"></padding>
         </shape>
-
+        <ripple android:color="@color/grey">
+            <item
+                android:id="@+id/mask"
+                android:drawable="@color/white" />
+        </ripple>
     </item>
+
 
 </layer-list>

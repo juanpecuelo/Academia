@@ -115,9 +115,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@color/complementary_theme_color"
-        app:itemIconTint="@color/navbar_icon_color"
-        app:itemTextColor="@color/navbar_icon_color"
         app:menu="@menu/bottom_menu_navigation"/>
 
 </RelativeLayout>

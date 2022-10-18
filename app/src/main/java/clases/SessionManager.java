@@ -11,6 +11,7 @@ public class SessionManager {
     private static final String KEY_CONTRASENA = "key_contrasena";
     private static final String KEY_CHECKBOX = "key_recuerdame";
     private static final String KEY_ULTIMA_CATEGORIA = "key_ultima_categoria";
+    private static final String KEY_DARK_MODE="dark_mode";
 
 
     private final SharedPreferences sp;
@@ -31,7 +32,10 @@ public class SessionManager {
         setContrasena("");
         setCheckedRecuerdame(false);
     }
-
+    public void setDarkMode(boolean darkMode){
+        editor.putBoolean(KEY_DARK_MODE, darkMode);
+        editor.commit();
+    }
 
     public void setLogin(boolean login){
         editor.putBoolean(KEY_LOGIN, login);

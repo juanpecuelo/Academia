@@ -105,9 +105,6 @@ public class AdapterPreviewPdf extends PagerAdapter {
             @Override
             public void onClick(View view) {
                 unlockNextPdf(pdf.getCategoriaId(), pdf.getId());
-                //TODO se presiona el botón, se envía un boolean extra al activity de SelectorPdfActivity,
-                // en el onRestart, si el extra es positivo, se cierra esa activity. Mientras tanto, al
-                // haber presionado el botón, se envía a SelectorPdfActivity donde se enseña el nuevo pdf.
                 Toast.makeText(context, context.getResources().getString(R.string.nuevo_módulo), Toast.LENGTH_SHORT).show();
                 sm.setUltimaCategoria(pdf.getCategoriaId());
                 //Intent intent = new Intent(context, SelectorPdfActivity.class);

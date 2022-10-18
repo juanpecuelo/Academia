@@ -25,15 +25,17 @@
                 android:layout_width="@dimen/app_bar_image"
                 android:layout_height="@dimen/app_bar_image"
                 android:layout_margin="@dimen/app_bar_margin"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:background="@drawable/logo_layout"
-                ></ImageView>
+                />
         </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
     <ListView
         android:id="@+id/listViewReusable"
         android:layout_width="match_parent"
         android:background="@drawable/text_style"
-        android:layout_height="wrap_content"></ListView>
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

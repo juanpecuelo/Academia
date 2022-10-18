@@ -11,6 +11,7 @@
     <color name="ic_settings_color"> #ae961e</color>
     <color name="ic_about_us_color">#ae1e4e</color>
     <color name="ic_my_stoic_color">#1eae4e</color>
+    <color name="preview_pdf_color">#1e7dae</color>
 
     <color name="seguir_leyendo_color">#1e7dae</color>
 
@@ -22,7 +23,8 @@
     <color name="button_color">#a93763</color>
     <color name="text_color1">#FFFFFFFF</color>
     <color name="text_color2">#FFFFFF</color>
-    <color name="cardview_color">#1e7dae</color>
+    <color name="cardview_color">#FF000000</color>
+
     <color name="white">#FFFFFFFF</color>
     <color name="green_theme">#60C689</color>
     <color name="ic_question_mark_color">#9972e0</color>

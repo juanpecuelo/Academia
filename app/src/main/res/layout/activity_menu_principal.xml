@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutMenuPrincipal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/blue_gradient_list">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/tbLayoutPrincipal"
@@ -188,8 +187,5 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@color/complementary_theme_color"
-        app:itemIconTint="@color/navbar_icon_color"
-        app:itemTextColor="@color/navbar_icon_color"
         app:menu="@menu/bottom_menu_navigation" />
 </RelativeLayout>

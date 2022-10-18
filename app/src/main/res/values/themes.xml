@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Academia" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -17,7 +17,8 @@
         <item name="appBarLayoutStyle">@style/appBarStyle</item>
         <item name ="android:windowBackground">@color/theme_color</item>
         <item name="fontFamily">@font/opensans_medium</item>
-        <item name ="cardViewStyle">@style/cardviewStyle</item>
+        <item name="imageButtonStyle">@style/imageButtonStyle</item>
+        <item name="bottomNavigationStyle">@style/bottomNavigatationStyle</item>
     </style>
 
                 <!-- CARDVIEW-->
@@ -29,7 +30,7 @@
         <item name="android:focusable">true</item>
         <item name="cardCornerRadius">8dp</item>
         <item name="cardElevation">8dp</item>
-        <item name="backgroundColor">@color/cardview_color</item>
+        <item name="cardBackgroundColor">@color/cardview_color</item>
         <item name="strokeColor">@color/complementary_theme_color</item>
         <item name="strokeWidth">0.7dp</item>
     </style>
@@ -53,6 +54,9 @@
         <item name="boxCornerRadiusBottomEnd">10dp</item>
         <item name="boxCornerRadiusTopEnd">10dp</item>
         <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="endIconTint">@color/theme_color</item>
+        <item name="endIconDrawable"></item>
+        <item name="passwordToggleTint">@color/theme_color</item>
         <item name="boxBackgroundColor">@color/white</item>
         <item name="boxStrokeColor">@color/complementary_theme_color</item>
         <item name="hintTextColor">@color/complementary_theme_color</item>
@@ -60,7 +64,18 @@
     </style>
                 <!--TOP BAR-->
     <style name="appBarStyle" parent="Widget.Material3.AppBarLayout">
-        <item name="android:background">@color/theme_color</item>
+        <item name="android:background">@color/blue_solid</item>
     </style>
+    <style name="imageButtonStyle" parent="Widget.MaterialComponents.TimePicker.ImageButton">
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="background">@android:color/transparent</item>
+    </style>
+    <style name="bottomNavigatationStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/blue_solid</item>
+        <item name="itemIconTint">@color/navbar_icon_color</item>
+        <item name="itemTextColor">@color/navbar_icon_color</item>
+    </style>
+
+
 
 </resources>

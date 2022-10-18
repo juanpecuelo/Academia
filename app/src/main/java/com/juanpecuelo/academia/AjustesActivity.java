@@ -1,8 +1,13 @@
 package com.juanpecuelo.academia;
 
+import static android.app.UiModeManager.MODE_NIGHT_YES;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -42,6 +47,20 @@ public class AjustesActivity extends AppCompatActivity {
                     case 0:
                         intent = new Intent(getApplicationContext(), MiCuentaActivity.class);
                         startActivity(intent);
+                        break;
+                    case 1:
+
+                        System.out.println("ffefeefefef");
+                        int nightModeFlags = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+                        boolean nightMode = nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
+                        int darkMode = MODE_NIGHT_YES;
+                        if(nightMode){
+                            sm.setDarkMode(true);
+                        }else{
+                            darkMode = MODE_NIGHT_NO;
+                            sm.setDarkMode(false);
+                        }
+                            AppCompatDelegate.setDefaultNightMode(darkMode);
                         break;
                     case 2:
                         intent = new Intent(getApplicationContext(), ReportarBugActivity.class);
